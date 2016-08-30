@@ -1,0 +1,19 @@
+<configuration>
+  <system.web>
+    <httpHandlers>
+      <add verb="*" path="ajaxpro/*.ashx" type="AjaxPro.AjaxHandlerFactory, AjaxPro"  />
+    </httpHandlers>
+  </system.web>
+  <system.webServer>
+    <handlers>
+      <add name="ajaxpro" verb="*" path="ajaxpro/*.ashx" type="AjaxPro.AjaxHandlerFactory,AjaxPro"/>
+    </handlers>
+  </system.webServer>
+<location path="ajaxPro">
+    <system.web>
+      <authorization>
+        <allow users="*" />
+      </authorization>
+    </system.web>
+  </location>
+</configuration>

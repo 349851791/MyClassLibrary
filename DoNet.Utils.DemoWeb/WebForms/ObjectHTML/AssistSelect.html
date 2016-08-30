@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../CSS/Index.css" rel="stylesheet" />
+    <link href="../../JS/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../../JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script src="../../JS/Global/json2.js"></script>
+    <script src="../../JS/ObjectHTML/AssistSelect.js"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+
+        标识列:<input id="identity" class="easyui-textbox" value="6627999" />
+        列名:<input id="columnName" class="easyui-textbox" value="username" />
+        列值:<input id="columnValue" class="easyui-textbox" value="丁军" />
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="GetResult()">查询对象</a><br />
+
+        <div style="height:150px;border:1px solid #0E53B3; margin:5px;padding:10px" id="div_result"></div>
+    </div>
+    <div id="win_user" class="easyui-dialog" style="position: relative" closed="true"
+         data-options="iconCls:'icon-edit',modal:true,minimizable:false,maximizable:false"></div>
+
+    <div id="tt_SourceCode" data-options="fit:true" class="easyui-tabs">
+        <div title="JS代码" data-options="iconCls:'icon-reload'" style="padding:10px">
+            <pre>
+                function GetResult() {
+                    var identity = $('#identity').val();
+                    var columnName = $('#columnName').val();
+                    var columnValue = $('#columnValue').val();
+                    $.post('../../Handler/UsersHandler.ashx?action=GetAssist',
+                        { identity: identity,columnName: columnName, columnValue: columnValue },
+                        function (result) {
+                            if (result.length >1) {
+                                var json = JSON.parse(result);
+                                var str = "根据标识列查询返回数据:" + JSON.stringify(json.dt_identity);
+                                str += "根据列名查询返回数据:" + JSON.stringify(json.dt_column);
+                                str += "无条件查询最大的ID:" + json.max ;
+                                str += "无条件查询最小的ID:" + json.min ;
+                                str += "性别为男的最大ID:" + json.max_condition ;
+                                str += "性别为男的最小ID:" + json.min_condition ;
+                                $('#div_result').html(str);
+                            } else {
+                                $.messager.alert('错误', '后台获取数据发生异常!', 'error');
+                            }
+                        });
+                }  
+            </pre>
+        </div>
+        <div title="handler代码" data-options="iconCls:'icon-reload'" style="padding:10px">
+            <pre> 
+                 string identity = context.Request.Params["identity"];
+                string columnName = context.Request.Params["columnName"];
+                string columnValue = context.Request.Params["columnValue"];
+                System.Data.DataTable dt_identity = um.SelectByIdentity(identity);
+                System.Data.DataTable dt_column = um.SelectByColumn(columnName, columnValue);
+                int max = um.GetMax("ID");
+                int max_condition = um.GetMax("ID", new Users() { SEX = "男" });
+                int min = um.GetMin("ID");
+                int min_condition = um.GetMin("ID", new Users() { SEX = "男" });
+                var data = new
+                {
+                    dt_identity = dt_identity,
+                    dt_column = dt_column,
+                    max = max,
+                    max_condition = max_condition,
+                    min = min,
+                    min_condition = min_condition
+                };
+                return DotNet.Utils.JSONHelper.ObjectToJson(data);
+            </pre>
+        </div>
+    </div>
+</body>
+</html>

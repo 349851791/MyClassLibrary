@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../JS/EasyUI/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" href="../../../JS/EasyUI/themes/icon.css" />
+    <script src="../../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script src="../../../JS/Global/json2.js"></script>
+    <script type="text/javascript">
+        function SubmitData() { 
+            $.messager.progress();
+            $('#myForm').form('submit', {
+                url: 'NPOI_DEMO.ashx',
+                onSubmit: function (param) { 
+                    param.DAGUID = $('#filePath').val(); 
+                },
+                success: function (result) {
+                    $('#dg').datagrid("loadData", JSON.parse(result));
+                }
+            });
+            $.messager.progress('close'); 
+        }
+    </script>
+    <title></title>
+</head>
+<body>
+    
+    <form id="myForm">
+        <input id="filePath" name="filePath" class="easyui-textbox" style="width:750px" value="D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\WebForms\ModuleDemo\NPOI读取excel数据显示\监测表（第一批）.XLS">
+        <!--<input id="filePath" name="filePath" class="easyui-filebox" style="width:300px" data-options="buttonText: '选择文件'">-->
+        <a href="#" class="easyui-linkbutton easyuiBtn" data-options="iconCls:'icon-excel'" onclick="SubmitData()">导入</a>
+        <table id="dg" class="easyui-datagrid" 
+               data-options="fitColumns:true,singleSelect:true" >
+            <thead>
+                <tr>
+                    <th data-options="field:'XH',align:'center'">序号</th>
+                    <th data-options="field:'XZQDM',align:'center'">行政代码</th>
+                    <th data-options="field:'JCTBH',align:'center'">监测图斑号</th>
+                    <th data-options="field:'TBLX',align:'center'">图斑类型</th>
+                    <th data-options="field:'XZB',align:'center'">坐标</th>
+                    <th data-options="field:'YZB',align:'center'">坐标</th>
+                    <th data-options="field:'SXQ',align:'center'">时相前</th>
+                    <th data-options="field:'SXH',align:'center'">时相后</th>
+                    <th data-options="field:'JCMJ',align:'center'">监测面积</th>
+                    <th data-options="field:'BGHDL',align:'center'">变更后地类</th>
+                    <th data-options="field:'BGFWQK',align:'center'">变更范围情况</th>
+                    <th data-options="field:'WBGYY',align:'center'">未变更原因</th>
+                    <th data-options="field:'BZ',width:250,align:'center'">备注</th> 
+                </tr>
+            </thead>
+        </table>
+    </form>
+</body>
+</html>

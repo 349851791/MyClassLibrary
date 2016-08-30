@@ -1,0 +1,148 @@
+﻿2016-08-03 16:47:09: 
+错误信息:ConnectionString 属性尚未初始化。
+SQL语句:select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='RSGL_USER' and u.TABLE_NAME='RSGL_USER' order by u.INTERNAL_COLUMN_ID
+堆栈:   在 System.Data.OracleClient.OracleConnection.PermissionDemand()
+   在 System.Data.OracleClient.OracleConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 16:47:09: 
+错误信息:未将对象引用设置到对象的实例。
+堆栈:   在 DoNet.Utils.DemoWeb.Handler.CreateModelHandler.GetColumnByTable(HttpContext context) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\Handler\CreateModelHandler.ashx.cs:行号 107
+
+2016-08-03 16:50:00: 
+错误信息:ConnectionString 属性尚未初始化。
+SQL语句:select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='RSGL_USER' and u.TABLE_NAME='RSGL_USER' order by u.INTERNAL_COLUMN_ID
+堆栈:   在 System.Data.OracleClient.OracleConnection.PermissionDemand()
+   在 System.Data.OracleClient.OracleConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 16:50:14: 
+错误信息:ConnectionString 属性尚未初始化。
+SQL语句:select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='RSGL_USER' and u.TABLE_NAME='RSGL_USER' order by u.INTERNAL_COLUMN_ID
+堆栈:   在 System.Data.OracleClient.OracleConnection.PermissionDemand()
+   在 System.Data.OracleClient.OracleConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 16:51:03: 
+错误信息:ConnectionString 属性尚未初始化。
+SQL语句:select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='RSGL_USER' and u.TABLE_NAME='RSGL_USER' order by u.INTERNAL_COLUMN_ID
+堆栈:   在 System.Data.OracleClient.OracleConnection.PermissionDemand()
+   在 System.Data.OracleClient.OracleConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 16:51:36: 
+错误信息:ConnectionString 属性尚未初始化。
+SQL语句:select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='RSGL_USER' and u.TABLE_NAME='RSGL_USER' order by u.INTERNAL_COLUMN_ID
+堆栈:   在 System.Data.OracleClient.OracleConnection.PermissionDemand()
+   在 System.Data.OracleClient.OracleConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 16:51:45: 
+错误信息:未将对象引用设置到对象的实例。
+堆栈:   在 DoNet.Utils.DemoWeb.Handler.CreateModelHandler.GetColumnByTable(HttpContext context) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\Handler\CreateModelHandler.ashx.cs:行号 107
+
+2016-08-03 17:03:14: 
+错误信息:ORA-01017: 用户名/口令无效; 登录被拒绝
+
+SQL语句:SELECT * FROM (SELECT tt.*, ROWNUM AS rowno FROM (  SELECT t.* FROM user_tab_comments t   order by TABLE_NAME) tt  WHERE ROWNUM <= 20) table_alias WHERE table_alias.rowno >= 1
+堆栈:   在 System.Data.OracleClient.OracleException.Check(OciErrorHandle errorHandle, Int32 rc)
+   在 System.Data.OracleClient.OracleInternalConnection.OpenOnLocalTransaction(String userName, String password, String serverName, Boolean integratedSecurity, Boolean unicode, Boolean omitOracleConnectionName)
+   在 System.Data.OracleClient.OracleInternalConnection..ctor(OracleConnectionString connectionOptions)
+   在 System.Data.OracleClient.OracleConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnection owningConnection, DbConnectionPool pool, DbConnectionOptions options)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 17:03:14: 
+错误信息:ORA-01017: 用户名/口令无效; 登录被拒绝
+
+SQL语句:SELECT * FROM (SELECT tt.*, ROWNUM AS rowno FROM (  SELECT t.* FROM user_tab_comments t   order by TABLE_NAME) tt  WHERE ROWNUM <= 20) table_alias WHERE table_alias.rowno >= 1
+select count (*) from user_tab_comments
+堆栈:   在 System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 DotNet.Utils.DataBaseLayer.GetSingle(String SqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 431
+   在 DotNet.Utils.CRUDHelper`1.SelectPageToJSONBySQL(String strTable, Int32 pageCurrent, Int32 pageSize, String order, String strCondition, String columnName) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\CRUDHelper.cs:行号 288
+
+2016-08-03 17:03:34: 
+错误信息:ORA-12154: TNS: 无法解析指定的连接标识符
+
+SQL语句:SELECT * FROM (SELECT tt.*, ROWNUM AS rowno FROM (  SELECT t.* FROM user_tab_comments t   order by TABLE_NAME) tt  WHERE ROWNUM <= 20) table_alias WHERE table_alias.rowno >= 1
+堆栈:   在 System.Data.OracleClient.OracleException.Check(OciErrorHandle errorHandle, Int32 rc)
+   在 System.Data.OracleClient.OracleInternalConnection.OpenOnLocalTransaction(String userName, String password, String serverName, Boolean integratedSecurity, Boolean unicode, Boolean omitOracleConnectionName)
+   在 System.Data.OracleClient.OracleInternalConnection..ctor(OracleConnectionString connectionOptions)
+   在 System.Data.OracleClient.OracleConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnection owningConnection, DbConnectionPool pool, DbConnectionOptions options)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 17:03:34: 
+错误信息:ORA-12154: TNS: 无法解析指定的连接标识符
+
+SQL语句:SELECT * FROM (SELECT tt.*, ROWNUM AS rowno FROM (  SELECT t.* FROM user_tab_comments t   order by TABLE_NAME) tt  WHERE ROWNUM <= 20) table_alias WHERE table_alias.rowno >= 1
+select count (*) from user_tab_comments
+堆栈:   在 System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 DotNet.Utils.DataBaseLayer.GetSingle(String SqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 431
+   在 DotNet.Utils.CRUDHelper`1.SelectPageToJSONBySQL(String strTable, Int32 pageCurrent, Int32 pageSize, String order, String strCondition, String columnName) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\CRUDHelper.cs:行号 288
+
+2016-08-03 17:04:27: 
+错误信息:ConnectionString 属性尚未初始化。
+SQL语句:select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='RSGL_PERSON' and u.TABLE_NAME='RSGL_PERSON' order by u.INTERNAL_COLUMN_ID
+堆栈:   在 System.Data.OracleClient.OracleConnection.PermissionDemand()
+   在 System.Data.OracleClient.OracleConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-08-03 17:04:27: 
+错误信息:未将对象引用设置到对象的实例。
+堆栈:   在 DoNet.Utils.DemoWeb.Handler.CreateModelHandler.GetColumnByTable(HttpContext context) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\Handler\CreateModelHandler.ashx.cs:行号 107
+

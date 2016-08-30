@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="JS/EasyUI/themes/default/easyui.css" />
+    <link rel="stylesheet" href="JS/EasyUI/themes/icon.css" />
+    <script src="JS/EasyUI/jquery.min.js"></script>
+    <script src="JS/EasyUI/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="CSS/Index.css" />
+    <title></title>
+</head>
+<body >
+    <div>
+        <ul id="myTree" class="easyui-tree" style="font-size: 12px; "></ul>
+    </div>
+
+    <script type="text/javascript">
+        $('#myTree').tree({
+            url: 'Handler/GetDataHandler.ashx?action=trees',
+            onClick: function (node) {
+                if (node.FatherId != 0) {
+                    addTab(node.text, node.Urls);
+                }
+            }
+        });
+
+        function addTab(title, url) {
+            if (top.$('#rightIframe').tabs('exists', title)) {
+                top.$('#rightIframe').tabs('select', title);
+            } else {
+                var content = '<iframe scrolling="auto" frameborder="0" src="' + url + '" style="width:100%;height:99%; border:0px"></iframe>';
+                top.$('#rightIframe').tabs('add', {
+                    title: title,
+                    content: content,
+                    closable: true
+                });
+            }
+        }
+
+        $("#tab-close-left").bind("click", function () {
+            var tab = tabs.tabs('getSelected');
+            var index = tabs.tabs('getTabIndex', tab);
+            var num = index - 1;
+            for (var i = 0; i < num; i++) {
+                tabs.tabs('close', 0);
+                tabs.tabs('select', 0);
+            }
+        })
+
+    </script>
+</body>
+</html>
+

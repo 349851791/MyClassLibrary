@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" /> 
+    <script src="../../JS/EasyUI/jquery.min.js"></script>
+    <link href="../../CSS/Index.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var index = 1;
+        function addTr() {
+            var rows = "<tr>" +
+                           "<td><input style=\"width:99%\" id='btn_" + index + "' type='button' value='-' onclick='removeTr(this)' /></td>" +
+                           "<td><input style=\"width:99%\"  id='WJZZ_" + index + "' name='WJZZ_" + index + "' /></td>" +
+                           "<td><input style=\"width:99%\" id='WJSYBZH_" + index + "' name='WJSYBZH_" + index + "' /></td>" +
+                           "<td><input style=\"width:99%\" id='WJRQ_" + index + "' name='WJRQ_" + index + "' /></td>" +
+                           "<td><input style=\"width:99%\" id='WJBT_" + index + "' name='WJBT_" + index + "' /></td>" +
+                           "<td><input style=\"width:99%\" id='WJSZZH_" + index + "' name='WJSZZH_" + index + "' /></td>" +
+                       "</tr>";
+            $("#myTable").append(rows);
+            index++;
+        }
+        function removeTr(obj) {
+            $(obj).parent().parent().remove();
+        }
+
+        function show() {
+            document.getElementById("result").innerHTML = "";
+            $("#myTable tr").each(function () {
+                if ($($(this).children("td:eq(1)").html()).val() != undefined) {
+                    //alert($($(this).children("td:eq(1)").html()).val());
+                    //alert($($(this).children("td:eq(2)").html()).val());
+                    //alert($($(this).children("td:eq(3)").html()).val());
+                    //alert($($(this).children("td:eq(4)").html()).val());
+                    //alert($($(this).children("td:eq(5)").html()).val());
+                    document.getElementById("result").innerHTML += $($(this).children("td:eq(1)").html()).val() + "-";
+                    document.getElementById("result").innerHTML += $($(this).children("td:eq(2)").html()).val() + "-";
+                    document.getElementById("result").innerHTML += $($(this).children("td:eq(3)").html()).val() + "-";
+                    document.getElementById("result").innerHTML += $($(this).children("td:eq(4)").html()).val() + "-";
+                    document.getElementById("result").innerHTML += $($(this).children("td:eq(5)").html()).val() + "<br/>";
+                }
+            })
+        }
+
+
+        function addCol() {
+            $th = $("<th>增加的列头</th>");
+            $col = $("<td>增加的列</td>");
+            $("#tab1>thead>tr").append($th);
+            $("#tab1>tbody>tr").append($col);
+
+        }
+        function delCol(type) {
+            if (type == 'f')
+            {
+                $("#tab1 tr :first-child").remove();
+            }
+            else if (type == 'l') {
+                $("#tab1 tr :last-child").remove();
+            }
+            else if (type == 'o') {
+                //移除第一列之外的列
+                $("#tab1 tr :not(:nth-child(1))").remove();
+            }
+            else { 
+                //移除指定的列, 注:这种索引从1开始 
+                
+                $("#tab1 tr :nth-child(" + $('#lieName').val() + ")").remove();
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div style="font-size:20px;font-weight:bold;margin-top:20px">动态table以及获取table中各个td中的内容</div>
+    <table class="myTableBorder" id="myTable" border="0" cellpadding="0" cellspacing="0" runat="server">
+        <tr>
+            <td width="6%" style="text-align:center"><input style="width:99%" type="button" value="+" onclick="addTr()" /></td>
+            <td width="29%" style="text-align:center">文件作者</td>
+            <td width="10%" style="text-align:center">文件上<br />原编字号</td>
+            <td width="15%" style="text-align:center">文件日期</td>
+            <td width="30%" style="text-align:center">文件标题</td>
+            <td width="10%" style="text-align:center">文件所<br />在张号</td>
+        </tr>
+    </table>
+    <input type="button" value="显示数据" onclick="show()" />
+    <div id="result"></div>
+
+    <br /><br />
+    ↑↑↑↑jq处理行↑↑↑↑
+    <hr /> 
+    ↓↓↓↓jq处理列↓↓↓↓
+    <br /><br />
+
+    <input id="Button1" type="button" onclick="addCol()" value="增加列" />
+    <input id="Button2" type="button" onclick="delCol('f')" value="移除第一列" />
+    <input id="Button3" type="button" onclick="delCol('l')" value="移除最后一列" />
+    <input id="Button4" type="button" onclick="delCol('o')" value="移除除第一列外其他列" />
+    <input id="lieName" />
+    <input id="Button5" type="button" onclick="delCol('')" value="移除指定列" />
+    <table id="tab1" border="1" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    1
+                </td>
+                <td>
+                    叶子
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    2
+                </td>
+                <td>
+                    王子
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

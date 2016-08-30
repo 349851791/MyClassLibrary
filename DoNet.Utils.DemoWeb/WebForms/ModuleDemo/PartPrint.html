@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function doPrint(start,end) {
+            bdhtml = window.document.body.innerHTML;
+            sprnstr = "<!--" + start + "-->";
+            eprnstr = "<!--" + end + "-->";
+            prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 18);
+            prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));
+            window.document.body.innerHTML = prnhtml;
+            window.print();
+            prnhtml = prnhtml + "<table align='center'><tr align='center'><td align='center'><input value='返回' type='button' onclick='history.go(0);return false;'/></td></tr></table>";
+            window.document.body.innerHTML = prnhtml;
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="打印表格一" onclick="doPrint('startPrint1', 'endPrint1')" />
+    <input type="button" value="打印表格二三" onclick="doPrint('startPrint2', 'endPrint2')" />
+    <!--startPrint1-->
+    <table style="border:1px solid blue; margin:10px">
+        <tr>
+            <td colspan="5" align="center"><b>表格一</b></td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+    </table>
+    <!--endPrint1-->
+    <!--startPrint2-->
+    <table style="border:1px solid green; margin:10px">
+        <tr>
+            <td colspan="5" align="center"><b>表格二</b></td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+    </table>
+    <table style="border:1px solid red; margin:10px">
+        <tr>
+            <td colspan="5" align="center"><b>表格三</b></td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+        <tr>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+            <td>测试内容</td>
+        </tr>
+    </table>
+    <!--endPrint2-->
+</body>
+</html>

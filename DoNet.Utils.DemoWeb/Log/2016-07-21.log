@@ -1,0 +1,32 @@
+﻿2016-07-21 16:15:21: 
+错误信息:ORA-12560: TNS: 协议适配器错误
+
+SQL语句:SELECT * FROM (SELECT tt.*, ROWNUM AS rowno FROM (  SELECT t.* FROM user_tab_comments t   order by TABLE_NAME) tt  WHERE ROWNUM <= 20) table_alias WHERE table_alias.rowno >= 1
+堆栈:   在 System.Data.OracleClient.OracleException.Check(OciErrorHandle errorHandle, Int32 rc)
+   在 System.Data.OracleClient.OracleInternalConnection.OpenOnLocalTransaction(String userName, String password, String serverName, Boolean integratedSecurity, Boolean unicode, Boolean omitOracleConnectionName)
+   在 System.Data.OracleClient.OracleInternalConnection..ctor(OracleConnectionString connectionOptions)
+   在 System.Data.OracleClient.OracleConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnection owningConnection, DbConnectionPool pool, DbConnectionOptions options)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DotNet.Utils.DataBaseLayer.ExecuteQuery(String sqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 400
+
+2016-07-21 16:15:21: 
+错误信息:ORA-12560: TNS: 协议适配器错误
+
+SQL语句:SELECT * FROM (SELECT tt.*, ROWNUM AS rowno FROM (  SELECT t.* FROM user_tab_comments t   order by TABLE_NAME) tt  WHERE ROWNUM <= 20) table_alias WHERE table_alias.rowno >= 1
+select count (*) from user_tab_comments
+堆栈:   在 System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   在 System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.OracleClient.OracleConnection.Open()
+   在 DotNet.Utils.DataBaseLayer.GetSingle(String SqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 431
+   在 DotNet.Utils.CRUDHelper`1.SelectPageToJSONBySQL(String strTable, Int32 pageCurrent, Int32 pageSize, String order, String strCondition, String columnName) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\01_数据处理基类和DataTable辅助类\CRUDHelper.cs:行号 288
+

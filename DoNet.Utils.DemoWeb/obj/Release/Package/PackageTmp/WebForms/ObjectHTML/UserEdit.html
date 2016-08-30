@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+</head>
+<body>
+    <form id="myForm" method="post">
+        <div>
+            <table class="myTableBorder" id="table_user" align="center" border="0" cellpadding="0" cellspacing="0" width="500">
+                <tr>
+                    <td width="15%">用户名:</td>
+                    <td width="35%">
+                        <input id="USERNAME" name="USERNAME" type="text"  />
+                    </td>
+                    <td width="15%">职务:</td>
+                    <td width="35%">
+                        <input id="DUTY" name="DUTY" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>性别:</td>
+                    <td>
+                        <input id="SEX" name="SEX" type="text" />
+                    </td>
+                    <td>登录名:</td>
+                    <td>
+                        <input id="LOGONID" name="LOGONID" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center">
+                        <a id="btnInsert" href="#" class="easyui-linkbutton easyuiBtn" data-options="iconCls:'icon-ok'" onclick="SubmitData()">保存</a>
+                        <a id="btnCancel" href="#" class="easyui-linkbutton easyuiBtn" data-options="iconCls:'icon-cancel'" onclick="win_close()">关闭</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="hidden" id="ID" name="ID" />
+    </form>
+</body>
+</html>

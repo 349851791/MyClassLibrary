@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../JS/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../../JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="../../JS/EasyUI/jquery.min.js"></script>
+    <link href="../../CSS/Index.css" rel="stylesheet" />
+    <script src="../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script src="../../JS/DicHTML/DicSelect.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="div_tool">
+        <table id="table_tool">
+            <tr>
+                <td>部门名称:</td>
+                <td>
+                    <input id="tool_DEPTNAME" class="easyui-textbox" />
+                </td>
+                <td>状态时间:</td>
+                <td>
+                    <input id="tool_STATUSTIME_Q" class="easyui-datebox" />
+                </td>
+                <td>至</td>
+                <td>
+                    <input id="tool_STATUSTIME_Z" class="easyui-datebox" />
+                </td>
+                <td style="text-align: left">
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="Select()">查询</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table id="dg" class="easyui-datagrid" url="../../Handler/DepartmentsHandler.ashx?action=GetAll" singleselect="true" toolbar="#div_tool"
+               rownumbers="true" pagination="true" pagelist="[5,10,20]" pagesize="5">
+            <thead>
+                <tr>
+                    <th width="492px" data-options="field: 'DEPTNAME',  halign: 'center', align: 'center'">部门名称</th>
+                    <th width="140px" data-options="field: 'ABBR',halign: 'center', align: 'center'">部门简称</th>
+                    <th width="120px" data-options="field: 'DEPTKIND',halign: 'center', align: 'center'">部门类型</th>
+                    <th width="120px" data-options="field: 'STATUSTIME',halign: 'center', align: 'center'">状态时间</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="tt_SourceCode" data-options="fit:true" class="easyui-tabs">
+        <div title="JS代码" data-options="iconCls:'icon-reload'" style="padding:10px">
+            <pre>
+                function Select() {
+                    var tool_DEPTNAME = $('#tool_DEPTNAME').val();
+                    var tool_STATUSTIME_Q = $('#tool_STATUSTIME_Q').datebox('getValue');
+                    var tool_STATUSTIME_Z = $('#tool_STATUSTIME_Z').datebox('getValue');
+                    $('#dg').datagrid('load', {
+                        tool_DEPTNAME: tool_DEPTNAME,
+                        tool_STATUSTIME_Q: tool_STATUSTIME_Q,
+                        tool_STATUSTIME_Z: tool_STATUSTIME_Z
+                    });
+                }
+            </pre>
+        </div>
+        <div title="handler代码" data-options="iconCls:'icon-reload'" style="padding:10px">
+            <pre>
+                int page = Convert.ToInt32(context.Request.Params["page"]);
+                int rows = Convert.ToInt32(context.Request.Params["rows"]);
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                string tool_DEPTNAME = context.Request.Params["tool_DEPTNAME"];
+                if (!string.IsNullOrEmpty(context.Request.Params["tool_STATUSTIME_Q"]))
+                { 
+                    dic.Add("STATUSTIME__Q", Convert.ToDateTime(context.Request.Params["tool_STATUSTIME_Q"])); 
+                }
+                if (!string.IsNullOrEmpty(context.Request.Params["tool_STATUSTIME_Z"]))
+                {
+                    dic.Add("STATUSTIME__Z", Convert.ToDateTime(context.Request.Params["tool_STATUSTIME_Z"]));
+                }  
+                dic.Add("DEPTNAME__like", tool_DEPTNAME); 
+                return <span class="CodeHighlighter">dm.SelectPageToJSONByDic(dic, "ID desc", page, rows);</span> 
+                SelectPageToJSONByDic方法简介:
+                默认查询所有数据,把查询参数放入字典进行查询.
+                优点:功能多,可以精确查询或者模糊查询,可以and查询也可or查询,还可以进行时间段查询.
+                缺点:相对于对象查询来说,比较复杂.
+            </pre>
+        </div>
+    </div>
+
+</body>
+</html>

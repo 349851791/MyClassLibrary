@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../CSS/Index.css" rel="stylesheet" />
+    <link href="../../JS/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../../JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+
+        //加载初始化界面
+        $(function () {
+            $('#username,#userpsd,#orclname').textbox("setText", "");
+        })
+
+        //创建数据库链接字符串按钮
+        function createConnection() {
+            var username = $('#username').val();
+            var userpsd = $('#userpsd').val();
+            var orclname = $('#orclname').val();
+            $.post('../../Handler/CreateModelHandler.ashx?action=createConnection',
+                {
+                    username: username,
+                    userpsd: userpsd,
+                    orclname: orclname
+                }, function (result) {
+                    if (result == '1') {
+                        $('#div_Content').show();
+                        $('#div_Connection').hide();
+                        $('#dg').datagrid({
+                            url: '../../Handler/CreateModelHandler.ashx?action=GetTableByDataBase'
+                        });
+
+                    } else {
+                        $.messager.alert('错误', '链接失败!', 'error');
+                    }
+                });
+        }
+
+        //创建实体类
+        function createModel() {
+            var checkeds = $('#dg').datagrid('getChecked');
+            if (checkeds == "") {
+                $.messager.alert('提示', '请选择数据表!', 'info');
+            }
+            else {
+                var tableName = "";
+                for (var i = 0 ; i < checkeds.length; i++) {
+                    tableName += "," + checkeds[i].TABLE_NAME;
+                }
+                $.post('../../Handler/CreateModelHandler.ashx?action=GetColumnByTable', { table: tableName.substr(1) }, function (result) {
+                    if (result == '1') {
+                        $.messager.alert('提示', '创建成功!', 'info');
+                    } else {
+                        $.messager.alert('错误', '创建失败!', 'error');
+                    }
+                });
+            }
+        }
+
+        //下载实体类压缩包
+        function DownLoadModel() {
+            var hostIISLength = location.pathname.substring(1).indexOf('/');
+            var hostIISName = location.pathname.substring(0, hostIISLength + 1);
+            var path = "http://" + location.host +hostIISName+ "/WebForms/CreateModel/ModelFile/Model.Zip";
+            open(path);
+        }
+    </script>
+    <title></title>
+</head>
+<body>
+    <div id="div_Connection" style="height:100%;width:100%;background-color:#eee">
+        <div style="position:absolute; left:41%;top:30%;">
+            设置连接字符串:
+            <div style="margin:10px;">
+                <input id="username" class="easyui-textbox" data-options="iconCls:'icon-man',prompt:'用户名',width:200,height:30" />
+            </div>
+            <div style="margin:10px;">
+                <input id="userpsd" class="easyui-textbox" data-options="iconCls:'icon-lock',prompt:'......',width:200,height:30" style="margin:5px;" type="password" />
+            </div>
+
+            <div style="margin:10px;">
+                <input id="orclname" class="easyui-textbox" data-options="iconCls:'icon-orcl',prompt:'数据库',width:200,height:30" style="margin:5px;" />
+            </div>
+            <a href="#" style="margin-left:80px" class="easyui-linkbutton" data-options="iconCls:'icon-connect'" onclick="createConnection()">确定</a>
+        </div>
+    </div>
+
+    <div id="div_Content" style="display:none">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="createModel()">创建</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="DownLoadModel()">下载</a> 
+        <table id="dg" class="easyui-datagrid" rownumbers="true" pagination="true" pagelist="[5,10,20]" pagesize="20">
+            <thead>
+                <tr>
+                    <th data-options="field:'ck',checkbox:true"></th>
+                    <th width="500px" data-options="field: 'TABLE_NAME',  halign: 'center', align: 'center'">表名</th>
+                    <th width="500px" data-options="field: 'COMMENTS',halign: 'center', align: 'center'">备注</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

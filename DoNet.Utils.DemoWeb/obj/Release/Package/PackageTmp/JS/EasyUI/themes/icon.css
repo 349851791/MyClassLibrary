@@ -1,0 +1,216 @@
+.icon-blank {
+    background: url('icons/blank.gif') no-repeat center center;
+}
+
+.icon-add {
+    background: url('icons/edit_add.png') no-repeat center center;
+}
+
+.icon-edit {
+    background: url('icons/pencil.png') no-repeat center center;
+}
+
+.icon-clear {
+    background: url('icons/clear.png') no-repeat center center;
+}
+
+.icon-remove {
+    background: url('icons/edit_remove.png') no-repeat center center;
+}
+
+.icon-save {
+    background: url('icons/filesave.png') no-repeat center center;
+}
+
+.icon-cut {
+    background: url('icons/cut.png') no-repeat center center;
+}
+
+.icon-ok {
+    background: url('icons/ok.png') no-repeat center center;
+}
+
+.icon-no {
+    background: url('icons/no.png') no-repeat center center;
+}
+
+.icon-cancel {
+    background: url('icons/cancel.png') no-repeat center center;
+}
+
+.icon-reload {
+    background: url('icons/reload.png') no-repeat center center;
+}
+
+.icon-search {
+    background: url('icons/search.png') no-repeat center center;
+}
+
+.icon-print {
+    background: url('icons/print.png') no-repeat center center;
+}
+
+.icon-help {
+    background: url('icons/help.png') no-repeat center center;
+}
+
+.icon-undo {
+    background: url('icons/undo.png') no-repeat center center;
+}
+
+.icon-redo {
+    background: url('icons/redo.png') no-repeat center center;
+}
+
+.icon-back {
+    background: url('icons/back.png') no-repeat center center;
+}
+
+.icon-sum {
+    background: url('icons/sum.png') no-repeat center center;
+}
+
+.icon-tip {
+    background: url('icons/tip.png') no-repeat center center;
+}
+
+.icon-filter {
+    background: url('icons/filter.png') no-repeat center center;
+}
+
+.icon-man {
+    background: url('icons/man.png') no-repeat center center;
+}
+
+.icon-lock {
+    background: url('icons/lock.png') no-repeat center center;
+}
+
+.icon-more {
+    background: url('icons/more.png') no-repeat center center;
+}
+
+
+.icon-mini-add {
+    background: url('icons/mini_add.png') no-repeat center center;
+}
+
+.icon-mini-edit {
+    background: url('icons/mini_edit.png') no-repeat center center;
+}
+
+.icon-mini-refresh {
+    background: url('icons/mini_refresh.png') no-repeat center center;
+}
+
+.icon-large-picture {
+    background: url('icons/large_picture.png') no-repeat center center;
+}
+
+.icon-large-clipart {
+    background: url('icons/large_clipart.png') no-repeat center center;
+}
+
+.icon-large-shapes {
+    background: url('icons/large_shapes.png') no-repeat center center;
+}
+
+.icon-large-smartart {
+    background: url('icons/large_smartart.png') no-repeat center center;
+}
+
+.icon-large-chart {
+    background: url('icons/large_chart.png') no-repeat center center;
+}
+
+/*自定义*/
+
+.icon-mini-myrefresh {
+    background: url('icons/refresh1.png') no-repeat center center;
+}
+
+.icon-excel {
+    background: url('icons/excel.png') no-repeat center center;
+}
+
+.icon-DiaoKu {
+    background: url('icons/magnifier_zoom_in.png') no-repeat center center;
+}
+
+.icon-lr {
+    background: url('icons/dalr.png') no-repeat center center;
+}
+
+.icon-sh {
+    background: url('icons/dash.png') no-repeat center center;
+}
+
+.icon-jy {
+    background: url('icons/dajy.png') no-repeat center center;
+}
+
+.icon-xxxx {
+    background: url('icons/xxxx.png') no-repeat center center;
+}
+
+.icon-dkbj {
+    background: url('icons/folder_page_white.png') no-repeat center center;
+}
+
+.icon-txck {
+    background: url('icons/color.png') no-repeat center center;
+}
+
+.icon-dall {
+    background: url('icons/dall.png') no-repeat center center;
+}
+
+.icon-djcy {
+    background: url('icons/djcy.png') no-repeat center center;
+}
+
+/*全文排序*/
+.icon-qwup {
+    background: url('icons/qwup.png') no-repeat center center;
+}
+
+.icon-qwtop {
+    background: url('icons/qwtop.png') no-repeat center center;
+}
+
+.icon-qwdown {
+    background: url('icons/qwdown.png') no-repeat center center;
+}
+
+.icon-qwbottom {
+    background: url('icons/qwbottom.png') no-repeat center center;
+}
+
+.icon-pxqw {
+    background: url('icons/pxqw.png') no-repeat center center;
+}
+
+/*数据库*/
+.icon-orcl {
+    background: url('icons/orcl.png') no-repeat center center;
+}
+
+
+
+/*框架左侧目录树*/
+.icon-lefttree-connect {  
+    background: url('../../../Images/leftTree/4.png') no-repeat center center;
+}
+.icon-lefttree-object {  
+    background: url('../../../Images/leftTree/3.png') no-repeat center center;
+}
+.icon-lefttree-dic {  
+    background: url('../../../Images/leftTree/7.png') no-repeat center center;
+}
+.icon-lefttree-qd {  
+    background: url('../../../Images/leftTree/2.png') no-repeat center center;
+}
+.icon-lefttree-mk {  
+    background: url('../../../Images/leftTree/1.png') no-repeat center center;
+}
+ 

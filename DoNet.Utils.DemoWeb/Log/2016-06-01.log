@@ -1,0 +1,10 @@
+﻿2016-06-01 15:07:21: 
+错误信息:ORA-12899: 列 "DOTNETDEMO"."USERS"."SEX" 的值太大 (实际值: 7, 最大值: 2)
+
+SQL语句:INSERT INTO Users (ID,USERNAME,LOGONID,DUTY,SEX) VALUES ('6800041','sdfsdf','asdfasd','sdfasdf','asdfasd')
+堆栈:   在 System.Data.OracleClient.OracleConnection.CheckError(OciErrorHandle errorHandle, Int32 rc)
+   在 System.Data.OracleClient.OracleCommand.Execute(OciStatementHandle statementHandle, CommandBehavior behavior, Boolean needRowid, OciRowidDescriptor& rowidDescriptor, ArrayList& resultParameterOrdinals)
+   在 System.Data.OracleClient.OracleCommand.ExecuteNonQueryInternal(Boolean needRowid, OciRowidDescriptor& rowidDescriptor)
+   在 System.Data.OracleClient.OracleCommand.ExecuteNonQuery()
+   在 DotNet.Utils.DataBaseLayer.ExecuteSql(String SqlString) 位置 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew\DotNet.Utils\01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs:行号 314
+
