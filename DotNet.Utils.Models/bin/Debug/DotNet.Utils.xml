@@ -1,0 +1,2521 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNet.Utils</name>
+    </assembly>
+    <members>
+        <member name="T:DotNet.Utils.ColumnAttribute">
+            <summary>
+            实体类属性的自定义属性
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.ColumnAttribute.Name">
+            <summary>
+            实体类的属性,对应的数据库列名
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.ColumnAttribute.Type">
+            <summary>
+            实体类的属性,对应的类的类型,针对于有时时间类型字段,从有修改到无时使用,修改到无了,无法使用反射判断了!
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.ColumnAttribute.Identity">
+            <summary>
+            是否标识列
+            </summary>
+        </member>
+        <member name="T:DotNet.Utils.TableAttribute">
+            <summary>
+            实体类的自定义属性
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.TableAttribute.Name">
+            <summary>
+            实体类对应的数据库表名
+            </summary>
+        </member>
+        <member name="T:DotNet.Utils.CRUDHelper`1">
+            <summary>
+            增删改查帮助类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.#ctor(System.String,System.String)">
+            <summary>
+            设置连接字符串
+            </summary>
+            <param name="strConnect"></param>
+            <param name="dataType"></param>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectBySQL(System.String)">
+            <summary>
+            根据sql语句进行查询,返回数据
+            </summary>
+            <param name="sql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectScalar(System.String)">
+            <summary>
+            根据sql语句进行查询,返回一条计算过的数据.如:count max min 等
+            </summary>
+            <param name="sql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.ExecuteSqlTran(System.Collections.ArrayList)">
+            <summary>
+            执行多条sql语句,实现事务
+            </summary>
+            <param name="aList">sql语句集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectByIdentity(System.String)">
+            <summary>
+            根据标识列的值返回整条数据
+            </summary> 
+            <param name="IdentityValue">标识列的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectByColumn(System.String,System.String)">
+            <summary>
+            根据列以及列的值,返回对应的一条数据
+            </summary>
+            <param name="ColumnName">列名</param>
+            <param name="ColumnValue">列值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetSequence(System.String)">
+            <summary>
+            获取序列
+            </summary>
+            <param name="seqName">序列名:如果 序列名=SEQ_实体类名,则可以不传入参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetMax(System.String,`0)">
+            <summary>
+            获取最大值
+            </summary>
+            <param name="columnName">最大值的列名</param>
+            <param name="t">实体类,传入的值都将当做查询条件参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetMin(System.String,`0)">
+            <summary>
+            获取最小值
+            </summary>
+            <param name="columnName">最大值的列名</param> 
+            <param name="t">实体类,传入的值都将当做查询条件参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetSelectSql(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            返回查询语句
+            </summary>
+            <param name="strTable">表名</param>
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="strOrder">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>
+            <param name="strCondition">条件,需要填写where</param> 
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetInsertSql(`0)">
+            <summary>
+            获取insert语句
+            </summary>
+            <param name="t">实体类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetUpdateSql(`0,System.String)">
+            <summary>
+            获取update语句
+            </summary>
+            <param name="t">实体类型</param>
+            <param name="conditionName">条件字段,默认为ID,如果有多个条件,可以用","隔开</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetDeleteSql(`0)">
+            <summary>
+            获取delete语句
+            </summary>
+            <param name="t">实体类型</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetInsertSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取插入语句,根据字典.
+            </summary>
+            <param name="columnDic">列数据字典,如果列为日期格式,需要增加后缀__date</param> 
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetUpdateSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取增加语句,根据字典.条件为字典格式,有些条件为时间段,无法用实体类表示.关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+            </summary> 
+            <param name="columnDic">条件字典</param>
+            <param name="conditionDic">条件字典</param>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetDeleteSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取delete语句.根据条件字典,用于有时间段的条件
+            </summary> 
+            <param name="dic">条件字典</param>
+            <param name="tableName">表名 </param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectPageWithoutObject(System.String,System.Int32,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            查询显示分页后的列表数据
+            </summary>
+            <param name="strTable">表名</param>
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="strOrder">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>
+            <param name="strCondition">条件,需要填写where</param> 
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectPageToJSONBySQL(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            查询显示分页数据.返回json字符串(包含列表数据和总数据量数据,配合easyui使用),根据实体对象生成条件.
+            </summary>
+            <param name="strTable">表名</param>
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>
+            <param name="strCondition">条件,需要填写where</param> 
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Select(`0,System.String,System.String)">
+            <summary>
+            查询返回所有数据,根据实体对象生成条件.
+            </summary> 
+            <param name="t">实体类,将查询条件赋给实体类的属性</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>   
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectPage(`0,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            查询显示分页后的列表数据,根据实体对象生成条件.
+            </summary>
+            <param name="t">实体类,将查询条件赋给实体类的属性</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectPageToJSON(`0,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            查询显示分页数据.返回json字符串(包含列表数据和总数据量数据,配合easyui使用),根据实体对象生成条件.
+            </summary>
+            <param name="t">实体类,将查询条件赋给实体类的属性</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Select(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            查询返回所有数据,根据字典生成条件,用于时间条件为时间段时.
+            </summary> 
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>
+            <param name="tableName">表名</param> 
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectPage(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询显示分页后的列表数据.根据字典生成条件,用于时间条件为时间段时.
+            </summary>
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.SelectPageToJSON(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询显示分页数据.返回json字符串(包含列表数据和总数据量数据,配合easyui使用).根据字典生成条件,用于时间条件为时间段时.
+            </summary>
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Insert(`0)">
+            <summary>
+            增加
+            </summary>
+            <param name="t">实体类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Update(`0,System.String)">
+            <summary>
+            更新
+            </summary>
+            <param name="t">实体类型</param>
+            <param name="conditionName">条件字段,默认为ID,如果有多个条件,可以用","隔开</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Delete(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="t">实体类型</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Insert(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取插入语句,根据字典.
+            </summary>
+            <param name="columnDic">列数据字典,如果列为日期格式,需要增加后缀__date</param> 
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Update(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            更新,条件为字典格式,有些条件为时间段,无法用实体类表示.关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+            </summary> 
+            <param name="columnDic">列字典</param>
+            <param name="conditionDic">条件字典</param>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.Delete(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            删除,根据条件字典,用于有时间段的条件
+            </summary> 
+            <param name="dic">条件字典</param>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.MyCodeHelper">
+            <summary>
+            MyCode帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.MyCodeHelper.GetValue(DotNet.Utils.MYCODE,System.String)">
+            <summary>
+            获取唯一值
+            </summary>
+            <param name="myCode">实体类的条件</param>
+            <param name="columnName">获取唯一值的列名,默认codevalue</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.MyCodeHelper.GetAllData(DotNet.Utils.MYCODE,System.String,System.String)">
+            <summary>
+            根据条件获取数据
+            </summary>
+            <param name="myCode">实体类的条件</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param> 
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.MyCodeHelper.GetDataForComBox(DotNet.Utils.MYCODE,System.String,System.String)">
+            <summary>
+             根据条件获取数据,返回针对easyuiComBox使用的字符串
+            </summary>
+            <param name="myCode">实体类的条件</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param>
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.MYCODE">
+            <summary>
+            MYCODE实体类
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.ID">
+            <summary>
+            标识列
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.FatherId">
+            <summary>
+            父级ID
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.CodeType">
+            <summary>
+            字典类型
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.CodeName">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.CodeValue">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.GroupId">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.OtherValue">
+            <summary>
+            其他值
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.MYCODE.State">
+            <summary>
+            节点是否展开.closed:关闭;open:打开
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.AssistBase`1.SelectByIdentity(System.String)">
+            <summary>
+            根据标识列的值返回整条数据
+            </summary> 
+            <param name="IdentityValue">标识列的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.AssistBase`1.SelectByColumn(System.String,System.String)">
+            <summary>
+            根据列以及列的值,返回对应的一条数据
+            </summary>
+            <param name="ColumnName">列名</param>
+            <param name="ColumnValue">列值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.AssistBase`1.GetSequence(System.String)">
+            <summary>
+            获取序列
+            </summary>
+            <param name="seqName">序列名:如果 序列名=SEQ_实体类名,则可以不传入参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.AssistBase`1.GetMax(System.String,`0)">
+            <summary>
+            获取最大值
+            </summary>
+            <param name="columnName">最大值的列名</param>
+            <param name="t">实体类,传入的值都将当做查询条件参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.AssistBase`1.GetMin(System.String,`0)">
+            <summary>
+            获取最小值
+            </summary>
+            <param name="columnName">最大值的列名</param> 
+            <param name="t">实体类,传入的值都将当做查询条件参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.Select(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            查询返回所有数据,根据字典生成条件,用于时间条件为时间段时.
+            </summary> 
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>
+            <param name="tableName">表名</param> 
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.SelectPage(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询显示分页后的列表数据.根据字典生成条件,用于时间条件为时间段时.
+            </summary>
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.SelectPageToJSON(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询显示分页数据.返回json字符串(包含列表数据和总数据量数据,配合easyui使用).根据字典生成条件,用于时间条件为时间段时.
+            </summary>
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.Insert(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取插入语句,根据字典.
+            </summary>
+            <param name="columnDic">列数据字典,如果列为日期格式,需要增加后缀__date</param> 
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.Update(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            更新,条件为字典格式,有些条件为时间段,无法用实体类表示.关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+            </summary> 
+            <param name="columnDic">列字典</param>
+            <param name="conditionDic">条件字典</param>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.Delete(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            删除,根据条件字典,用于有时间段的条件
+            </summary> 
+            <param name="dic">条件字典</param>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.GetSelectSql(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            获取查询语句
+            </summary>
+            <param name="strTable">表名</param>
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="strOrder">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>
+            <param name="strCondition">条件,需要填写where</param> 
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.GetInsertSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取插入语句,根据字典.
+            </summary>
+            <param name="columnDic">列数据字典,如果列为日期格式,需要增加后缀__date</param> 
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.GetUpdateSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取更新语句,根据字典.条件为字典格式,有些条件为时间段,无法用实体类表示.关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+            </summary>
+            <param name="columnDic">列数据字典,如果列为日期格式,需要增加后缀__date</param>
+            <param name="conditionDic">条件字典</param>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DicBase`1.GetDeleteSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            获取delete语句.根据条件字典,用于有时间段的条件
+            </summary> 
+            <param name="dic">条件字典</param>
+            <param name="tableName">表名 </param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.Select(`0,System.String,System.String)">
+            <summary>
+            查询返回所有数据,根据实体对象生成条件.
+            </summary> 
+            <param name="t">实体类,将查询条件赋给实体类的属性</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>   
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.SelectPage(`0,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            查询显示分页后的列表数据,根据实体对象生成条件.
+            </summary>
+            <param name="t">实体类,将查询条件赋给实体类的属性</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.SelectPageToJSON(`0,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            查询显示分页数据.返回json字符串(包含列表数据和总数据量数据,配合easyui使用),根据实体对象生成条件.
+            </summary>
+            <param name="t">实体类,将查询条件赋给实体类的属性</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.Insert(`0)">
+            <summary>
+            增加
+            </summary>
+            <param name="t">实体类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.Update(`0,System.String)">
+            <summary>
+            更新
+            </summary>
+            <param name="t">实体类型</param>
+            <param name="conditionName">条件字段,默认为ID,如果有多个条件,可以用","隔开</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.Delete(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="t">实体类型</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.GetInsertSql(`0)">
+            <summary>
+            获取insert语句
+            </summary>
+            <param name="t">实体类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.GetUpdateSql(`0,System.String)">
+            <summary>
+            获取update语句
+            </summary>
+            <param name="t">实体类型</param>
+            <param name="conditionName">条件字段,默认为ID,如果有多个条件,可以用","隔开</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ObjectBase`1.GetDeleteSql(`0)">
+            <summary>
+            获取delete语句
+            </summary>
+            <param name="t">实体类型</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.GetPageNumber(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            获取分页页的信息
+            </summary>
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="number">算出来的页信息</param>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.GetParamForSelectAndDelete(`0,System.Boolean,System.Boolean)">
+            <summary>
+            根据实体对象返回条件语句,用于Select和Delete的语句
+            </summary>
+            <param name="t">实体对象</param>
+            <param name="isAnd">是否包含and,默认不包含</param>
+            <param name="isWhere">是否包含where,默认不包含</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.GetTableName(System.String)">
+            <summary>
+            根据实体类名称或者配置的实体类属性获取数据库表名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.GetColumnAttribute(System.Reflection.PropertyInfo)">
+            <summary>
+            返回实体类各个字段的自定义属性
+            </summary>
+            <param name="attribute">属性字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.GetConditionByDIC(System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)">
+            <summary>
+            根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+            </summary>
+            <param name="dicCondition">条件字典</param> 
+            <param name="isAnd">是否返回and,默认为false</param>
+            <param name="isWhere">是否返回where,默认为true</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.IsKeepAndWhere(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            判断条件字符串是否保留and和where
+            </summary>
+            <param name="strCcondition">条件字符串</param>
+            <param name="isAnd">是否保留and</param>
+            <param name="isWhere">是否保留where</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.AddOrder(System.String)">
+            <summary>
+            增加排序
+            </summary>
+            <param name="strOrder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.InternalBase`1.GetColumnName(System.String,System.String@,System.String@)">
+            <summary>
+            分页时,通过columnName,获取查询语句的t和tt列名
+            </summary>
+            <param name="columnName"></param>
+            <param name="tt"></param>
+            <param name="ttt"></param>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.Insert(System.String,`0)">
+            <summary>
+            增加
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="statementName">声明名称</param>
+            <param name="t">实体对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.Delete(System.String,System.Int32)">
+            <summary>
+            删除
+            </summary>
+            <param name="statementName">声明名称</param>
+            <param name="primaryKeyId">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.Update(System.String,`0)">
+             <summary>
+            修改 
+             </summary>
+             <typeparam name="T">实体类</typeparam>
+             <param name="statementName">声明名称</param>
+             <param name="t"></param>
+             <returns>实体对象</returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.Get(System.String,System.Int32)">
+            <summary>
+            返回实体对象个体
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="statementName">声明名称</param>
+            <param name="primaryKeyId">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.QueryForList(System.String,System.Object)">
+            <summary>
+            返回实体对象集合
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="statementName">声明名称</param>
+            <param name="parameterObject">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.GetSql(System.String,System.Object)">
+            <summary>
+            获取动态生成的sql语句
+            </summary>
+            <param name="stateMentName">声明名称</param>
+            <param name="paramObject">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.GetDataTable(System.String,System.Object,System.String,System.Int32)">
+            <summary>
+            返回DataTable
+            </summary>
+            <param name="sqlMapper">ISqlMapper</param>
+            <param name="statementName">statement的id</param>
+            <param name="paramObject">sql语句的参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:DotNet.Utils.BatisBaseHpler`1.GetDbCommand(IBatisNet.DataMapper.ISqlMapper,System.String,System.Object)">
+            <summary>
+            获取DbCommand
+            </summary>
+            <param name="sqlMapper">ISqlMapper</param>
+            <param name="statementName">statement的id</param>
+            <param name="paramObject">sql语句的参数</param>
+            <returns>DbCommand</returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisAssist.GetSql(System.String,System.Object)">
+            <summary>
+            获取动态生成的sql语句
+            </summary>
+            <param name="stateMentName">声明名称</param>
+            <param name="paramObject">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisAssist.QueryForDataDataTable(System.String,System.Object,System.String,System.Int32)">
+            <summary>
+            返回DataTable
+            </summary>
+            <param name="sqlMapper">ISqlMapper</param>
+            <param name="statementName">statement的id</param>
+            <param name="paramObject">sql语句的参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisAssist.GetDbCommand(IBatisNet.DataMapper.ISqlMapper,System.String,System.Object)">
+            <summary>
+            获取DbCommand
+            </summary>
+            <param name="sqlMapper">ISqlMapper</param>
+            <param name="statementName">statement的id</param>
+            <param name="paramObject">sql语句的参数</param>
+            <returns>DbCommand</returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisBase.Insert``1(System.String,``0)">
+            <summary>
+            增加
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="statementName">声明名称</param>
+            <param name="t">实体对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisBase.Delete(System.String,System.Int32)">
+            <summary>
+            删除
+            </summary>
+            <param name="statementName">声明名称</param>
+            <param name="primaryKeyId">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisBase.Update``1(System.String,``0)">
+             <summary>
+            修改 
+             </summary>
+             <typeparam name="T">实体类</typeparam>
+             <param name="statementName">声明名称</param>
+             <param name="t"></param>
+             <returns>实体对象</returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisBase.Get``1(System.String,System.Int32)">
+            <summary>
+            返回实体对象个体
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="statementName">声明名称</param>
+            <param name="primaryKeyId">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.MyBatisBase.QueryForList``1(System.String,System.Object)">
+            <summary>
+            返回实体对象集合
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="statementName">声明名称</param>
+            <param name="parameterObject">参数</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:DotNet.Utils.UrlHelper" -->
+        <!-- Badly formed XML comment ignored for member "M:DotNet.Utils.UrlHelper.GetAllUrl" -->
+        <member name="M:DotNet.Utils.UrlHelper.GetHostUrl">
+            <summary>
+            获取 域名
+            例如:www.web.com
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:DotNet.Utils.UrlHelper.GetRawUrl" -->
+        <member name="M:DotNet.Utils.UrlHelper.GetPathUrl">
+            <summary>
+            获取 站点名+页面名
+            例如:aaa/bbb.aspx
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:DotNet.Utils.UrlHelper.GetParam" -->
+        <member name="M:DotNet.Utils.UrlHelper.ShowOther">
+             <summary>
+            Request.RawUrl：获取客户端请求的URL信息（不包括主机和端口）------>/ Default2.aspx
+            Request.ApplicationPath：获取服务器上ASP.NET应用程序的虚拟路径。------>/
+            Request.CurrentExecutionFilePath：获取当前请求的虚拟路径。------>/ Default2.aspx
+            Request.Path：获取当前请求的虚拟路径。------>/ Default2.aspx
+            Request.PathInfo：取具有URL扩展名的资源的附加路径信息------ >
+            Request.PhysicalPath：获取与请求的URL相对应的物理文件系统路径。------> E:\temp\Default2.aspx
+            Request.Url.LocalPath：------>/ Default2.aspx
+            Request.Url.AbsoluteUri：------> http://localhost:8080/Default2.aspx
+            Request.Url.AbsolutePath：---------------------------->/ Default2.aspx
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.EnumHelper.GetEnumValue``1(``0)">
+            <summary>
+            获取枚举值,推荐用此方法
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.EnumHelper.GetDescription(System.Enum)">
+            <summary>
+            根据枚举获取自定义值
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.JsHelper">
+            <summary>
+            客户端脚本输出,JS操作帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.AlertAndRedirect(System.String,System.String)">
+            <summary>
+            弹出信息,并跳转指定页面。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.AlertAndGoHistory(System.String,System.Int32)">
+            <summary>
+            弹出信息,并返回历史页面
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.Redirect(System.String)">
+            <summary>
+            直接跳转到指定的页面
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.AlertAndParentUrl(System.String,System.String)">
+            <summary>
+            弹出信息 并指定到父窗口
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.ParentRedirect(System.String)">
+            <summary>
+            返回到父窗口
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.BackHistory(System.Int32)">
+            <summary>
+            返回历史页面
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.Alert(System.String)">
+            <summary>
+            弹出信息
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JsHelper.RegisterScriptBlock(System.Web.UI.Page,System.String)">
+            <summary>
+            注册脚本块
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.LogHelper.WriteLog(System.String)">
+            <summary>
+            直接输出传入信息
+            </summary>
+            <param name="msg">要输出的信息</param>
+        </member>
+        <member name="M:DotNet.Utils.LogHelper.WriteLog(DotNet.Utils.LogFile,System.String)">
+            <summary>
+            输出日志以及日志类型
+            </summary>
+            <param name="logFile">日志类型</param>
+            <param name="msg">日志信息</param>
+        </member>
+        <member name="M:DotNet.Utils.LogHelper.WriteLog(DotNet.Utils.LogFile,System.String,System.String)">
+            <summary>
+            输出日志以及日志类型
+            </summary>
+            <param name="logFile">日志类型</param>
+            <param name="msg">日志信息</param>
+            <param name="stackTrace">堆栈信息</param>
+        </member>
+        <member name="M:DotNet.Utils.LogHelper.WriteLog(System.Exception)">
+            <summary>
+            输出错误信息和堆栈信息
+            </summary>
+            <param name="ex">异常对象</param> 
+        </member>
+        <member name="M:DotNet.Utils.LogHelper.WriteLog(System.Exception,System.String)">
+            <summary>
+            输出错误信息和堆栈信息
+            </summary>
+            <param name="ex">异常对象</param> 
+            <param name="sql">sql语句</param>
+        </member>
+        <member name="M:DotNet.Utils.LogHelper.WriteLog(DotNet.Utils.LogFile,System.Exception)">
+            <summary>
+            输出日志以及日志类型
+            </summary>
+            <param name="logFile">日志类型</param>
+            <param name="msg">日志信息</param>
+            <param name="stackTrace">堆栈信息</param>
+        </member>
+        <member name="P:DotNet.Utils.LogManage.LogPath">
+            <summary>
+            Log 文件路径
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.LogManage.LogFileExtName">
+            <summary>
+            Log 文件扩展名
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.LogManage.WriteLogTime">
+            <summary>
+            是否在每个Log行前面添加当前时间
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.LogManage.LogFileNameEndWithDate">
+            <summary>
+            日志文件名是否带日期
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.LogManage.LogFileEncoding">
+            <summary>
+            日志文件的字符编码
+            </summary>
+        </member>
+        <member name="T:DotNet.Utils.JSONHelper">
+            <summary>
+            JSON转换帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.JSONHelper.#cctor">
+            <summary>
+            默认转换时间格式为yyyy-MM-dd HH:mm:ss,
+            也可把时间格式当做参数传入
+            </summary> 
+        </member>
+        <member name="M:DotNet.Utils.JSONHelper.ObjectToJson(System.Object)">
+            <summary>
+            类(实体类、数组、DataTable等)转json
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.JSONHelper.JsonToObject``1(System.String)">
+            <summary>
+            json转类(实体类、数组、DataTable等)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.JSONHelper.LinqToJson(System.Collections.Generic.List{System.Object},System.String)">
+            <summary>
+            临时数据转换json
+            </summary>
+            <param name="list">object类型的集合</param>
+            <param name="jsonName">转换为json的名称,默认为myJson</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.JSONHelper.GetValueByKey(System.String,System.String)">
+            <summary>
+            根据JSON的Key获取它的值
+            </summary>
+            <param name="json">json字符串</param>
+            <param name="key">复制json可以通过"."获取值,例:List.0.Names</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.TwoDimensionCodHelper">
+            <summary>
+            二维码帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.TwoDimensionCodHelper.SaveImg(System.String,System.Drawing.Bitmap)">
+            <summary>
+            保存图片
+            </summary>
+            <param name="strPath">保存路径</param>
+            <param name="img">图片</param>
+        </member>
+        <member name="M:DotNet.Utils.TwoDimensionCodHelper.Create_ImgCode(System.String,System.Int32)">
+            <summary>
+            生成二维码图片
+            </summary>
+            <param name="codeNumber">要生成二维码的字符串</param>     
+            <param name="size">大小尺寸</param>
+            <returns>二维码图片</returns>
+        </member>
+        <member name="T:DotNet.Utils.Office.Word.WordHelper">
+            <summary>
+            Word帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.CreateNewWordDocument(System.String)">
+            <summary>  
+            从模板创建新的Word文档  
+            </summary>  
+            <param name="templateName">模板文件名</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.CreateNewWordDocument(System.String,Microsoft.Office.Interop.Word.Document@,Microsoft.Office.Interop.Word.Application@)">
+            <summary>  
+            从模板创建新的Word文档，  
+            </summary>  
+            <param name="templateName">模板文件名</param>  
+            <param name="wDoc">返回的Document对象</param>  
+            <param name="WApp">返回的Application对象</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.SaveAs(System.String)">
+            <summary>  
+            文档另存为其他文件名  
+            </summary>  
+            <param name="fileName">文件名</param>  
+            <param name="wDoc">Document对象</param>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.SaveAs(System.String,Microsoft.Office.Interop.Word.Document)">
+            <summary>  
+            文档另存为其他文件名  
+            </summary>  
+            <param name="fileName">文件名</param>  
+            <param name="wDoc">Document对象</param>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.Close">
+            <summary>  
+            关闭文档  
+            </summary>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.Close(Microsoft.Office.Interop.Word.Document,Microsoft.Office.Interop.Word.Application)">
+            <summary>  
+            关闭文档  
+            </summary>  
+            <param name="wDoc">Document对象</param>  
+            <param name="WApp">Application对象</param>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.Replace(System.String,System.String)">
+            <summary>  
+            填充书签  
+            </summary>  
+            <param name="bookmark">书签</param>  
+            <param name="value">值</param>  
+        </member>
+        <member name="M:DotNet.Utils.Office.Word.WordHelper.ReplaceImg(System.String,System.String)">
+            <summary>  
+            填充书签  
+            </summary>  
+            <param name="bookmark">书签</param>  
+            <param name="value">值</param>  
+        </member>
+        <member name="T:DotNet.Utils.XML.XmlHelper">
+            <summary>
+            Xml的操作公共类
+            </summary>    
+        </member>
+        <member name="F:DotNet.Utils.XML.XmlHelper._filePath">
+            <summary>
+            XML文件的物理路径
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.XML.XmlHelper._xml">
+            <summary>
+            Xml文档
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.XML.XmlHelper._element">
+            <summary>
+            XML的根节点
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.#ctor(System.String)">
+            <summary>
+            实例化XmlHelper对象
+            </summary>
+            <param name="xmlFilePath">Xml文件的相对路径</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.CreateXMLElement">
+            <summary>
+            创建XML的根节点
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.GetNode(System.String)">
+            <summary>
+            获取指定XPath表达式的节点对象
+            </summary>        
+            <param name="xPath">XPath表达式,
+            范例1: @"Skill/First/SkillItem", 等效于 @"//Skill/First/SkillItem"
+            范例2: @"Table[USERNAME='a']" , []表示筛选,USERNAME是Table下的一个子节点.
+            范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
+            </param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.GetValue(System.String)">
+            <summary>
+            获取指定XPath表达式节点的值
+            </summary>
+            <param name="xPath">XPath表达式,
+            范例1: @"Skill/First/SkillItem", 等效于 @"//Skill/First/SkillItem"
+            范例2: @"Table[USERNAME='a']" , []表示筛选,USERNAME是Table下的一个子节点.
+            范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
+            </param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.GetAttributeValue(System.String,System.String)">
+            <summary>
+            获取指定XPath表达式节点的属性值
+            </summary>
+            <param name="xPath">XPath表达式,
+            范例1: @"Skill/First/SkillItem", 等效于 @"//Skill/First/SkillItem"
+            范例2: @"Table[USERNAME='a']" , []表示筛选,USERNAME是Table下的一个子节点.
+            范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
+            </param>
+            <param name="attributeName">属性名</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.AppendNode(System.Xml.XmlNode)">
+            <summary>
+            1. 功能：新增节点。
+            2. 使用条件：将任意节点插入到当前Xml文件中。
+            </summary>        
+            <param name="xmlNode">要插入的Xml节点</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.AppendNode(System.Data.DataSet)">
+            <summary>
+            1. 功能：新增节点。
+            2. 使用条件：将DataSet中的第一条记录插入Xml文件中。
+            </summary>        
+            <param name="ds">DataSet的实例，该DataSet中应该只有一条记录</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.RemoveNode(System.String)">
+            <summary>
+            删除指定XPath表达式的节点
+            </summary>        
+            <param name="xPath">XPath表达式,
+            范例1: @"Skill/First/SkillItem", 等效于 @"//Skill/First/SkillItem"
+            范例2: @"Table[USERNAME='a']" , []表示筛选,USERNAME是Table下的一个子节点.
+            范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
+            </param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.Save">
+            <summary>
+            保存XML文件
+            </summary>        
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.CreateRootElement(System.String)">
+            <summary>
+            创建根节点对象
+            </summary>
+            <param name="xmlFilePath">Xml文件的相对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.GetValue(System.String,System.String)">
+            <summary>
+            获取指定XPath表达式节点的值
+            </summary>
+            <param name="xmlFilePath">Xml文件的相对路径</param>
+            <param name="xPath">XPath表达式,
+            范例1: @"Skill/First/SkillItem", 等效于 @"//Skill/First/SkillItem"
+            范例2: @"Table[USERNAME='a']" , []表示筛选,USERNAME是Table下的一个子节点.
+            范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
+            </param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XmlHelper.GetAttributeValue(System.String,System.String,System.String)">
+            <summary>
+            获取指定XPath表达式节点的属性值
+            </summary>
+            <param name="xmlFilePath">Xml文件的相对路径</param>
+            <param name="xPath">XPath表达式,
+            范例1: @"Skill/First/SkillItem", 等效于 @"//Skill/First/SkillItem"
+            范例2: @"Table[USERNAME='a']" , []表示筛选,USERNAME是Table下的一个子节点.
+            范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
+            </param>
+            <param name="attributeName">属性名</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.XMLLoad">
+            <summary>
+            导入XML文件
+            </summary>
+            <param name="XMLPath">XML文件路径</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.XMLLoad(System.String)">
+            <summary>
+            导入XML文件
+            </summary>
+            <param name="XMLPath">XML文件路径</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.GetXmlFullPath(System.String)">
+            <summary>
+            返回完整路径
+            </summary>
+            <param name="strPath">Xml的路径</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Read(System.String)">
+            <summary>
+            读取指定节点的数据
+            </summary>
+            <param name="node">节点</param>
+            使用示列:
+            XMLProsess.Read("/Node", "")
+            XMLProsess.Read("/Node/Element[@Attribute='Name']")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Read(System.String,System.String)">
+            <summary>
+            读取指定路径和节点的串联值
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时返回该属性值，否则返回串联值</param>
+            使用示列:
+            XMLProsess.Read(path, "/Node", "")
+            XMLProsess.Read(path, "/Node/Element[@Attribute='Name']")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Read(System.String,System.String,System.String)">
+            <summary>
+            读取指定路径和节点的属性值
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时返回该属性值，否则返回串联值</param>
+            使用示列:
+            XMLProsess.Read(path, "/Node", "")
+            XMLProsess.Read(path, "/Node/Element[@Attribute='Name']", "Attribute")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.ReadAllChildallValue(System.String)">
+            <summary>
+            获取某一节点的所有孩子节点的值
+            </summary>
+            <param name="node">要查询的节点</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.ReadAllChild(System.String)">
+            <summary>
+            获取某一节点的所有孩子节点的值
+            </summary>
+            <param name="node">要查询的节点</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.GetDataViewByXml(System.String,System.String)">
+            <summary> 
+            读取XML返回经排序或筛选后的DataView
+            </summary>
+            <param name="strWhere">筛选条件，如:"name='kgdiwss'"</param>
+            <param name="strSort"> 排序条件，如:"Id desc"</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.GetDataSetByXml(System.String)">
+            <summary>
+            读取XML返回DataSet
+            </summary>
+            <param name="strXmlPath">XML文件相对路径</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Insert(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="element">元素名，非空时插入新元素，否则在该元素中插入属性</param>
+            <param name="attribute">属性名，非空时插入该元素属性值，否则插入元素值</param>
+            <param name="value">值</param>
+            使用示列:
+            XMLProsess.Insert(path, "/Node", "Element", "", "Value")
+            XMLProsess.Insert(path, "/Node", "Element", "Attribute", "Value")
+            XMLProsess.Insert(path, "/Node", "", "Attribute", "Value")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Insert(System.String,System.String,System.String,System.String[][])">
+            <summary>
+            插入数据
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="element">元素名，非空时插入新元素，否则在该元素中插入属性</param>
+            <param name="strList">由XML属性名和值组成的二维数组</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.WriteXmlByDataSet(System.String,System.String[],System.String[])">
+            <summary>
+            插入一行数据
+            </summary>
+            <param name="strXmlPath">XML文件相对路径</param>
+            <param name="Columns">要插入行的列名数组，如：string[] Columns = {"name","IsMarried"};</param>
+            <param name="ColumnValue">要插入行每列的值数组，如：string[] ColumnValue={"XML大全","false"};</param>
+            <returns>成功返回true,否则返回false</returns>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Update(System.String,System.String)">
+            <summary>
+            修改指定节点的数据
+            </summary>
+            <param name="node">节点</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Update(System.String,System.String,System.String)">
+            <summary>
+            修改指定节点的数据
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="value">值</param>
+            使用示列:
+            XMLProsess.Insert(path, "/Node","Value")
+            XMLProsess.Insert(path, "/Node","Value")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Update(System.String,System.String,System.String,System.String)">
+            <summary>
+            修改指定节点的属性值(静态)
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时修改该节点属性值，否则修改节点值</param>
+            <param name="value">值</param>
+            使用示列:
+            XMLProsess.Insert(path, "/Node", "", "Value")
+            XMLProsess.Insert(path, "/Node", "Attribute", "Value")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.UpdateXmlRow(System.String,System.String[],System.String[],System.String,System.String)">
+            <summary>
+            更改符合条件的一条记录
+            </summary>
+            <param name="strXmlPath">XML文件路径</param>
+            <param name="Columns">列名数组</param>
+            <param name="ColumnValue">列值数组</param>
+            <param name="strWhereColumnName">条件列名</param>
+            <param name="strWhereColumnValue">条件列值</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Delete(System.String,System.String)">
+            <summary>
+            删除节点值
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时删除该节点属性值，否则删除节点值</param>
+            <param name="value">值</param>
+            使用示列:
+            XMLProsess.Delete(path, "/Node", "")
+            XMLProsess.Delete(path, "/Node", "Attribute")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.Delete(System.String,System.String,System.String)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时删除该节点属性值，否则删除节点值</param>
+            <param name="value">值</param>
+            使用示列:
+            XMLProsess.Delete(path, "/Node", "")
+            XMLProsess.Delete(path, "/Node", "Attribute")
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.DeleteXmlAllRows(System.String)">
+            <summary>
+            删除所有行
+            </summary>
+            <param name="strXmlPath">XML路径</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.DeleteXmlRowByIndex(System.String,System.Int32)">
+            <summary>
+            通过删除DataSet中指定索引行，重写XML以实现删除指定行
+            </summary>
+            <param name="iDeleteRow">要删除的行在DataSet中的Index值</param>
+        </member>
+        <member name="M:DotNet.Utils.XML.XMLProcess.DeleteXmlRows(System.String,System.String,System.String[])">
+            <summary>
+            删除指定列中指定值的行
+            </summary>
+            <param name="strXmlPath">XML相对路径</param>
+            <param name="strColumn">列名</param>
+            <param name="ColumnValue">指定值</param>
+        </member>
+        <member name="T:DotNet.Utils.ZipHelper">
+            <summary>
+            压缩包帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.ZipHelper.ZipFile(System.String,System.String,System.String@)">
+            <summary>
+            功能：压缩文件（暂时只压缩文件夹下一级目录中的文件，文件夹及其子级被忽略）
+            </summary>
+            <param name="dirPath"> 被压缩的文件夹夹路径 </param>
+            <param name="zipFilePath"> 生成压缩文件的路径和文件名，为空则默认与被压缩文件夹同一级目录，名称为：文件夹名 +.zip</param>
+            <param name="err"> 出错信息</param>
+            <returns> 是否压缩成功 </returns>
+        </member>
+        <member name="M:DotNet.Utils.ZipHelper.UnZipFile(System.String,System.String,System.String@)">
+            <summary>
+            功能：解压 zip格式的文件。
+            </summary>
+            <param name="zipFilePath"> 压缩文件路径 </param>
+            <param name="unZipDir"> 解压文件存放路径 ,为空时默认与压缩文件同一级目录下，跟压缩文件同名的文件夹 </param>
+            <param name="err"> 出错信息</param>
+            <returns> 解压是否成功 </returns>
+        </member>
+        <member name="T:DotNet.Utils.Encrypt.DEncrypt">
+            <summary>
+            Encrypt 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Encrypt(System.String)">
+            <summary>
+            使用缺省密钥字符串加密string
+            </summary>
+            <param name="original">明文</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Decrypt(System.String)">
+            <summary>
+            使用缺省密钥字符串解密string
+            </summary>
+            <param name="original">密文</param>
+            <returns>明文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Encrypt(System.String,System.String)">
+            <summary>
+            使用给定密钥字符串加密string
+            </summary>
+            <param name="original">原始文字</param>
+            <param name="key">密钥</param>
+            <param name="encoding">字符编码方案</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Decrypt(System.String,System.String)">
+            <summary>
+            使用给定密钥字符串解密string
+            </summary>
+            <param name="original">密文</param>
+            <param name="key">密钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Decrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            使用给定密钥字符串解密string,返回指定编码方式明文
+            </summary>
+            <param name="encrypted">密文</param>
+            <param name="key">密钥</param>
+            <param name="encoding">字符编码方案</param>
+            <returns>明文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Decrypt(System.Byte[])">
+            <summary>
+            使用缺省密钥字符串解密byte[]
+            </summary>
+            <param name="encrypted">密文</param>
+            <param name="key">密钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Encrypt(System.Byte[])">
+            <summary>
+            使用缺省密钥字符串加密
+            </summary>
+            <param name="original">原始数据</param>
+            <param name="key">密钥</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.MakeMD5(System.Byte[])">
+            <summary>
+            生成MD5摘要
+            </summary>
+            <param name="original">数据源</param>
+            <returns>摘要</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Encrypt(System.Byte[],System.Byte[])">
+            <summary>
+            使用给定密钥加密
+            </summary>
+            <param name="original">明文</param>
+            <param name="key">密钥</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DEncrypt.Decrypt(System.Byte[],System.Byte[])">
+            <summary>
+            使用给定密钥解密数据
+            </summary>
+            <param name="encrypted">密文</param>
+            <param name="key">密钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="T:DotNet.Utils.Encrypt.DESEncrypt">
+            <summary>
+            DES加密/解密类。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DESEncrypt.Encrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DESEncrypt.Encrypt(System.String,System.String)">
+            <summary> 
+            加密数据 
+            </summary> 
+            <param name="Text"></param> 
+            <param name="sKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DESEncrypt.Decrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.DESEncrypt.Decrypt(System.String,System.String)">
+            <summary> 
+            解密数据 
+            </summary> 
+            <param name="Text"></param> 
+            <param name="sKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="T:DotNet.Utils.Encrypt.Encrypt">
+            <summary>
+            加密解密实用类。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.Encrypt.Encode(System.String)">
+            <summary>
+            加密。
+            </summary>
+            <param name="m_Need_Encode_String"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.Encrypt.Decode(System.String)">
+            <summary>
+            解密。
+            </summary>
+            <param name="m_Need_Encode_String"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.Encrypt.MD5Encrypt(System.String,System.Boolean)">
+            <summary>
+            32位MD5加密
+            </summary>
+            <param name="strText">要加密字符串</param>
+            <param name="IsLower">是否以小写方式返回</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.Encrypt.HashEncode">
+            <summary>
+            得到随机安全码（哈希加密）。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.HashEncode.GetSecurity">
+            <summary>
+            得到随机哈希加密字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.HashEncode.GetRandomValue">
+            <summary>
+            得到一个随机数值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.HashEncode.HashEncoding(System.String)">
+            <summary>
+            哈希加密一个字符串
+            </summary>
+            <param name="Security"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.Encrypt.MySecurity">
+            <summary>
+            MySecurity(安全类) 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.#ctor">
+            <summary>
+            初始化安全类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.SEncryptString(System.String,System.String)">
+            <summary>
+            加密字符串
+            </summary>
+            <param name="inputStr">输入字符串</param>
+            <param name="keyStr">密码，可以为“”</param>
+            <returns>输出加密后字符串</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.EncryptString(System.String,System.String)">
+            <summary>
+            加密字符串
+            </summary>
+            <param name="inputStr">输入字符串</param>
+            <param name="keyStr">密码，可以为“”</param>
+            <returns>输出加密后字符串</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.SEncryptString(System.String)">
+            <summary>
+            加密字符串 密钥为系统默认
+            </summary>
+            <param name="inputStr">输入字符串</param>
+            <returns>输出加密后字符串</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.EncryptFile(System.String,System.String,System.String)">
+            <summary>
+            加密文件
+            </summary>
+            <param name="filePath">输入文件路径</param>
+            <param name="savePath">加密后输出文件路径</param>
+            <param name="keyStr">密码，可以为“”</param>
+            <returns></returns>  
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.SDecryptString(System.String,System.String)">
+            <summary>
+            解密字符串
+            </summary>
+            <param name="inputStr">要解密的字符串</param>
+            <param name="keyStr">密钥</param>
+            <returns>解密后的结果</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.SDecryptString(System.String)">
+            <summary>
+             解密字符串 密钥为系统默认
+            </summary>
+            <param name="inputStr">要解密的字符串</param>
+            <returns>解密后的结果</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.DecryptString(System.String,System.String)">
+            <summary>
+            解密字符串
+            </summary>
+            <param name="inputStr">要解密的字符串</param>
+            <param name="keyStr">密钥</param>
+            <returns>解密后的结果</returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.DecryptFile(System.String,System.String,System.String)">
+            <summary>
+            解密文件
+            </summary>
+            <param name="filePath">输入文件路径</param>
+            <param name="savePath">解密后输出文件路径</param>
+            <param name="keyStr">密码，可以为“”</param>
+            <returns></returns>    
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.MD5(System.String)">
+            <summary>
+            128位MD5算法加密字符串
+            </summary>
+            <param name="text">要加密的字符串</param>    
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.MD5(System.Byte[])">
+            <summary>
+            128位MD5算法加密Byte数组
+            </summary>
+            <param name="data">要加密的Byte数组</param>    
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.EncodeBase64(System.String)">
+            <summary>
+            Base64加密
+            </summary>
+            <param name="text">要加密的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.MySecurity.DecodeBase64(System.String)">
+            <summary>
+            Base64解密
+            </summary>
+            <param name="text">要解密的字符串</param>
+        </member>
+        <member name="T:DotNet.Utils.Encrypt.RSACryption">
+            <summary> 
+            RSA加密解密及RSA签名和验证
+            </summary> 
+        </member>
+        <member name="M:DotNet.Utils.Encrypt.RSACryption.RSAKey(System.String@,System.String@)">
+            <summary>
+            RSA 的密钥产生 产生私钥 和公钥 
+            </summary>
+            <param name="xmlKeys"></param>
+            <param name="xmlPublicKey"></param>
+        </member>
+        <member name="T:DotNet.Utils.DataBaseLayer">
+            <summary>
+            数据访问基础类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteSql(System.String)">
+            <summary>
+            执行SQL语句，返回影响的记录数 、用于增删改
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteSqlTran(System.Collections.ArrayList)">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">多条SQL语句</param>        
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteQuery(System.String)">
+            <summary>
+            执行查询语句
+            </summary>
+            <param name="SqlString">查询语句</param>
+            <returns>DataTable </returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.GetSingle(System.String)">
+            <summary>
+            执行一条计算查询结果语句，返回查询结果（object）。
+            </summary>
+            <param name="SQLString">计算查询结果语句</param>
+            <returns>查询结果（object）</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteSql(System.String,System.String)">
+            <summary>
+            执行带一个存储过程参数的的SQL语句。
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteSqlInsertImg(System.String,System.Byte[])">
+            <summary>
+            向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
+            </summary>
+            <param name="strSQL">SQL语句</param>
+            <param name="fs">图像字节,数据库的字段类型为image的情况</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteReader(System.String)">
+            <summary>
+            执行查询语句，返回IDataAdapter
+            </summary>
+            <param name="strSQL">查询语句</param>
+            <returns>IDataAdapter</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.Query(System.String)">
+            <summary>
+            执行查询语句，返回DataSet
+            </summary>
+            <param name="SQLString">查询语句</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.Query(System.String,System.Data.DataSet,System.String)">
+            <summary>
+            执行查询语句，返回DataSet
+            </summary>
+            <param name="sqlString">查询语句</param>
+            <param name="dataSet">要填充的DataSet</param>
+            <param name="tableName">要填充的表名</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.Query(System.String,System.Data.DataSet,System.Int32,System.Int32,System.String)">
+            <summary>
+            执行SQL语句 返回存储过程
+            </summary>
+            <param name="sqlString">Sql语句</param>
+            <param name="dataSet">要填充的DataSet</param>
+            <param name="startIndex">开始记录</param>
+            <param name="pageSize">页面记录大小</param>
+            <param name="tableName">表名称</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.WriteToXml(System.String,System.String)">
+            <summary>
+            执行查询语句，向XML文件写入数据
+            </summary>
+            <param name="sqlString">查询语句</param>
+            <param name="xmlPath">XML文件路径</param>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteQuery(System.String,System.String)">
+            <summary>
+            执行查询语句
+            </summary>
+            <param name="SqlString">查询语句</param>
+            <returns>DataTable </returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExeceuteDataView(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteSql(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行SQL语句，返回影响的记录数
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteSqlTran(System.Collections.Hashtable)">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.GetSingle(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行一条计算查询结果语句，返回查询结果（object）。
+            </summary>
+            <param name="SQLString">计算查询结果语句</param>
+            <returns>查询结果（object）</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.ExecuteReader(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行查询语句，返回IDataReader
+            </summary>
+            <param name="strSQL">查询语句</param>
+            <returns> IDataReader </returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.Query(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行查询语句，返回DataSet
+            </summary>
+            <param name="SQLString">查询语句</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.PrepareCommand(System.Data.IDbCommand@,System.Data.IDbConnection,System.Data.IDbTransaction,System.String,System.Data.IDataParameter[])">
+            <summary>
+            初始化Command
+            </summary>
+            <param name="iCmd"></param>
+            <param name="iConn"></param>
+            <param name="iTrans"></param>
+            <param name="cmdText"></param>
+            <param name="iParms"></param>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.RunProcedure(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>SqlDataReader</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.RunProcedure(System.String,System.Data.IDataParameter[],System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="tableName">DataSet结果中的表名</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.RunProcedure(System.String,System.Data.IDataParameter[],System.Int32,System.Int32,System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="tableName">DataSet结果中的表名</param>
+            <param name="startIndex">开始记录索引</param>
+            <param name="pageSize">页面记录大小</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.RunProcedure(System.String,System.Data.IDataParameter[],System.Data.DataSet,System.String)">
+            <summary>
+            执行存储过程 填充已经存在的DataSet数据集 
+            </summary>
+            <param name="storeProcName">存储过程名称</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="dataSet">要填充的数据集</param>
+            <param name="tablename">要填充的表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.RunProcedureNoQuery(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程并返回受影响的行数
+            </summary>
+            <param name="storedProcName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.BuildQueryCommand(System.Data.IDbConnection,System.String,System.Data.IDataParameter[])">
+            <summary>
+            构建 SqlCommand 对象(用来返回一个结果集，而不是一个整数值)
+            </summary>
+            <param name="connection">数据库连接</param>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>SqlCommand</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.RunProcedure(System.String,System.Data.IDataParameter[],System.Int32@)">
+            <summary>
+            执行存储过程，返回影响的行数        
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="rowsAffected">影响的行数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.BuildIntCommand(System.Data.IDbConnection,System.String,System.Data.IDataParameter[])">
+            <summary>
+            创建 SqlCommand 对象实例(用来返回一个整数值)    
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>SqlCommand 对象实例</returns>
+        </member>
+        <member name="M:DotNet.Utils.DataBaseLayer.DataTableToList(System.Data.DataTable)">
+            <summary>
+            将字典转换为List集合
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.DataTableHelper">
+            <summary>
+            DataTable帮助类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.DataTableHelper.GetTableByTable(System.Data.DataTable,System.Int32,System.Int32)">
+            <summary>
+            将DataTable的行放入另一个DataTable中
+            </summary>
+            <param name="dt">原来的DataTable</param>
+            <param name="startIndex">起始行</param>
+            <param name="endIndex">结束行</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataTableHelper.SortDataTable(System.Data.DataTable,System.String)">
+            <summary>
+            给DataTable排序
+            </summary>
+            <param name="dt">需要排序的DataTable</param>
+            <param name="orderStr">排序字段</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.FolderHelper">
+            <summary>
+            文件夹操作
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.CreateDir(System.String)">
+            <summary>
+            创建目录
+            </summary>
+            <param name="dir">要创建的目录路径包括目录名</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.CreateDirectory(System.String)">
+            <summary>
+            创建一个目录
+            </summary>
+            <param name="directoryPath">目录的绝对路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.FolderCreate(System.String,System.String)">
+            <summary>
+            在当前目录下创建目录
+            </summary>
+            <param name="OrignFolder">当前目录</param>
+            <param name="NewFloder">新目录</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.FolderCreate(System.String)">
+            <summary>
+            创建文件夹
+            </summary>
+            <param name="Path"></param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.DeleteDir(System.String)">
+            <summary>
+            删除目录
+            </summary>
+            <param name="dir">要删除的目录路径和名称</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.DeleteFolder(System.String,System.Boolean)">
+            <summary>
+            递归删除文件夹目录及文件
+            </summary>
+            <param name="dir">文件夹路径</param> 
+            <param name="isDeleteFolder">是否删除文件夹,默认删除</param>   
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.Open_File(System.String)">
+            <summary>
+            /打开指定目录
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.IsExistDirectory(System.String)">
+            <summary>
+            检测指定目录是否存在
+            </summary>
+            <param name="directoryPath">目录的绝对路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.GetFileNames(System.String)">
+            <summary>
+            获取指定目录中所有文件列表
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.GetDirectories(System.String)">
+            <summary>
+            获取指定目录中所有子目录列表,若要搜索嵌套的子目录列表,请使用重载方法.
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.GetFileNames(System.String,System.String,System.Boolean)">
+            <summary>
+            获取指定目录及子目录中所有文件列表
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>
+            <param name="searchPattern">模式字符串，"*"代表0或N个字符，"?"代表1个字符。
+            范例："Log*.xml"表示搜索所有以Log开头的Xml文件。</param>
+            <param name="isSearchChild">是否搜索子目录</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.IsEmptyDirectory(System.String)">
+            <summary>
+            检测指定目录是否为空
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.Contains(System.String,System.String)">
+            <summary>
+            检测指定目录中是否存在指定的文件,若要搜索子目录请使用重载方法.
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>
+            <param name="searchPattern">模式字符串，"*"代表0或N个字符，"?"代表1个字符。
+            范例："Log*.xml"表示搜索所有以Log开头的Xml文件。</param>        
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.Contains(System.String,System.String,System.Boolean)">
+            <summary>
+            检测指定目录中是否存在指定的文件
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>
+            <param name="searchPattern">模式字符串，"*"代表0或N个字符，"?"代表1个字符。
+            范例："Log*.xml"表示搜索所有以Log开头的Xml文件。</param> 
+            <param name="isSearchChild">是否搜索子目录</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.CopyFolder(System.String,System.String)">
+            <summary>
+            复制文件夹(递归)
+            </summary>
+            <param name="varFromDirectory">源文件夹路径</param>
+            <param name="varToDirectory">目标文件夹路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.GetDirectories(System.String,System.String,System.Boolean)">
+            <summary>
+            获取指定目录及子目录中所有子目录列表
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>
+            <param name="searchPattern">模式字符串，"*"代表0或N个字符，"?"代表1个字符。
+            范例："Log*.xml"表示搜索所有以Log开头的Xml文件。</param>
+            <param name="isSearchChild">是否搜索子目录</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.ClearDirectory(System.String)">
+            <summary>
+            清空指定目录下所有文件及子目录,但该目录依然保存.
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FolderHelper.DeleteDirectory(System.String)">
+            <summary>
+            删除指定目录及其所有子目录
+            </summary>
+            <param name="directoryPath">指定目录的绝对路径</param>
+        </member>
+        <member name="T:DotNet.Utils.FileHelper">
+            <summary>
+            文件操作
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.IsExistFile(System.String)">
+            <summary>
+            检测指定文件是否存在,如果存在则返回true。
+            </summary>
+            <param name="filePath">文件的绝对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Create(System.String)">
+            <summary>
+            文件路径
+            </summary>
+            <param name="Path"></param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetExtension(System.String)">
+            <summary>
+            取后缀名
+            </summary>
+            <param name="filename">文件名</param>
+            <returns>.gif|.html格式</returns>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Write(System.String,System.String)">
+            <summary>
+            写文件
+            </summary>
+            <param name="Path">文件路径</param>
+            <param name="Strings">文件内容</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Read(System.String)">
+            <summary>
+            读文件
+            </summary>
+            <param name="Path">文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.AddConent(System.String,System.String)">
+            <summary>
+            追加文件
+            </summary>
+            <param name="Path">文件路径</param>
+            <param name="strings">内容</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Clear(System.String)">
+            <summary>
+            清空文件内容
+            </summary>
+            <param name="filePath">文件的绝对路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Copy(System.String,System.String)">
+            <summary>
+            拷贝文件
+            </summary>
+            <param name="OrignFile">原始文件</param>
+            <param name="NewFile">新文件路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Move(System.String,System.String)">
+            <summary>
+            移动文件
+            </summary>
+            <param name="OrignFile">原始路径</param>
+            <param name="NewFile">新路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.Delete(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="Path">路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetFoldAll(System.String)">
+            <summary>
+            获取指定文件夹下所有子目录及文件
+            </summary>
+            <param name="Path">详细路径</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.ListTreeShow(System.IO.DirectoryInfo,System.Int32,System.String)">
+            <summary>
+            获取指定文件夹下所有子目录及文件函数
+            </summary>
+            <param name="theDir">指定目录</param>
+            <param name="nLevel">默认起始值,调用时,一般为0</param>
+            <param name="Rn">用于迭加的传入值,一般为空</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetFoldAll(System.String,System.String,System.String)">
+             <summary>
+             获取指定文件夹下所有子目录及文件(下拉框形)
+             </summary>
+             <param name="Path">详细路径</param>
+            <param name="DropName">下拉列表名称</param>
+            <param name="tplPath">默认选择模板名称</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.ListTreeShow(System.IO.DirectoryInfo,System.Int32,System.String,System.String)">
+            <summary>
+            获取指定文件夹下所有子目录及文件函数
+            </summary>
+            <param name="theDir">指定目录</param>
+            <param name="nLevel">默认起始值,调用时,一般为0</param>
+            <param name="Rn">用于迭加的传入值,一般为空</param>
+            <param name="tplPath">默认选择模板名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetDirectoryLength(System.String)">
+            <summary>
+            获取文件夹大小
+            </summary>
+            <param name="dirPath">文件夹路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetFileAttibe(System.String)">
+            <summary>
+            获取指定文件详细属性
+            </summary>
+            <param name="filePath">文件详细路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetLineCount(System.String)">
+            <summary>
+            获取文本文件的行数
+            </summary>
+            <param name="filePath">文件的绝对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.GetFileSize(System.String)">
+            <summary>
+            获取一个文件的长度,单位为Byte
+            </summary>
+            <param name="filePath">文件的绝对路径</param>        
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.WriteText(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            向文本文件中写入内容
+            </summary>
+            <param name="filePath">文件的绝对路径</param>
+            <param name="text">写入的内容</param>
+            <param name="encoding">编码</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.AppendText(System.String,System.String)">
+            <summary>
+            向文本文件的尾部追加内容
+            </summary>
+            <param name="filePath">文件的绝对路径</param>
+            <param name="content">写入的内容</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.CopyDir(System.String,System.String)">
+            <summary>
+            指定文件夹下面的所有内容copy到目标文件夹下面
+            </summary>
+            <param name="srcPath">原始路径</param>
+            <param name="aimPath">目标文件夹</param>
+        </member>
+        <member name="M:DotNet.Utils.FileHelper.DeleteFolderFiles(System.String,System.String)">
+            <summary>
+            删除指定文件夹对应其他文件夹里的文件
+            </summary>
+            <param name="varFromDirectory">指定文件夹路径</param>
+            <param name="varToDirectory">对应其他文件夹路径</param>
+        </member>
+        <member name="T:DotNet.Utils.INIFile">
+            <summary>
+            INI文件读写类。
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.INIFile.IniWriteValue(System.String,System.String,System.String)">
+            <summary>
+            写INI文件
+            </summary>
+            <param name="Section"></param>
+            <param name="Key"></param>
+            <param name="Value"></param>
+        </member>
+        <member name="M:DotNet.Utils.INIFile.IniReadValue(System.String,System.String)">
+            <summary>
+            读取INI文件
+            </summary>
+            <param name="Section"></param>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.INIFile.ClearAllSection">
+            <summary>
+            删除ini文件下所有段落
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.INIFile.ClearSection(System.String)">
+            <summary>
+            删除ini文件下personal段落下的所有键
+            </summary>
+            <param name="Section"></param>
+        </member>
+        <member name="T:DotNet.Utils.ImagePosition">
+            <summary>
+            水印位置
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.LeftTop">
+            <summary>
+            左上
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.LeftBottom">
+            <summary>
+            左下
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.RightTop">
+            <summary>
+            右上
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.RigthBottom">
+            <summary>
+            右下
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.TopMiddle">
+            <summary>
+            顶部居中
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.BottomMiddle">
+            <summary>
+            底部居中
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ImagePosition.Center">
+            <summary>
+            中心
+            </summary>
+        </member>
+        <member name="T:DotNet.Utils.WatermarkHelper">
+            <summary>
+            图像操作类(主要用于给图片加上透明文字水印)
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.WatermarkHelper.ErrMsg">
+            <summary>
+            出错信息
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.SetImageToByteArray(System.String)">
+            <summary>
+            将文件转换成流
+            </summary>
+            <param name="fileName">文件全路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.ByteToStream(System.Byte[])">
+            <summary>
+            将byte转换成MemoryStream类型
+            </summary>
+            <param name="mybyte">byte[]变量</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.SetByteToImage(System.Byte[])">
+            <summary>
+            将byte转换成Image文件
+            </summary>
+            <param name="mybyte">byte[]变量</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.DrawWords(System.String[],System.String,System.Single,DotNet.Utils.ImagePosition,System.Boolean)">
+            <summary>
+            批量在图片上添加透明水印文字
+            </summary>
+            <param name="arrsourcePicture">原来图片地址(路径+文件名)</param>
+            <param name="waterWords">需要添加到图片上的文字</param>
+            <param name="alpha">透明度(0.1~1.0之间)</param>
+            <param name="position">文字显示的位置</param>
+            <param name="fRewrite">是否覆盖原图片(如果不覆盖，那么将在同目录下生成一个文件名带0607的文件)</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.DrawWords(System.String,System.String,System.Double,DotNet.Utils.ImagePosition,System.Boolean)">
+            <summary>
+            在图片上添加透明水印文字
+            </summary>
+            <param name="sourcePicture">原来图片地址(路径+文件名)</param>
+            <param name="waterWords">需要添加到图片上的文字</param>
+            <param name="alpha">透明度(0.1~1.0之间)</param>
+            <param name="position">文字显示的位置</param>
+            <param name="fRewrite">是否覆盖原图片(如果不覆盖，那么将在同目录下生成一个文件名带0607的文件)</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.AddWatermarkForImg(System.String,System.String)">
+            <summary>
+            图片通过源文件生成水印文件
+            </summary>
+            <param name="sourcePath">原始文件地址</param>
+            <param name="targetImage">水印文件生成地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.AddWatermarkForPDF(System.String,System.String,System.String)">
+            <summary>
+            pdf加入水印
+            </summary>
+            <param name="inputPath">pdf路径</param>
+            <param name="outputPath">pdf输出路径</param>
+            <param name="outputPath">字体路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.HanZiToPinYin.EcanConvertToCh">
+            <summary>
+            汉字转拼音类
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.HanZiToPinYin.EcanConvertToCh.convertCh(System.String)">
+            <summary>
+            汉字转换成全拼的拼音
+            </summary>
+            <param name="Chstr">汉字字符串</param>
+            <returns>转换后的拼音字符串</returns>
+        </member>
+        <member name="M:DotNet.Utils.HanZiToPinYin.PinYin.GetCodstring(System.String)">
+            <summary>
+            取汉字拼音的首字母
+            </summary>
+            <param name="UnName">汉字</param>
+            <returns>首字母</returns>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToInt(System.Object)">
+            <summary>
+            转换为整型
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToIntOrNull(System.Object)">
+            <summary>
+            转换为可空整型
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDouble(System.Object)">
+            <summary>
+            转换为双精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDouble(System.Object,System.Int32)">
+            <summary>
+            转换为双精度浮点数,并按指定的小数位4舍5入
+            </summary>
+            <param name="data">数据</param>
+            <param name="digits">小数位数</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDoubleOrNull(System.Object)">
+            <summary>
+            转换为可空双精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDecimal(System.Object)">
+            <summary>
+            转换为高精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDecimal(System.Object,System.Int32)">
+            <summary>
+            转换为高精度浮点数,并按指定的小数位4舍5入
+            </summary>
+            <param name="data">数据</param>
+            <param name="digits">小数位数</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDecimalOrNull(System.Object)">
+            <summary>
+            转换为可空高精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDecimalOrNull(System.Object,System.Int32)">
+            <summary>
+            转换为可空高精度浮点数,并按指定的小数位4舍5入
+            </summary>
+            <param name="data">数据</param>
+            <param name="digits">小数位数</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToGuid(System.Object)">
+            <summary>
+            转换为Guid
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToGuidOrNull(System.Object)">
+            <summary>
+            转换为可空Guid
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToGuidList(System.String)">
+            <summary>
+            转换为Guid集合
+            </summary>
+            <param name="guid">guid集合字符串，范例:83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDate(System.Object)">
+            <summary>
+            转换为日期
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToDateOrNull(System.Object)">
+            <summary>
+            转换为可空日期
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToBool(System.Object)">
+            <summary>
+            转换为布尔值
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.GetBool(System.Object)">
+            <summary>
+            获取布尔值
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToBoolOrNull(System.Object)">
+            <summary>
+            转换为可空布尔值
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.ToString(System.Object)">
+            <summary>
+            转换为字符串
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.DateToString(System.DateTime,System.String)">
+            <summary>
+            将时间转换为字符串格式的日期
+            </summary>
+            <param name="dt"></param>
+            <param name="formatStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.ConvertHelper.To``1(System.Object)">
+            <summary>
+            泛型转换
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="data">数据</param>
+        </member>
+    </members>
+</doc>
