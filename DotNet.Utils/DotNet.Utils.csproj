@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{72912CC0-F3C4-4535-A421-F397E908B1A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNet.Utils</RootNamespace>
+    <AssemblyName>DotNet.Utils</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\DotNet.Utils.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common.Logging.Log4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\IBatisNet.Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataAccess, Version=1.9.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\IBatisNet.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>bin\Debug\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.2774.19990, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="011_自定义实体类属性\ColumnAttribute.cs" />
+    <Compile Include="011_自定义实体类属性\TableAttribute.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\CRUDHelper.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\MyCodeHelper.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\AssistBase.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\DicBase.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\ObjectBase.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\InternalBase.cs" />
+    <Compile Include="02_Batis基类\BatisBaseHpler.cs" />
+    <Compile Include="02_Batis基类\MyBatisAssist.cs" />
+    <Compile Include="02_Batis基类\MyBatisBase.cs" />
+    <Compile Include="05_Request与Response操作\UrlHelper.cs" />
+    <Compile Include="09_Enum枚举\EnumHelper.cs" />
+    <Compile Include="05_Request与Response操作\JsHelper.cs" />
+    <Compile Include="03_Log日志\LogHelper.cs" />
+    <Compile Include="03_Log日志\LogManage.cs" />
+    <Compile Include="04_JSON与Object对象类和任意类型互转\JSONHelper.cs" />
+    <Compile Include="10_创建二维码\TwoDimensionCodHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="11_Office帮助类\WordHelper.cs" />
+    <Compile Include="XML操作类\XmlHelper.cs" />
+    <Compile Include="XML操作类\XMLProcess.cs" />
+    <Compile Include="06_压缩解压缩\ZipHelper.cs" />
+    <Compile Include="加密解密\DEncrypt.cs" />
+    <Compile Include="加密解密\DESEncrypt.cs" />
+    <Compile Include="加密解密\Encrypt.cs" />
+    <Compile Include="加密解密\HashEncode.cs" />
+    <Compile Include="加密解密\MySecurity.cs" />
+    <Compile Include="加密解密\RSACryption.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\DataBaseLayer.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\DataTableHelper.cs" />
+    <Compile Include="07_文件操作类\FolderHelper.cs" />
+    <Compile Include="07_文件操作类\FileHelper.cs" />
+    <Compile Include="07_文件操作类\INIFile.cs" />
+    <Compile Include="08_水印\WatermarkHelper.cs" />
+    <Compile Include="汉字转拼音\EcanConvertToCh.cs" />
+    <Compile Include="汉字转拼音\PinYin.cs" />
+    <Compile Include="转换\ConvertHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
