@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace DotNet.Utils.DLL
 {
     public class DepartmentsManage:CRUDHelper<Departments>
-    {
+    {  
     }
 }
