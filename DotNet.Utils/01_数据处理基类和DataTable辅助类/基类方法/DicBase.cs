@@ -29,7 +29,7 @@ namespace DotNet.Utils
                 string strTable = InternalBase<T>.GetTableName(tableName);
                 string strCondition = InternalBase<T>.GetConditionByDIC(dic);
                 string strOrder = InternalBase<T>.AddOrder(order);//获取排序字段
-                sql = string.Format("select {0} from {0} {1} {2}", columnName, strTable, strCondition, strOrder);
+                sql = string.Format("select {0} from {1} {2} {3}", columnName, strTable, strCondition, strOrder);
                 return dbl.ExecuteQuery(sql);
             }
             catch (Exception ex)

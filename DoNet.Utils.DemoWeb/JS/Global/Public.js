@@ -20,6 +20,10 @@ function myformatter(date) {
 function trim(str) { 
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
+
+//打开新网页
+//window.open(row.URL, "", "resizable=yes,status=yes,menubar=yes,scrollbars=yes,width=600,height=400", false);
+
 //-----------------------------------easyUI部分-------------------------------------
 //表格中格式化时间列
 //调用演示:<th width="192px" data-options="field: 'JBSJ',halign: 'center', align: 'center', formatter:Formatter_date">经办日期</th>
@@ -45,4 +49,9 @@ function myparser(s) {
     } else {
         return new Date();
     }
+}
+
+//鼠标在列表中悬停显示详细信息
+function formatCellTooltip(value) {
+    return "<span title='" + value + "'>" + value + "</span>";
 }

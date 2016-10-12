@@ -423,6 +423,8 @@
     <Content Include="WebForms\ObjectHTML\UserEdit.html" />
     <Content Include="Handler\CreateModelHandler.ashx" />
     <Content Include="Handler\DepartmentsHandler.ashx" />
+    <Content Include="WebForms\UtilsDemo\EnumDemo.html" />
+    <Content Include="WebForms\UtilsDemo\JSONDemo.html" />
     <None Include="Properties\PublishProfiles\TLWClassLibraries.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -435,6 +437,7 @@
     <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\abc.json" />
     <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.ashx" />
     <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\监测表（第一批）.XLS" />
+    <Content Include="WebForms\UtilsDemo\UtilsDemoHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Index.css" />
@@ -481,6 +484,9 @@
     </Compile>
     <Compile Include="WebForms\ModuleDemo\上传\UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\UtilsDemo\UtilsDemoHandler.ashx.cs">
+      <DependentUpon>UtilsDemoHandler.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
