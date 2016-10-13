@@ -23,8 +23,10 @@ namespace DotNet.Utils
         /// <param name="dirPath"> 被压缩的文件夹夹路径 </param>
         /// <param name="zipFilePath"> 生成压缩文件的路径和文件名，为空则默认与被压缩文件夹同一级目录，名称为：文件夹名 +.zip</param>
         /// <param name="err"> 出错信息</param>
+        /// <param name="pwd"> 密码</param>
+        /// <param name="isMD5">是否启用md5加密密码</param>
         /// <returns> 是否压缩成功 </returns>
-        static public bool ZipFile(string dirPath, string zipFilePath, out string err)
+        static public bool ZipFile(string dirPath, string zipFilePath, out string err, string pwd = "", bool isMD5 = true)
         {
             err = "";
             if (dirPath == string.Empty)
@@ -53,6 +55,10 @@ namespace DotNet.Utils
                 using (ZipOutputStream s = new ZipOutputStream(File.Create(zipFilePath)))
                 {
                     s.SetLevel(9);
+                    if (pwd != "")
+                    {
+                        s.Password = isMD5 ? Encrypt.Encrypt.MD5Encrypt(pwd) : pwd;
+                    }
                     byte[] buffer = new byte[4096];
                     foreach (string file in filenames)
                     {
@@ -68,6 +74,7 @@ namespace DotNet.Utils
                                 s.Write(buffer, 0, sourceBytes);
                             } while (sourceBytes > 0);
                         }
+                        FileHelper.Delete(file);
                     }
                     s.Finish();
                     s.Close();
@@ -90,8 +97,10 @@ namespace DotNet.Utils
         /// <param name="zipFilePath"> 压缩文件路径 </param>
         /// <param name="unZipDir"> 解压文件存放路径 ,为空时默认与压缩文件同一级目录下，跟压缩文件同名的文件夹 </param>
         /// <param name="err"> 出错信息</param>
+        /// <param name="pwd"> 密码</param>
+        /// <param name="isMD5">是否启用md5加密密码</param>
         /// <returns> 解压是否成功 </returns>
-        static public bool UnZipFile(string zipFilePath, string unZipDir, out string err)
+        static public bool UnZipFile(string zipFilePath, string unZipDir, out string err, string pwd = "", bool isMD5 = true)
         {
             err = "";
             if (zipFilePath == string.Empty)
@@ -116,7 +125,10 @@ namespace DotNet.Utils
             {
                 using (ZipInputStream s = new ZipInputStream(File.OpenRead(zipFilePath)))
                 {
-
+                    if (pwd != "")
+                    {
+                        s.Password = isMD5 ? Encrypt.Encrypt.MD5Encrypt(pwd) : pwd;
+                    }
                     ZipEntry theEntry;
                     while ((theEntry = s.GetNextEntry()) != null)
                     {
@@ -160,6 +172,6 @@ namespace DotNet.Utils
             return true;
         } //解压结束
         #endregion
-         
+
     }
 }

@@ -112,8 +112,8 @@
     <Compile Include="10_创建二维码\TwoDimensionCodHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="11_Office帮助类\WordHelper.cs" />
-    <Compile Include="XML操作类\XmlHelper.cs" />
-    <Compile Include="XML操作类\XMLProcess.cs" />
+    <Compile Include="12_XML操作类\XmlHelper.cs" />
+    <Compile Include="12_XML操作类\XMLProcess.cs" />
     <Compile Include="06_压缩解压缩\ZipHelper.cs" />
     <Compile Include="加密解密\DEncrypt.cs" />
     <Compile Include="加密解密\DESEncrypt.cs" />

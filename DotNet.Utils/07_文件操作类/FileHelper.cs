@@ -64,7 +64,7 @@ namespace DotNet.Utils
          * 功能说明：当文件不存时，则创建文件，并追加文件
          * 参    数：Path:文件路径,Strings:文本内容
          * 调用示列：
-         *           string Path = Server.MapPath("Default2.aspx");       
+         *           string Path = Server.MapPath("");       
          *           string Strings = "这是我写的内容啊";
          *           DotNet.Utils.FileHelper.WriteFile(Path,Strings);
         *****************************************/
@@ -86,8 +86,6 @@ namespace DotNet.Utils
             f2.WriteLine(Strings);
             f2.Close();
             f2.Dispose();
-
-
         }
         #endregion
 
@@ -179,7 +177,14 @@ namespace DotNet.Utils
         /// <param name="NewFile">新文件路径</param>
         public static void Copy(string OrignFile, string NewFile)
         {
-            File.Copy(OrignFile, NewFile, true);
+            try
+            {
+                File.Copy(OrignFile, NewFile, true);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex);
+            }
         }
 
         #endregion

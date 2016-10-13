@@ -4,7 +4,7 @@ using System.Data;
 using System.IO;
 using System.Xml;
 
-namespace DotNet.Utils.XML
+namespace DotNet.Utils
 {
     public class XMLProcess
     {
