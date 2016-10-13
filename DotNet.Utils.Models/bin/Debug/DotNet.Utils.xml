@@ -1076,38 +1076,38 @@
             <param name="bookmark">书签</param>  
             <param name="value">值</param>  
         </member>
-        <member name="T:DotNet.Utils.XML.XmlHelper">
+        <member name="T:DotNet.Utils.XmlHelper">
             <summary>
             Xml的操作公共类
             </summary>    
         </member>
-        <member name="F:DotNet.Utils.XML.XmlHelper._filePath">
+        <member name="F:DotNet.Utils.XmlHelper._filePath">
             <summary>
             XML文件的物理路径
             </summary>
         </member>
-        <member name="F:DotNet.Utils.XML.XmlHelper._xml">
+        <member name="F:DotNet.Utils.XmlHelper._xml">
             <summary>
             Xml文档
             </summary>
         </member>
-        <member name="F:DotNet.Utils.XML.XmlHelper._element">
+        <member name="F:DotNet.Utils.XmlHelper._element">
             <summary>
             XML的根节点
             </summary>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.#ctor(System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.#ctor(System.String)">
             <summary>
             实例化XmlHelper对象
             </summary>
             <param name="xmlFilePath">Xml文件的相对路径</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.CreateXMLElement">
+        <member name="M:DotNet.Utils.XmlHelper.CreateXMLElement">
             <summary>
             创建XML的根节点
             </summary>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.GetNode(System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.GetNode(System.String)">
             <summary>
             获取指定XPath表达式的节点对象
             </summary>        
@@ -1117,7 +1117,7 @@
             范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
             </param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.GetValue(System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.GetValue(System.String)">
             <summary>
             获取指定XPath表达式节点的值
             </summary>
@@ -1127,7 +1127,7 @@
             范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
             </param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.GetAttributeValue(System.String,System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.GetAttributeValue(System.String,System.String)">
             <summary>
             获取指定XPath表达式节点的属性值
             </summary>
@@ -1138,21 +1138,37 @@
             </param>
             <param name="attributeName">属性名</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.AppendNode(System.Xml.XmlNode)">
+        <member name="M:DotNet.Utils.XmlHelper.GetAllChildNodes(System.String)">
+            <summary>
+            获取指定节点的所有子节点
+            </summary>
+            <param name="nodeName">节点名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.XmlHelper.GetChildNodesAttributes(System.String,System.String,System.String)">
+            <summary>
+            获取指定节点的,指定子节点,指定属性
+            </summary>
+            <param name="nodeName">节点名称</param>
+            <param name="childNodeName">子节点名称</param>
+            <param name="childNodeAttributesName">指定属性</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.XmlHelper.AppendNode(System.Xml.XmlNode)">
             <summary>
             1. 功能：新增节点。
             2. 使用条件：将任意节点插入到当前Xml文件中。
             </summary>        
             <param name="xmlNode">要插入的Xml节点</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.AppendNode(System.Data.DataSet)">
+        <member name="M:DotNet.Utils.XmlHelper.AppendNode(System.Data.DataSet)">
             <summary>
             1. 功能：新增节点。
             2. 使用条件：将DataSet中的第一条记录插入Xml文件中。
             </summary>        
             <param name="ds">DataSet的实例，该DataSet中应该只有一条记录</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.RemoveNode(System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.RemoveNode(System.String)">
             <summary>
             删除指定XPath表达式的节点
             </summary>        
@@ -1162,18 +1178,18 @@
             范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
             </param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.Save">
+        <member name="M:DotNet.Utils.XmlHelper.Save">
             <summary>
             保存XML文件
             </summary>        
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.CreateRootElement(System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.CreateRootElement(System.String)">
             <summary>
             创建根节点对象
             </summary>
             <param name="xmlFilePath">Xml文件的相对路径</param>        
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.GetValue(System.String,System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.GetValue(System.String,System.String)">
             <summary>
             获取指定XPath表达式节点的值
             </summary>
@@ -1184,7 +1200,7 @@
             范例3: @"ApplyPost/Item[@itemName='岗位编号']",@itemName是Item节点的属性.
             </param>
         </member>
-        <member name="M:DotNet.Utils.XML.XmlHelper.GetAttributeValue(System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.XmlHelper.GetAttributeValue(System.String,System.String,System.String)">
             <summary>
             获取指定XPath表达式节点的属性值
             </summary>
@@ -1196,25 +1212,25 @@
             </param>
             <param name="attributeName">属性名</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.XMLLoad">
+        <member name="M:DotNet.Utils.XMLProcess.XMLLoad">
             <summary>
             导入XML文件
             </summary>
             <param name="XMLPath">XML文件路径</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.XMLLoad(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.XMLLoad(System.String)">
             <summary>
             导入XML文件
             </summary>
             <param name="XMLPath">XML文件路径</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.GetXmlFullPath(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.GetXmlFullPath(System.String)">
             <summary>
             返回完整路径
             </summary>
             <param name="strPath">Xml的路径</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Read(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Read(System.String)">
             <summary>
             读取指定节点的数据
             </summary>
@@ -1223,7 +1239,7 @@
             XMLProsess.Read("/Node", "")
             XMLProsess.Read("/Node/Element[@Attribute='Name']")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Read(System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Read(System.String,System.String)">
             <summary>
             读取指定路径和节点的串联值
             </summary>
@@ -1234,7 +1250,7 @@
             XMLProsess.Read(path, "/Node", "")
             XMLProsess.Read(path, "/Node/Element[@Attribute='Name']")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Read(System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Read(System.String,System.String,System.String)">
             <summary>
             读取指定路径和节点的属性值
             </summary>
@@ -1245,32 +1261,32 @@
             XMLProsess.Read(path, "/Node", "")
             XMLProsess.Read(path, "/Node/Element[@Attribute='Name']", "Attribute")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.ReadAllChildallValue(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.ReadAllChildallValue(System.String)">
             <summary>
             获取某一节点的所有孩子节点的值
             </summary>
             <param name="node">要查询的节点</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.ReadAllChild(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.ReadAllChild(System.String)">
             <summary>
             获取某一节点的所有孩子节点的值
             </summary>
             <param name="node">要查询的节点</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.GetDataViewByXml(System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.GetDataViewByXml(System.String,System.String)">
             <summary> 
             读取XML返回经排序或筛选后的DataView
             </summary>
             <param name="strWhere">筛选条件，如:"name='kgdiwss'"</param>
             <param name="strSort"> 排序条件，如:"Id desc"</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.GetDataSetByXml(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.GetDataSetByXml(System.String)">
             <summary>
             读取XML返回DataSet
             </summary>
             <param name="strXmlPath">XML文件相对路径</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Insert(System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Insert(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             插入数据
             </summary>
@@ -1284,7 +1300,7 @@
             XMLProsess.Insert(path, "/Node", "Element", "Attribute", "Value")
             XMLProsess.Insert(path, "/Node", "", "Attribute", "Value")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Insert(System.String,System.String,System.String,System.String[][])">
+        <member name="M:DotNet.Utils.XMLProcess.Insert(System.String,System.String,System.String,System.String[][])">
             <summary>
             插入数据
             </summary>
@@ -1293,7 +1309,7 @@
             <param name="element">元素名，非空时插入新元素，否则在该元素中插入属性</param>
             <param name="strList">由XML属性名和值组成的二维数组</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.WriteXmlByDataSet(System.String,System.String[],System.String[])">
+        <member name="M:DotNet.Utils.XMLProcess.WriteXmlByDataSet(System.String,System.String[],System.String[])">
             <summary>
             插入一行数据
             </summary>
@@ -1302,14 +1318,14 @@
             <param name="ColumnValue">要插入行每列的值数组，如：string[] ColumnValue={"XML大全","false"};</param>
             <returns>成功返回true,否则返回false</returns>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Update(System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Update(System.String,System.String)">
             <summary>
             修改指定节点的数据
             </summary>
             <param name="node">节点</param>
             <param name="value">值</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Update(System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Update(System.String,System.String,System.String)">
             <summary>
             修改指定节点的数据
             </summary>
@@ -1320,7 +1336,7 @@
             XMLProsess.Insert(path, "/Node","Value")
             XMLProsess.Insert(path, "/Node","Value")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Update(System.String,System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Update(System.String,System.String,System.String,System.String)">
             <summary>
             修改指定节点的属性值(静态)
             </summary>
@@ -1332,7 +1348,7 @@
             XMLProsess.Insert(path, "/Node", "", "Value")
             XMLProsess.Insert(path, "/Node", "Attribute", "Value")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.UpdateXmlRow(System.String,System.String[],System.String[],System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.UpdateXmlRow(System.String,System.String[],System.String[],System.String,System.String)">
             <summary>
             更改符合条件的一条记录
             </summary>
@@ -1342,7 +1358,7 @@
             <param name="strWhereColumnName">条件列名</param>
             <param name="strWhereColumnValue">条件列值</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Delete(System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Delete(System.String,System.String)">
             <summary>
             删除节点值
             </summary>
@@ -1354,7 +1370,7 @@
             XMLProsess.Delete(path, "/Node", "")
             XMLProsess.Delete(path, "/Node", "Attribute")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.Delete(System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.Delete(System.String,System.String,System.String)">
             <summary>
             删除数据
             </summary>
@@ -1366,19 +1382,19 @@
             XMLProsess.Delete(path, "/Node", "")
             XMLProsess.Delete(path, "/Node", "Attribute")
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.DeleteXmlAllRows(System.String)">
+        <member name="M:DotNet.Utils.XMLProcess.DeleteXmlAllRows(System.String)">
             <summary>
             删除所有行
             </summary>
             <param name="strXmlPath">XML路径</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.DeleteXmlRowByIndex(System.String,System.Int32)">
+        <member name="M:DotNet.Utils.XMLProcess.DeleteXmlRowByIndex(System.String,System.Int32)">
             <summary>
             通过删除DataSet中指定索引行，重写XML以实现删除指定行
             </summary>
             <param name="iDeleteRow">要删除的行在DataSet中的Index值</param>
         </member>
-        <member name="M:DotNet.Utils.XML.XMLProcess.DeleteXmlRows(System.String,System.String,System.String[])">
+        <member name="M:DotNet.Utils.XMLProcess.DeleteXmlRows(System.String,System.String,System.String[])">
             <summary>
             删除指定列中指定值的行
             </summary>
@@ -1391,22 +1407,26 @@
             压缩包帮助类
             </summary>
         </member>
-        <member name="M:DotNet.Utils.ZipHelper.ZipFile(System.String,System.String,System.String@)">
+        <member name="M:DotNet.Utils.ZipHelper.ZipFile(System.String,System.String,System.String@,System.String,System.Boolean)">
             <summary>
             功能：压缩文件（暂时只压缩文件夹下一级目录中的文件，文件夹及其子级被忽略）
             </summary>
             <param name="dirPath"> 被压缩的文件夹夹路径 </param>
             <param name="zipFilePath"> 生成压缩文件的路径和文件名，为空则默认与被压缩文件夹同一级目录，名称为：文件夹名 +.zip</param>
             <param name="err"> 出错信息</param>
+            <param name="pwd"> 密码</param>
+            <param name="isMD5">是否启用md5加密密码</param>
             <returns> 是否压缩成功 </returns>
         </member>
-        <member name="M:DotNet.Utils.ZipHelper.UnZipFile(System.String,System.String,System.String@)">
+        <member name="M:DotNet.Utils.ZipHelper.UnZipFile(System.String,System.String,System.String@,System.String,System.Boolean)">
             <summary>
             功能：解压 zip格式的文件。
             </summary>
             <param name="zipFilePath"> 压缩文件路径 </param>
             <param name="unZipDir"> 解压文件存放路径 ,为空时默认与压缩文件同一级目录下，跟压缩文件同名的文件夹 </param>
             <param name="err"> 出错信息</param>
+            <param name="pwd"> 密码</param>
+            <param name="isMD5">是否启用md5加密密码</param>
             <returns> 解压是否成功 </returns>
         </member>
         <member name="T:DotNet.Utils.Encrypt.DEncrypt">
@@ -1538,6 +1558,14 @@
             加密解密实用类。
             </summary>
         </member>
+        <member name="M:DotNet.Utils.Encrypt.Encrypt.MD5Encrypt(System.String,System.Boolean)">
+            <summary>
+            32位MD5加密__常用加密
+            </summary>
+            <param name="strText">要加密字符串</param>
+            <param name="IsLower">是否以小写方式返回</param>
+            <returns></returns>
+        </member>
         <member name="M:DotNet.Utils.Encrypt.Encrypt.Encode(System.String)">
             <summary>
             加密。
@@ -1550,14 +1578,6 @@
             解密。
             </summary>
             <param name="m_Need_Encode_String"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.Encrypt.Encrypt.MD5Encrypt(System.String,System.Boolean)">
-            <summary>
-            32位MD5加密
-            </summary>
-            <param name="strText">要加密字符串</param>
-            <param name="IsLower">是否以小写方式返回</param>
             <returns></returns>
         </member>
         <member name="T:DotNet.Utils.Encrypt.HashEncode">
