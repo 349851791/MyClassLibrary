@@ -90,12 +90,13 @@
     <div id="div_Content" style="display:none">
         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="createModel()">创建</a>
         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="DownLoadModel()">下载</a> 
-        <table id="dg" class="easyui-datagrid" rownumbers="true" pagination="true" pagelist="[5,10,20]" pagesize="20">
+        <table id="dg" class="easyui-datagrid" rownumbers="true" pagination="true" pagelist="[5,10,20]" pagesize="20" fitColumns="true">
             <thead>
                 <tr>
                     <th data-options="field:'ck',checkbox:true"></th>
                     <th width="500px" data-options="field: 'TABLE_NAME',  halign: 'center', align: 'center'">表名</th>
-                    <th width="500px" data-options="field: 'COMMENTS',halign: 'center', align: 'center'">备注</th>
+                    <th width="100px" data-options="field: 'TABLE_TYPE',halign: 'center', align: 'center'">类型</th>
+                    <th width="400px" data-options="field: 'COMMENTS',halign: 'center', align: 'center'">备注</th>
                 </tr>
             </thead>
         </table>
