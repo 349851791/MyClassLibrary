@@ -28,7 +28,7 @@
 //    });
 //} 
 
-//加载时,给所有input增加样式.并增加鼠标事件,在事件中修改样式 
+//--------------加载时,给所有input增加样式.并增加鼠标事件,在事件中修改样式----------- 
 //$("input[type='text']", $("#table_user")).addClass("myInput");
 //$("input[type='text']", $("#table_user")).each(function () {
 //    $(this).mouseover(function () {
@@ -45,7 +45,7 @@
 //    });
 //});
 
-//多个下拉框填充相同数据时,一次获取,一次赋值!
+//----------------多个下拉框填充相同数据时,一次获取,一次赋值!--------------
 //var sfJSON;
 //$(function () {
 //    $.post('../Handler/GlobeHandler.ashx?action=GetSF', function (result) {
@@ -61,3 +61,29 @@
 //    }); 
 //    $('#a,#b,#c,#d,#e,#f,#g,#h').combobox('loadData', sfJSON);
 //});
+
+//-------------------------------------ajax方法-------------------------------
+//function GetDataByAJAX(url, onSuccess) {
+//    $.ajax({
+//        type: "POST",
+//        url: url,
+//        dataType: 'json',
+//        async: false,
+//        error: function () {//请求失败处理函数
+//            $.messager.alert('错误', '请求失败!', 'error');
+//        },
+//        success: function (result) {
+//            onSuccess(result);
+//        }
+//    });
+//}
+//调用示例
+//function Init() {
+//    $('#divDG').hide();
+//    ControlCombox(0);
+//    var url = '../Handler/ZXTDZBHandler.ashx?action=GetAllSysName';
+//    GetDataByAJAX(url, function (result) {
+//        result.splice(0, 0, all);
+//        $('#sysName').combobox('loadData', result);
+//    });
+//}

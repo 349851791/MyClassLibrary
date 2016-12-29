@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="JS/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+    <link href="JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="JS/EasyUI/jquery.min.js"></script>
+    <script src="JS/EasyUI/jquery.easyui.min.js"></script>
+    <link href="CSS/Index.css" rel="stylesheet" />
+    <script src="JS/Global/Index.js"></script>
+    <script src="JS/Global/json2.js"></script>
+    <title>DemoEasyUI</title>
+    <script type="text/javascript">
+        function testAll()
+        {
+            $('#cc').layout('expand', 'south');
+            $('#layoutsSouth').panel({
+                maximized: true
+            });
+        }
+        function testFixed() {
+            $('#layoutsSouth').panel('restore').panel('resize',{ 
+                height: 400
+            }); 
+        }
+    </script>
+</head>
+
+<body class="easyui-layout">
+    <div data-options="region:'north',split:false" style="height:100px;">
+        <div id="topDiv">
+            <div style="margin-left: 20px;">TLW--ClassLibraries</div> 
+            <input type="button" value="占满全格" onclick="testAll()" />
+
+            <input type="button" value="恢复高度" onclick="testFixed()" />
+        </div>
+    </div>
+    <div id="layoutMenus" data-options="region:'west',title:'菜单',split:true" style="width:200px;padding:1px">
+        <div id="accordionMenu" class="easyui-accordion" data-options="fit:true" style="width:100%;">
+        </div>
+    </div>
+    <div id="layoutContnet" data-options="region:'center',title:'欢迎'" style="padding:1px; overflow:visible">
+        <div id="cc"  class="easyui-layout" data-options="fit:true"> 
+            <div data-options="region:'center'"> 
+            </div>
+            <div id="layoutsSouth" data-options="region:'south',title:'South Title',collapsed:true" style="height:100px;">
+                wawawawa
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="winTest" class="easyui-window" style="position: relative;" closed="true"
+         data-options="iconCls:'icon-edit',modal:true,minimizable:true,maximizable:true"></div>
+</body>
+</html>

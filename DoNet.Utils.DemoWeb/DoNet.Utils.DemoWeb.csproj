@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -84,6 +85,7 @@
     <Content Include="Images\leftTree\6.png" />
     <Content Include="Images\leftTree\7.png" />
     <Content Include="Images\photoDefault.jpg" />
+    <Content Include="Index_demo.html" />
     <Content Include="JS\DicHTML\DicEdit.js" />
     <Content Include="JS\DicHTML\DicSelect.js" />
     <Content Include="JS\EasyUI\themes\black\accordion.css" />
@@ -524,7 +526,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8769</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:9874</IISUrl>
+          <IISUrl>http://localhost:1368/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
