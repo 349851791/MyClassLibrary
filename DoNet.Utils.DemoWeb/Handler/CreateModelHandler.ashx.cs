@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Web;
 
 namespace DoNet.Utils.DemoWeb.Handler
@@ -13,7 +14,7 @@ namespace DoNet.Utils.DemoWeb.Handler
     /// <summary>
     /// CreateModelHandler 的摘要说明
     /// </summary>
-    public class CreateModelHandler : IHttpHandler
+    public class CreateModelHandler : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
         CRUDHelper<object> crudHelper;
         public void ProcessRequest(HttpContext context)
@@ -48,8 +49,9 @@ namespace DoNet.Utils.DemoWeb.Handler
                 string orclname = context.Request.Params["orclname"];
                 string strConnection = $"Data Source={orclname};Persist Security Info=True;User={username};Password={userpsd};Unicode=True";
                 string strType = "Oracle";
-                globalVar.strConnection = strConnection;
-                globalVar.strType = strType;
+
+                HttpContext.Current.Session["strConnection"] = strConnection;
+                HttpContext.Current.Session["strType"] = strType;
             }
             catch (Exception ex)
             {
@@ -67,7 +69,8 @@ namespace DoNet.Utils.DemoWeb.Handler
         /// <returns></returns>
         private string GetTableByDataBase(HttpContext context)
         {
-            crudHelper = new CRUDHelper<object>(globalVar.strConnection, globalVar.strType); 
+            crudHelper = new CRUDHelper<object>(HttpContext.Current.Session["strConnection"]?.ToString(), HttpContext.Current.Session["strType"]?.ToString());
+            // crudHelper = new CRUDHelper<object>(globalVar.strConnection, globalVar.strType); 
             int page = Convert.ToInt32(context.Request.Params["page"]);
             int rows = Convert.ToInt32(context.Request.Params["rows"]);  
             return crudHelper.SelectPageToJSONBySQL("user_tab_comments", page, rows, "TABLE_NAME");
@@ -82,7 +85,7 @@ namespace DoNet.Utils.DemoWeb.Handler
         {
             try
             {
-                crudHelper = new CRUDHelper<object>(globalVar.strConnection, globalVar.strType);
+                crudHelper = new CRUDHelper<object>(HttpContext.Current.Session["strConnection"]?.ToString(), HttpContext.Current.Session["strType"]?.ToString());
                 string table = context.Request.Params["table"];
                 Array arr = table.Split(',');
                 string currentPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "WebForms\\CreateModel\\ModelFile";
@@ -96,13 +99,14 @@ namespace DoNet.Utils.DemoWeb.Handler
                 {
                     string sql = $"select t.column_name names,t.comments,u.DATA_TYPE types from user_col_comments t join user_tab_cols u on t.column_name=u.COLUMN_NAME where t.table_name='{item}' and u.TABLE_NAME='{item}' order by u.INTERNAL_COLUMN_ID";
                     DataTable data = crudHelper.SelectBySQL(sql);
-                    string className = item.ToUpper().Substring(0, 1) + item.ToLower().Substring(1);
-                    string classStr = string.Empty;
+                    string className = item.ToUpper();
+                    StringBuilder classStr = new StringBuilder();
                     bool isIdentity = true;
-                    classStr += " using System;\n";
-                    classStr += " namespace Models\n{\n";
-                    classStr += "  /// <summary>\n/// 用户表\n/// </summary>\n";
-                    classStr += "  public  class " + className + "\n{\n";
+                    classStr.Append(" using DotNet.Utils;\n");
+                    classStr.Append(" using System;\n");
+                    classStr.Append(" namespace Models\n{\n");
+                    classStr.Append("  /// <summary>\n/// 用户表\n/// </summary>\n");
+                    classStr.Append("  public  class " + className + "\n{\n");
 
                     foreach (DataRow dr in data?.Rows)
                     {
@@ -112,22 +116,22 @@ namespace DoNet.Utils.DemoWeb.Handler
                             types = dr["TYPES"].ToString(),
                             comments = dr["COMMENTS"].ToString()
                         };
-                        classStr += "  /// <summary>\n/// " + tt.comments + "\n/// </summary>\n";
+                        classStr.Append("  /// <summary>\n/// " + tt.comments + "\n/// </summary>\n");
                         if (isIdentity)
                         {
-                            classStr += "[Column(Identity =true)]\n";
+                            classStr.Append("[Column(Identity =true)]\n");
                             isIdentity = false;
                         }
-                        classStr += "  public  " + GetModelType(tt.types) + tt.names + " { get; set; }\n\n";
+                        classStr.Append("  public  " + GetModelType(tt.types) + tt.names + " { get; set; }\n\n");
                     }
-                    classStr += " }\n}\n";
+                    classStr.Append(" }\n");
+                    classStr.Append("public class "+ className + "Manage : CRUDHelper<"+ className + ">\n{ \n}\n"); 
+                    classStr.Append(" }\n"); 
                     string path = currentPath + "\\" + className + ".cs";
-                    FileHelper.Write(path, classStr);
+                    FileHelper.Write(path, classStr.ToString());
                 }
                 string err = "";
                 bool bZip = ZipHelper.ZipFile(currentPath, currentPath + "\\Model.Zip", out err);
-                globalVar.strConnection = "";
-                globalVar.strType = "";
                 if (bZip)
                 {
                     return "1";

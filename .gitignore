@@ -1,0 +1,10 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/DotNet.Utils/bin/Debug
+/DotNet.Utils/Fakes
+/DotNet.Utils/FakesAssemblies
+/DotNet.Utils/obj/Debug
+/DoNet.Utils.DemoWeb/bin
+/DoNet.Utils.DemoWeb/Log

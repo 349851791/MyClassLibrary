@@ -3,11 +3,6 @@
   <PropertyGroup>
     <NameOfLastUsedPublishProfile>TLWClassLibraries</NameOfLastUsedPublishProfile>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
