@@ -8,8 +8,8 @@
 //$.post('url',{"参数名":"参数值"}, function (result) {
 //}); 
 
-//打开只有内容窗口的
-//window.open(url, "", "resizable=yes,status=yes,menubar=yes,scrollbars=yes,width=600,height=400", false);
+//全屏打开只有内容窗口的
+// window.open(url,title, 'width=' + (window.screen.availWidth - 10) + ',height=' + (window.screen.availHeight - 30) + ',top=0,left=0,resizable=yes,status=yes,menubar=no,scrollbars=yes');
 
 //标签附加移除属性
 // $("#test").attr("disabled", "disabled");
