@@ -397,6 +397,7 @@
     <Content Include="packages.config" />
     <Content Include="Handler\GlobalHandler.ashx" />
     <Content Include="Handler\UsersHandler.ashx" />
+    <Content Include="WebForms\ASPDemo\GetIP.aspx" />
     <Content Include="WebForms\CreateModel\ByORCL.html" />
     <Content Include="WebForms\DicHTML\DicEdit.html" />
     <Content Include="WebForms\DicHTML\DicSelect.html" />
@@ -469,6 +470,13 @@
       <DependentUpon>UsersHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\ASPDemo\GetIP.aspx.cs">
+      <DependentUpon>GetIP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\ASPDemo\GetIP.aspx.designer.cs">
+      <DependentUpon>GetIP.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\ModuleDemo\easyui多级表头和导出excel\easyui_datagrid_group.ashx.cs">
       <DependentUpon>easyui_datagrid_group.ashx</DependentUpon>
     </Compile>
