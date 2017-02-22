@@ -409,20 +409,20 @@
     <Content Include="WebForms\03_FrontDemo\图片上一闪而过的光.html" />
     <Content Include="WebForms\03_FrontDemo\浮动在最上方的层-Demo.html" />
     <Content Include="WebForms\03_FrontDemo\浮动在最上方的层-实例.html" />
-    <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\多级表头和excel导出.html" />
-    <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export_原版.js" />
-    <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export.aspx" />
-    <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export.js" />
-    <Content Include="WebForms\ModuleDemo\GetTableContent.html" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\dll\.net 2.0\Ionic.Zip.dll" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\dll\.net 2.0\NPOI.dll" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\dll\.net 2.0\NPOI.XML" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\dll\.net 4.0\Ionic.Zip.dll" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\dll\.net 4.0\NPOI.dll" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\dll\.net 4.0\NPOI.XML" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.html" />
-    <Content Include="WebForms\ModuleDemo\PartPrint.html" />
-    <Content Include="WebForms\ModuleDemo\上传\Upload.html" />
+    <Content Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\多级表头和excel导出.html" />
+    <Content Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\export_原版.js" />
+    <Content Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\export.aspx" />
+    <Content Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\export.js" />
+    <Content Include="WebForms\04_ModuleDemo\GetTableContent.html" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\dll\.net 2.0\Ionic.Zip.dll" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\dll\.net 2.0\NPOI.dll" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\dll\.net 2.0\NPOI.XML" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\dll\.net 4.0\Ionic.Zip.dll" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\dll\.net 4.0\NPOI.dll" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\dll\.net 4.0\NPOI.XML" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.html" />
+    <Content Include="WebForms\04_ModuleDemo\PartPrint.html" />
+    <Content Include="WebForms\04_ModuleDemo\上传\Upload.html" />
     <Content Include="WebForms\01_ObjectHTML\AssistSelect.html" />
     <Content Include="WebForms\01_ObjectHTML\UserEdit.html" />
     <Content Include="Handler\CreateModelHandler.ashx" />
@@ -436,11 +436,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="WebForms\ModuleDemo\上传\UploadHandler.ashx" />
-    <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\easyui_datagrid_group.ashx" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\abc.json" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.ashx" />
-    <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\监测表（第一批）.XLS" />
+    <Content Include="WebForms\04_ModuleDemo\上传\UploadHandler.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\easyui_datagrid_group.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\abc.json" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\监测表（第一批）.XLS" />
     <Content Include="WebForms\05_UtilsDemo\UtilsDemoHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
@@ -479,20 +479,20 @@
     <Compile Include="WebForms\06_ASPDemo\GetIP.aspx.designer.cs">
       <DependentUpon>GetIP.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\ModuleDemo\easyui多级表头和导出excel\easyui_datagrid_group.ashx.cs">
+    <Compile Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\easyui_datagrid_group.ashx.cs">
       <DependentUpon>easyui_datagrid_group.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export.aspx.cs">
+    <Compile Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\export.aspx.cs">
       <DependentUpon>export.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export.aspx.designer.cs">
+    <Compile Include="WebForms\04_ModuleDemo\easyui多级表头和导出excel\export.aspx.designer.cs">
       <DependentUpon>export.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.ashx.cs">
+    <Compile Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.ashx.cs">
       <DependentUpon>NPOI_DEMO.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\ModuleDemo\上传\UploadHandler.ashx.cs">
+    <Compile Include="WebForms\04_ModuleDemo\上传\UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\05_UtilsDemo\UtilsDemoHandler.ashx.cs">

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="../../../JS/EasyUI/themes/Bootstrap/easyui.css" rel="stylesheet" />
+    <link href="../../../JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="../../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        function getFullPath(obj) {
+            if (obj) {
+                //ie
+                if (window.navigator.userAgent.indexOf("MSIE") >= 1) {
+                    obj.select();
+                    return document.selection.createRange().text;
+                }
+                    //firefox
+                else if (window.navigator.userAgent.indexOf("Firefox") >= 1) {
+                    if (obj.files) {
+                        return window.URL.createObjectURL(obj.files[0]);// obj.files.item(0).getAsDataURL();
+                    }
+                    return obj.value;
+                }
+                return obj.value;
+            }
+        }
+
+
+        //提交按钮
+        function SubmitData() {
+            $.messager.progress();
+            $('#myForm').form('submit', {
+                url: 'UploadHandler.ashx?action=upload',
+                type: "post",
+                success: function (result) {
+                    if (result == '1') {
+                        $.messager.alert('提示', '提交成功!');
+                        $('#dg').datagrid('reload');
+                        win_close();
+                    } else {
+                        $.messager.alert('提示', '失败,请重新提交!');
+                    }
+                }
+            });
+            $.messager.progress('close');
+        }
+
+    </script>
+</head>
+<body>
+    <form id="myForm" method="post"  enctype="multipart/form-data">
+        <img id="img" style="width:130px;height:180px;border:1px solid #D4D4D6" src="Images/photoDefault.jpg" /><br />
+        <input id="phono" name="phono" type="file" onchange="document.getElementById('img').src=getFullPath(this);" style="height: 30px; line-height: 26px;" />
+        <a id="btnInsert" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="SubmitData()">保存</a>
+    </form>
+</body>
+</html>
