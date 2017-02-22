@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace DotNet.Utils.Models
 {
     /// <summary>
     /// 用户表
-    /// </summary>
-   public  class Users
+    /// </summary> 
+    public class Users
     {
         /// <summary>
         /// 标识列
