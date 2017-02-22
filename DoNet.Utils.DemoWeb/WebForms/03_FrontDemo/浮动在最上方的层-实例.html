@@ -1,0 +1,594 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../JS/EasyUI/themes/Bootstrap/easyui.css" rel="stylesheet" />
+    <link href="../../JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <style>
+        #edit_container {
+            background-color: #EDEEF0;
+            margin-left: -500px;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 1000px;
+            font-size: 14px;
+            font-family: 微软雅黑;
+        }
+
+        .tMain {
+            margin: 10px;
+            width: 780px;
+            float: right;
+        }
+
+        .BT {
+            border-bottom: #e8e8e6 1px solid;
+            height: 20px;
+            line-height: 20px;
+            zoom: 1;
+            width: 100%;
+        }
+
+        /*表格样式*/
+        .myTable {
+            margin-top: 15px;
+            width: 100%;
+            background-color: #fff9f3;
+            border: 1px solid #D4D4D6;
+            border-top: 0px;
+        }
+
+            .myTable td {
+                padding: 5px 8px;
+            }
+
+            .myTable tr {
+                height: 45px;
+            }
+
+        /*表单中的文本框样式*/
+        .myInput_edit {
+            width: 99%;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #B1B1B1;
+            font-size: 14px;
+            font-family: 微软雅黑;
+            background: #FFF url(../../Images/inputbg.png) top repeat-x;
+        }
+
+        .myArea {
+            width: 100%;
+            border: 1px solid #B1B1B1;
+            font-size: 14px;
+            font-family: 微软雅黑;
+            background: #FFF url(../../Images/inputbg.png) top repeat-x;
+            overflow: auto;
+        }
+
+        .mySelect {
+            padding: 4px 0;
+            width: 100%;
+            height: 33px;
+            line-height: 33px;
+            border: 1px solid #B1B1B1;
+            font-size: 14px;
+            font-family: 微软雅黑;
+            background: #FFF url(../../Images/inputbg.png) top repeat-x;
+        }
+
+
+        /*左侧目录树*/
+
+        .tLeft {
+            margin: 10px;
+            margin-right: 0px;
+            float: left;
+            width: 190px;
+        }
+
+        .LeftContent {
+            height: 300px;
+            margin-top: 0px;
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #D4D4D6;
+        }
+
+        #leftTable {
+            list-style: none;
+            width: 100%;
+        }
+
+            #leftTable td {
+                cursor: pointer;
+                margin: 5px;
+                font-size: 16px;
+                color: #6c6c6c;
+                width: 100%;
+                text-align: center;
+            }
+
+
+                #leftTable td:link {
+                    color: #6c6c6c;
+                }
+
+                #leftTable td:hover {
+                    color: #ff7300;
+                    text-decoration: none;
+                    background-color: #F8F8F8;
+                }
+
+                #leftTable td a:visited {
+                    color: #6c6c6c;
+                    text-decoration: none;
+                }
+
+                #leftTable td a:link {
+                    text-decoration: none;
+                    color: #6c6c6c;
+                }
+
+                #leftTable td a:hover {
+                    color: #ff7300;
+                    text-decoration: none;
+                }
+
+        /*左侧悬浮效果*/
+        .header-wrap {
+            width: 100%;
+        }
+
+        .header-bd {
+            width: 190px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: green;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            function adsorption() {
+                var headerWrap = document.getElementById('header-wrap');
+                var scrollTop = 0;
+                window.onscroll = function () {
+                    scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                    if (scrollTop > 1) {
+                        headerWrap.className = 'fixed';
+                    } else {
+                        headerWrap.className = 'header-wrap';
+                    }
+                }
+            }
+            adsorption();
+        }
+
+        $(function () {
+            $("input[type='text']", $("#grxx,#hyxx,#gzxx,#dyxx,#xlxx")).addClass("myInput_edit");
+
+            $('#SR_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("SR").value = $('#SR_date').datebox('getValue');
+                }
+            });
+            $('#RMZZSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("RMZZSJ").value = $('#RMZZSJ_date').datebox('getValue');
+                }
+            });
+            $('#RMFZSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("RMFZSJ").value = $('#RMFZSJ_date').datebox('getValue');
+                }
+            });
+            $('#CJTZSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("CJTZSJ").value = $('#CJTZSJ_date').datebox('getValue');
+                }
+            });
+            $('#DRGTJSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("DRGTJSJ").value = $('#DRGTJSJ_date').datebox('getValue');
+                }
+            });
+            $('#LGSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("LGSJ").value = $('#LGSJ_date').datebox('getValue');
+                }
+            });
+            $('#TXSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("TXSJ").value = $('#TXSJ_date').datebox('getValue');
+                }
+            });
+            $('#RDSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("RDSJ").value = $('#RDSJ_date').datebox('getValue');
+                }
+            });
+            $('#DYXLHDSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("DYXLHDSJ").value = $('#DYXLHDSJ_date').datebox('getValue');
+                }
+            });
+            $('#ZGXLHDSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("ZGXLHDSJ").value = $('#ZGXLHDSJ_date').datebox('getValue');
+                }
+            });
+            $('#ZYZCHDSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("ZYZCHDSJ").value = $('#ZYZCHDSJ_date').datebox('getValue');
+                }
+            });
+            $('#ZYZCPYSJ_date').datebox({
+                onSelect: function (date) {
+                    document.getElementById("ZYZCPYSJ").value = $('#ZYZCPYSJ_date').datebox('getValue');
+                }
+            });
+            document.getElementById("SR").readOnly = "readOnly";
+            document.getElementById("RMZZSJ").readOnly = "readOnly";
+            document.getElementById("RMFZSJ").readOnly = "readOnly";
+            document.getElementById("CJTZSJ").readOnly = "readOnly";
+            document.getElementById("DRGTJSJ").readOnly = "readOnly";
+            document.getElementById("LGSJ").readOnly = "readOnly";
+            document.getElementById("TXSJ").readOnly = "readOnly";
+            document.getElementById("RDSJ").readOnly = "readOnly";
+            document.getElementById("DYXLHDSJ").readOnly = "readOnly";
+            document.getElementById("ZGXLHDSJ").readOnly = "readOnly";
+            document.getElementById("ZYZCHDSJ").readOnly = "readOnly";
+            document.getElementById("ZYZCPYSJ").readOnly = "readOnly";
+
+            var sfrd = document.getElementById("SFRD").value;
+            if (!sfrd == "是") {
+                document.getElementById("RDJSR").disabled = "disabled";
+                document.getElementById("RDJSR").style.background = "#F0F0F0";
+                document.getElementById("RDSJ").disabled = "disabled";
+                document.getElementById("RDSJ").style.background = "#F0F0F0";
+                document.getElementById("RDDD").disabled = "disabled";
+                document.getElementById("RDDD").style.background = "#F0F0F0";
+                $('#RDSJ_date').datebox({
+                    disabled: true
+                });
+            }
+        });
+
+
+
+
+
+
+        //是否入党
+        function sfrd(obj) {
+            if (obj.value == "是") {
+                document.getElementById("RDJSR").disabled = "";
+                document.getElementById("RDJSR").style.background = "#FFF url(../../Images/inputbg.png) top repeat-x";
+                document.getElementById("RDSJ").disabled = "";
+                document.getElementById("RDSJ").style.background = "#FFF url(../../Images/inputbg.png) top repeat-x";
+                document.getElementById("RDDD").disabled = "";
+                document.getElementById("RDDD").style.background = "#FFF url(../../Images/inputbg.png) top repeat-x";
+                $('#RDSJ_date').datebox({
+                    disabled: false
+                });
+            }
+            else {
+                document.getElementById("RDJSR").disabled = "disabled";
+                document.getElementById("RDJSR").style.background = "#F0F0F0";
+                document.getElementById("RDSJ").disabled = "disabled";
+                document.getElementById("RDSJ").style.background = "#F0F0F0";
+                document.getElementById("RDDD").disabled = "disabled";
+                document.getElementById("RDDD").style.background = "#F0F0F0";
+                $('#RDSJ_date').datebox({
+                    disabled: true
+                });
+                document.getElementById("RDJSR").value = "";
+                document.getElementById("RDSJ").value = "";
+                document.getElementById("RDDD").value = "";
+            }
+        }
+
+        function getFullPath(obj) {
+            if (obj) {
+                //ie
+                if (window.navigator.userAgent.indexOf("MSIE") >= 1) {
+                    obj.select();
+                    return document.selection.createRange().text;
+                }
+                    //firefox
+                else if (window.navigator.userAgent.indexOf("Firefox") >= 1) {
+                    if (obj.files) {
+                        return obj.files.item(0).getAsDataURL();
+                    }
+                    return obj.value;
+                }
+                return obj.value;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="myForm" method="post" enctype="multipart/form-data">
+        <div id="edit_container">
+            <div class="tLeft">
+                <div id="header-wrap" class="header-wrap">
+                    <div class="header-bd">
+                        <table id="leftTable" class="LeftContent" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td><a href="#grxx">个人信息</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#hyxx">婚姻信息</a></td>
+                            <tr>
+                                <td><a href="#gzxx">工作信息</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#dyxx">党员信息</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#xlxx">学历信息</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#ryxx">荣誉信息</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#jlxx">简历</a></td>
+                            </tr>
+                            <tr>
+                                <td><a id="btnInsert" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="SubmitData()">保存</a></td>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="tMain">
+                <!--个人信息-->
+                <table id="grxx" name="grxx" class="myTable" style="margin-top:0px;">
+                    <tr style="height:30px">
+                        <td class="BT" colspan="4" valign="bottom">个人信息</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">姓名<span style="color:red;margin-left:5px">*</span></td>
+                        <td width="35%" align="left"><input id="XM" name="XM" /></td>
+                        <td width="50%" colspan="2" rowspan="6" align="center" valign="top">
+                            <img id="img" style="width:130px;height:180px;border:1px solid #D4D4D6" src="../../Images/photoDefault.jpg" /><br />
+                            <input id="phono" name="phono" type="file" onchange="document.getElementById('img').src=getFullPath(this);" style="height: 30px; line-height: 26px;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">身份证号<span style="color:red;margin-left:5px">*</span></td>
+                        <td align="left"><input id="SFZH" name="SFZH" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right">出生日期<span style="color:red;margin-left:5px">*</span></td>
+                        <td align="left">
+                            <input id="SR" name="SR" style="width:88%" />
+                            <input class="easyui-datebox" id="SR_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">性别<span style="color:red;margin-left:5px">*</span></td>
+                        <td align="left">
+                            <select id="XB" name="XB" class="mySelect">
+                                <option value="男" selected="selected">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">民族</td>
+                        <td align="left"><input id="MZ" name="MZ" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right">籍贯 </td>
+                        <td align="left"><input id="JG" name="JG" /></td>
+                    </tr>
+                </table>
+                <!--婚姻信息-->
+                <table id="hyxx" name="hyxx" class="myTable">
+                    <tr style="height:30px">
+                        <td class="BT" colspan="4" valign="bottom">婚姻信息</td>
+                    </tr>
+                    <tr>
+                        <td align="right">婚姻状况</td>
+                        <td align="left">
+                            <select id="HYZK" name="HYZK" class="mySelect">
+                                <option value="未婚" selected="selected">未婚</option>
+                                <option value="已婚">已婚</option>
+                                <option value="离婚">离婚</option>
+                                <option value="丧偶">丧偶</option>
+                            </select>
+                        </td>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">配偶姓名</td>
+                        <td width="35%" align="left"><input id="POXM" name="POXM" /></td>
+                        <td width="15%" align="right">配偶工作单位</td>
+                        <td width="35%" align="left"><input id="POGZDW" name="POGZDW" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right">是否生育</td>
+                        <td align="left">
+                            <select id="SFSY" name="SFSY" class="mySelect">
+                                <option value="是" selected="selected">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </td>
+                        <td align="right">子女数量</td>
+                        <td align="left"><input id="ZVSL" name="ZVSL" /></td>
+                    </tr>
+                </table>
+                <!--工作信息-->
+                <table id="gzxx" name="gzxx" class="myTable">
+                    <tr style="height:30px">
+                        <td class="BT" colspan="4" valign="bottom">工作信息</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">所在部门</td>
+                        <td width="35%" align="left"><input id="SZBM" name="SZBM" /></td>
+                        <td width="50%" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">现任职务</td>
+                        <td width="35%" align="left"><input id="XRZW" name="XRZW" /></td>
+                        <td width="15%" align="right">编制情况</td>
+                        <td width="35%" align="left"><input id="BRBZQK" name="BRBZQK" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right">任命正职时间</td>
+                        <td align="left">
+                            <input id="RMZZSJ" name="RMZZSJ" style="width:88%" />
+                            <input class="easyui-datebox" id="RMZZSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                        <td align="right">任命副职时间</td>
+                        <td align="left">
+                            <input id="RMFZSJ" name="RMFZSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="RMFZSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">参加工作时间</td>
+                        <td align="left">
+                            <input id="CJTZSJ" name="CJTZSJ" style="width:88%" />
+                            <input class="easyui-datebox" id="CJTZSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                        <td align="right" style="padding-left:0px">调入国土局时间</td>
+                        <td align="left">
+                            <input id="DRGTJSJ" name="DRGTJSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="DRGTJSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">离岗时间<br /><span style="font-size:11px;color:red">(离岗人员填写)</span></td>
+                        <td align="left">
+                            <input id="LGSJ" name="LGSJ" style="width:88%" />
+                            <input class="easyui-datebox" id="LGSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                        <td align="right" style="padding-left:0px">
+                            退休时间<br /><span style="font-size:11px;color:red">(正式退休人员填写)</span>
+                        </td>
+                        <td align="left">
+                            <input id="TXSJ" name="TXSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="TXSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                </table>
+                <!--党员信息-->
+                <table id="dyxx" name="dyxx" class="myTable">
+                    <tr style="height:30px">
+                        <td class="BT" colspan="4" valign="bottom">党员信息</td>
+                    </tr>
+                    <tr>
+                        <td align="right">是否党员</td>
+                        <td align="left">
+                            <select id="SFRD" name="SFRD" class="mySelect" onchange="sfrd(this)">
+                                <option value="是">是</option>
+                                <option value="否" selected="selected">否</option>
+                            </select>
+                        </td>
+                        <td align="right">入党介绍人</td>
+                        <td align="left"><input id="RDJSR" name="RDJSR" /></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">入党时间</td>
+                        <td width="35%" align="left">
+                            <input id="RDSJ" name="RDSJ" style="width:88%" />
+                            <input class="easyui-datebox" id="RDSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                        <td width="15%" align="right">入党地点</td>
+                        <td width="35%" align="left"><input id="RDDD" name="RDDD" /></td>
+                    </tr>
+                </table>
+                <!--学历信息-->
+                <table id="xlxx" name="xlxx" class="myTable">
+                    <tr style="height:30px">
+                        <td class="BT" colspan="4" valign="bottom">学历信息</td>
+                    </tr>
+                    <tr>
+                        <td align="right">学历</td>
+                        <td align="left"><input id="XL" name="XL" /></td>
+                        <td align="right">第一学历</td>
+                        <td align="left"><input id="DYYL" name="DYYL" /></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">第一学历专业</td>
+                        <td width="35%" align="left"><input id="DYXLZY" name="DYXLZY" /></td>
+                        <td width="15%" align="right">第一学历<br />获得时间</td>
+                        <td width="35%" align="left">
+                            <input id="DYXLHDSJ" name="DYXLHDSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="DYXLHDSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">最高学历</td>
+                        <td width="35%" align="left"><input id="ZGXL" name="ZGXL" /></td>
+                        <td width="15%" align="right">最高学历<br />获得时间</td>
+                        <td width="35%" align="left">
+                            <input id="ZGXLHDSJ" name="ZGXLHDSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="ZGXLHDSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">最高学历<br />毕业院校</td>
+                        <td width="35%" align="left"><input id="ZGXLBYYX" name="ZGXLBYYX" /></td>
+                        <td width="15%" align="right">专业职称名称</td>
+                        <td width="35%" align="left"><input id="ZYZCMC" name="ZYZCMC" /></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" align="right">专业职称<br />获得时间</td>
+                        <td width="35%" align="left">
+                            <input id="ZYZCHDSJ" name="ZYZCHDSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="ZYZCHDSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                        <td width="15%" align="right">专业职称<br />聘用时间</td>
+                        <td width="35%" align="left">
+                            <input id="ZYZCPYSJ" name="ZYZCPYSJ" style="width:87%" />
+                            <input class="easyui-datebox" id="ZYZCPYSJ_date" editable="false" style="width:20px;height:20px;line-height:20px" />
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="ryxx" name="ryxx" class="myTable">
+                    <tr style="height:30px">
+                        <td class="BT" valign="bottom">获得荣誉情况介绍</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea class="myArea" rows="5" id="HDRYQKJS" name="HDRYQKJS"></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="jlxx" name="jlxx" class="myTable">
+                    <tr style="height:30px">
+                        <td class="BT" valign="bottom" colspan="2">简历</td>
+                    </tr>
+                    <tr style="height:20px">
+                        <td>
+                            <a id="jl" style="width:20%;display:none" target="_blank">个人简历预览</a>
+                        </td>
+                        <td>
+                            <input id="resume" name="resume" type="file" style="width: 100%; height: 30px; line-height: 26px;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <input type="hidden" id="ID" name="ID" />
+    </form>
+</body>
+</html>

@@ -404,11 +404,11 @@
     <Content Include="WebForms\02_DicHTML\DicEdit.html" />
     <Content Include="WebForms\02_DicHTML\DicSelect.html" />
     <Content Include="WebForms\02_DicHTML\Edit.html" />
-    <Content Include="WebForms\FrontDemo\easyUI子窗体中弹出全屏win控件.html" />
-    <Content Include="WebForms\FrontDemo\云端上\云端上.html" />
-    <Content Include="WebForms\FrontDemo\图片上一闪而过的光.html" />
-    <Content Include="WebForms\FrontDemo\浮动在最上方的层-Demo.html" />
-    <Content Include="WebForms\FrontDemo\浮动在最上方的层-实例.html" />
+    <Content Include="WebForms\03_FrontDemo\easyUI子窗体中弹出全屏win控件.html" />
+    <Content Include="WebForms\03_FrontDemo\云端上\云端上.html" />
+    <Content Include="WebForms\03_FrontDemo\图片上一闪而过的光.html" />
+    <Content Include="WebForms\03_FrontDemo\浮动在最上方的层-Demo.html" />
+    <Content Include="WebForms\03_FrontDemo\浮动在最上方的层-实例.html" />
     <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\多级表头和excel导出.html" />
     <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export_原版.js" />
     <Content Include="WebForms\ModuleDemo\easyui多级表头和导出excel\export.aspx" />
@@ -509,8 +509,8 @@
   <ItemGroup>
     <Folder Include="JS\EasyUI\plugins\" />
     <Folder Include="JS\EasyUI\src\" />
-    <Folder Include="WebForms\FrontDemo\云端上\images\" />
-    <Folder Include="WebForms\FrontDemo\云端上\js\" />
+    <Folder Include="WebForms\03_FrontDemo\云端上\images\" />
+    <Folder Include="WebForms\03_FrontDemo\云端上\js\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNet.Utils.DLL\DotNet.Utils.DLL.csproj">
