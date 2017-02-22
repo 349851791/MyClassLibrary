@@ -401,9 +401,9 @@
     <Content Include="WebForms\06_ASPDemo\GetIP.aspx" />
     <Content Include="WebForms\06_ASPDemo\LinqDemo.aspx" />
     <Content Include="WebForms\CreateModel\ByORCL.html" />
-    <Content Include="WebForms\DicHTML\DicEdit.html" />
-    <Content Include="WebForms\DicHTML\DicSelect.html" />
-    <Content Include="WebForms\DicHTML\Edit.html" />
+    <Content Include="WebForms\02_DicHTML\DicEdit.html" />
+    <Content Include="WebForms\02_DicHTML\DicSelect.html" />
+    <Content Include="WebForms\02_DicHTML\Edit.html" />
     <Content Include="WebForms\FrontDemo\easyUI子窗体中弹出全屏win控件.html" />
     <Content Include="WebForms\FrontDemo\云端上\云端上.html" />
     <Content Include="WebForms\FrontDemo\图片上一闪而过的光.html" />
