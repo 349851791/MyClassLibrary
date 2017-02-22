@@ -219,4 +219,8 @@
 .icon-lefttree-asp {  
     background: url('../../../Images/leftTree/8.png') no-repeat center center;
 }
+.icon-lefttree-linq {  
+    background: url('../../../Images/leftTree/linq.png') no-repeat center center;
+    background-size:16px 16px;
+}
  
