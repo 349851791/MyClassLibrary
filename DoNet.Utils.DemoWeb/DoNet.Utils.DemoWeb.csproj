@@ -423,8 +423,8 @@
     <Content Include="WebForms\ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.html" />
     <Content Include="WebForms\ModuleDemo\PartPrint.html" />
     <Content Include="WebForms\ModuleDemo\上传\Upload.html" />
-    <Content Include="WebForms\ObjectHTML\AssistSelect.html" />
-    <Content Include="WebForms\ObjectHTML\UserEdit.html" />
+    <Content Include="WebForms\01_ObjectHTML\AssistSelect.html" />
+    <Content Include="WebForms\01_ObjectHTML\UserEdit.html" />
     <Content Include="Handler\CreateModelHandler.ashx" />
     <Content Include="Handler\DepartmentsHandler.ashx" />
     <Content Include="WebForms\UtilsDemo\EnumDemo.html" />
@@ -455,8 +455,8 @@
     <Content Include="JS\Global\json2.js" />
     <Content Include="Trees.html" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\ObjectHTML\ObjectEdit.html" />
-    <Content Include="WebForms\ObjectHTML\ObjectSelect.html" />
+    <Content Include="WebForms\01_ObjectHTML\ObjectEdit.html" />
+    <Content Include="WebForms\01_ObjectHTML\ObjectSelect.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handler\CreateModelHandler.ashx.cs">
