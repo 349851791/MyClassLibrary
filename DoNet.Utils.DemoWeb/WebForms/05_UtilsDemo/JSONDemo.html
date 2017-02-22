@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../../JS/EasyUI/jquery.min.js"></script>
+    <link href="../../CSS/Index.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $.post('UtilsDemoHandler.ashx?action=JsonDemo', function (result) {
+                if (result.length > 1) {
+                     
+                } else {
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <pre>
+    <span class="BT">对象转JSON</span>
+        Users u1 = new Users() { ID = 9999, USERNAME = "测试人员", DUTY = "科长", SEX = "男" };
+        string result1 =<span class="CodeHighlighter"> JSONHelper.ObjectToJson(u1);</span>
+        结果:{"ID":9999,"USERNAME":"测试人员","DUTY":"科长","SEX":"男"}
+
+    <span class="BT">JSON转对象</span>
+        string str2 = "{'Id':9999,'USERNAME':'测试人员','DUTY': '科长','SEX':'男'}";
+        Users u2 =<span class="CodeHighlighter"> JSONHelper.JsonToObject<Users>(str2);</span>
+        结果:u2.USERNAME="测试人员";
+
+    <span class="BT">集合转JSON</span>
+        List<Users> list3 = new List<Users>() {
+            new Users() {ID = 1111, USERNAME = "测试人员1", DUTY = "科长", SEX = "男" },
+            new Users() {ID = 8888, USERNAME = "测试人员2", DUTY = "副科长", SEX = "女" }
+        };
+        var Data3 = new { rows = list3.Count, List = list3 };
+        string result3 = <span class="CodeHighlighter">JSONHelper.ObjectToJson(Data3);</span>
+        结果:{"rows":2,"List":[{"ID":1111,"USERNAME":"测试人员1","DUTY":"科长","SEX":"男"},{"ID":8888,"USERNAME":"测试人员2","DUTY":"副科长","SEX":"女"}]}
+        
+    <span class="BT">JSON转集合</span>
+        string str4 = "[{'Id':9999,'USERNAME':'测试人员1','DUTY': '科长','SEX':'男'},{'Id':8888,'USERNAME':'测试人员2','DUTY': '副科长','SEX':'女'}]";
+        List<Users> list4 = <span class="CodeHighlighter">JSONHelper.JsonToObject<List<Users>>(str4);</span>
+        结果:list4[1].USERNAME="测试人员2";
+    <span class="BT">DataTable转JSON</span>
+        DataTable dt5 = um.Select(new Users() { SEX = "男", DUTY = "科长" });
+        string result5 = <span class="CodeHighlighter">JSONHelper.ObjectToJson(dt5);</span>
+        结果:[{"ID":6628999.0,"DEPTID":1975999.0,"USERNAME":"丁军","PASSWORD":"3C87E7540153D879","LOGONID":"dingj","DUTY":"副科长","SEX":"男","STATUS":"A","STATUSTIME":"2015-06-18 10:54:05","TITLE":"丁军"},{"ID":6597999.0,"DEPTID":1972999.0,"USERNAME":"张伟国","PASSWORD":"3C87E7540153D879","LOGONID":"zhangwg","DUTY":"副科长","SEX":"男","STATUS":"A","STATUSTIME":"2014-12-22 15:20:46","TITLE":"张伟国"},{"ID":6599999.0,"DEPTID":1973999.0,"USERNAME":"陈永斌","PASSWORD":"3C87E7540153D879","LOGONID":"chenyb","DUTY":"副科长","SEX":"男","STATUS":"A","STATUSTIME":"2014-12-22 15:24:25","TITLE":"陈永斌"},{"ID":6604999.0,"DEPTID":1974999.0,"USERNAME":"毛喜峰","PASSWORD":"3C87E7540153D879","LOGONID":"maoxf","DUTY":"副科长","SEX":"男","STATUS":"A","STATUSTIME":"2014-12-22 15:34:12","TITLE":"毛喜峰"},{"ID":6614999.0,"DEPTID":1976999.0,"USERNAME":"王伟","PASSWORD":"3C87E7540153D879","LOGONID":"wangw","DUTY":"副科长","SEX":"男","STATUS":"A","STATUSTIME":"2014-12-22 16:12:49","TITLE":"王伟"}]
+    
+    <span class="BT">JSON转DataTable</span>
+        string str6 = "[{\"ID\":6628999.0,\"DEPTID\":1975999.0,\"USERNAME\":\"丁军\",\"PASSWORD\":\"3C87E7540153D879\",\"LOGONID\":\"dingj\",\"DUTY\":\"副科长\",\"SEX\":\"男\",\"STATUS\":\"A\",\"STATUSTIME\":\"2015-06-18 10:54:05\",\"TITLE\":\"丁军\"},{\"ID\":6597999.0,\"DEPTID\":1972999.0,\"USERNAME\":\"张伟国\",\"PASSWORD\":\"3C87E7540153D879\",\"LOGONID\":\"zhangwg\",\"DUTY\":\"副科长\",\"SEX\":\"男\",\"STATUS\":\"A\",\"STATUSTIME\":\"2014-12-22 15:20:46\",\"TITLE\":\"张伟国\"},{\"ID\":6599999.0,\"DEPTID\":1973999.0,\"USERNAME\":\"陈永斌\",\"PASSWORD\":\"3C87E7540153D879\",\"LOGONID\":\"chenyb\",\"DUTY\":\"副科长\",\"SEX\":\"男\",\"STATUS\":\"A\",\"STATUSTIME\":\"2014-12-22 15:24:25\",\"TITLE\":\"陈永斌\"},{\"ID\":6604999.0,\"DEPTID\":1974999.0,\"USERNAME\":\"毛喜峰\",\"PASSWORD\":\"3C87E7540153D879\",\"LOGONID\":\"maoxf\",\"DUTY\":\"副科长\",\"SEX\":\"男\",\"STATUS\":\"A\",\"STATUSTIME\":\"2014-12-22 15:34:12\",\"TITLE\":\"毛喜峰\"},{\"ID\":6614999.0,\"DEPTID\":1976999.0,\"USERNAME\":\"王伟\",\"PASSWORD\":\"3C87E7540153D879\",\"LOGONID\":\"wangw\",\"DUTY\":\"副科长\",\"SEX\":\"男\",\"STATUS\":\"A\",\"STATUSTIME\":\"2014-12-22 16:12:49\",\"TITLE\":\"王伟\"}]";
+        DataTable dt6 = <span class="CodeHighlighter">JSONHelper.JsonToObject<DataTable>(str6);</span>
+        return "";
+        结果dt6.Rows.Count=5
+
+    <span class="BT">根据属性名获取属性值</span>
+         List<Users> list7 = new List<Users>() {
+                new Users() {ID = 1111, USERNAME = "测试人员1", DUTY = "科长", SEX = "男" },
+                new Users() {ID = 8888, USERNAME = "测试人员2", DUTY = "副科长", SEX = "女" }
+            }; 
+            var Data = new { rows = list7.Count, List = list7 };
+            string json = <span class="CodeHighlighter">JSONHelper.ObjectToJson(Data);</span> 
+        结果: <span class="CodeHighlighter">JSONHelper.GetValueByKey(json, "rows") = 2</span>
+              <span class="CodeHighlighter">JSONHelper.GetValueByKey(json, "List.0.USERNAME") =测试人员1</span>
+
+    <span class="BT">LinqToJson,无对象创建json</span>
+        List<object> list = new List<object>();
+        list.Add("测试");
+        list.Add(1);
+        list.Add(new DateTime(2016, 2, 24));
+        string json8 = <span class="CodeHighlighter">JSONHelper.LinqToJson(list);</span>
+        结果:
+        默认名称:
+        {
+            "myJson": [
+            "测试",
+            1,
+            "2016-02-24T00:00:00"
+            ]
+        }
+        string json_name = <span class="CodeHighlighter">JSONHelper.LinqToJson(list, "test");</span>
+        结果:
+        指定名称:
+        {
+          "test": [
+            "测试",
+            1,
+            "2016-02-24T00:00:00"
+          ]
+        }
+    </pre>
+</body>
+</html>
