@@ -20,21 +20,30 @@ function Insert_open() {
         onLoad: function () {
             //Reset();
             //加载时,给所有input增加样式.并增加鼠标事件,在事件中修改样式
-            $("input[type='text']", $("#table_user")).addClass("myInput");
             $("input[type='text']", $("#table_user")).each(function () {
-                $(this).mouseover(function () {
-                    //判断是否是easyui的控件,如果不是则添加事件以及样式
-                    if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
-                        //$(this).css({ height: "18px",  border: "1px solid #95b8e7" })
-                        $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut")
-                    }
-                }).mouseout(function () {
-                    if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
-                        //$(this).css({ height: "20px", border: "0px" })
+                if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
+                    $(this).mouseover(function () {
+                        $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut");
+                    }).mouseout(function () {
                         $(this).addClass("myInputMouseOut").removeClass("myInputMouseOver");
-                    }
-                });
+                    }).addClass("myInput");
+                }
             });
+            //$("input[type='text']", $("#table_user")).addClass("myInput");
+            //$("input[type='text']", $("#table_user")).each(function () {
+            //    $(this).mouseover(function () {
+            //        //判断是否是easyui的控件,如果不是则添加事件以及样式
+            //        if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
+            //            //$(this).css({ height: "18px",  border: "1px solid #95b8e7" })
+            //            $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut")
+            //        }
+            //    }).mouseout(function () {
+            //        if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
+            //            //$(this).css({ height: "20px", border: "0px" })
+            //            $(this).addClass("myInputMouseOut").removeClass("myInputMouseOver");
+            //        }
+            //    });
+            //});
         }
     });
     $('#win').window('open');
@@ -48,21 +57,30 @@ function Update_open() {
         title: '修改部门',
         onLoad: function () {
             //加载时,给所有input增加样式.并增加鼠标事件,在事件中修改样式
-            $("input[type='text']", $("#table_user")).addClass("myInput");
             $("input[type='text']", $("#table_user")).each(function () {
-                $(this).mouseover(function () {
-                    //判断是否是easyui的控件,如果不是则添加事件以及样式
-                    if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
-                        //$(this).css({ height: "18px",  border: "1px solid #95b8e7" })
-                        $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut")
-                    }
-                }).mouseout(function () {
-                    if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
-                        //$(this).css({ height: "20px", border: "0px" })
+                if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
+                    $(this).mouseover(function () {
+                        $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut");
+                    }).mouseout(function () {
                         $(this).addClass("myInputMouseOut").removeClass("myInputMouseOver");
-                    }
-                });
+                    }).addClass("myInput");
+                }
             });
+            //$("input[type='text']", $("#table_user")).addClass("myInput");
+            //$("input[type='text']", $("#table_user")).each(function () {
+            //    $(this).mouseover(function () {
+            //        //判断是否是easyui的控件,如果不是则添加事件以及样式
+            //        if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
+            //            //$(this).css({ height: "18px",  border: "1px solid #95b8e7" })
+            //            $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut")
+            //        }
+            //    }).mouseout(function () {
+            //        if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
+            //            //$(this).css({ height: "20px", border: "0px" })
+            //            $(this).addClass("myInputMouseOut").removeClass("myInputMouseOver");
+            //        }
+            //    });
+            //});
 
             $('#myForm').form('load', row);//获取窗口数据 
         }

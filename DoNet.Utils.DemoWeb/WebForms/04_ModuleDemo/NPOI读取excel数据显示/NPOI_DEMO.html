@@ -14,7 +14,7 @@
             $('#myForm').form('submit', {
                 url: 'NPOI_DEMO.ashx',
                 onSubmit: function (param) { 
-                    param.DAGUID = $('#filePath').val(); 
+                    param.filePath = $('#filePath').val();
                 },
                 success: function (result) {
                     $('#dg').datagrid("loadData", JSON.parse(result));
