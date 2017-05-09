@@ -356,9 +356,8 @@ namespace DotNet.Utils
 
 
         }
-        #endregion 
         #endregion
-
+        #endregion
 
         #region 自定义的添加水印方法
         /// <summary>
@@ -373,6 +372,7 @@ namespace DotNet.Utils
             double alpha = Convert.ToDouble(ConfigurationManager.AppSettings["Alpha"]);//透明度
             float img_spacing_width = float.Parse(ConfigurationManager.AppSettings["img_spacing_width"]);//水平间隔
             float img_spacing_height = float.Parse(ConfigurationManager.AppSettings["img_spacing_height"]); //垂直间隔
+            int img_rotation = Convert.ToInt32(ConfigurationManager.AppSettings["img_rotation"]); //逆时针旋转角度
 
             string sourcePicture = sourcePath;
             if (!System.IO.File.Exists(sourcePicture))
@@ -457,30 +457,62 @@ namespace DotNet.Utils
                 float wmHeight = crSize.Height;
                 float wmWidth = crSize.Width;
 
-                float xPosOfWm = wmWidth / 2;
-                float yPosOfWm = wmHeight / 2;
+                float xPosOfWm = 50;// wmWidth / 2;
+                float yPosOfWm = 50;// wmHeight / 2;
 
                 float yuanX = wmWidth / 2;
                 float yuanY = wmHeight / 2;
 
-                for (int i = 2; i > 1; i++)
+                float xpos = 0;
+                float ypos = 0;
+
+
+
+                grPhoto.RotateTransform(img_rotation); //旋转
+                // 循环打印文字水印
+                for (float i = -phWidth / 2; i < phWidth * 1.5; i += wmWidth)
                 {
-                    grPhoto.DrawString(waterWords, crFont, semiTransBrush2, new PointF(xPosOfWm + 1, yPosOfWm + 1), StrFormat);
-                    grPhoto.DrawString(waterWords, crFont, semiTransBrush, new PointF(xPosOfWm, yPosOfWm), StrFormat);
-                    if (yPosOfWm > phHeight)
+                    xpos = i;
+                    for (float j = -phHeight / 2; j < phHeight * 1.5; j += img_spacing_height)
                     {
-                        yPosOfWm = yuanY;
-                        xPosOfWm = xPosOfWm + img_spacing_width;
-                    }
-                    else
-                    {
-                        yPosOfWm = yPosOfWm + img_spacing_height;
-                    }
-                    if (xPosOfWm > phWidth)
-                    {
-                        break;
+                        ypos = j;
+                        grPhoto.DrawString(waterWords, crFont, semiTransBrush2, xpos + 1, ypos + 1);
+                        grPhoto.DrawString(waterWords, crFont, semiTransBrush, xpos, ypos);
                     }
                 }
+                //for (int i = 2; i > 1; i++)
+                //{
+
+                //    grPhoto.DrawString(waterWords, crFont, semiTransBrush2, new PointF(xPosOfWm + 1, yPosOfWm + 1), StrFormat);
+                //    grPhoto.DrawString(waterWords, crFont, semiTransBrush, new PointF(xPosOfWm, yPosOfWm), StrFormat);
+                //    if (yPosOfWm > phHeight-150)
+                //    {
+                //        yPosOfWm = yuanY;
+                //        xPosOfWm = xPosOfWm + img_spacing_width;
+                //    }
+                //    else
+                //    {
+                //        yPosOfWm = yPosOfWm + img_spacing_height;
+                //    }
+                //    if (xPosOfWm > phWidth-150)
+                //    {
+                //        break;
+                //    }
+
+                //    //if (tempHeight > height - 150)
+                //    //{
+                //    //    tempHeight = 50;
+                //    //    tempWidth = tempWidth + pdf_spacing_width;
+                //    //}
+                //    //else
+                //    //{
+                //    //    tempHeight = tempHeight + pdf_spacing_height;
+                //    //}
+                //    //if (tempWidth > width - 150)
+                //    //{
+                //    //    break;
+                //    //}
+                //}
                 imgPhoto = bmPhoto;
                 // 目标图片名称及全路径 
                 imgPhoto.Save(targetImage);
@@ -505,7 +537,7 @@ namespace DotNet.Utils
 
         }
         #endregion
-       
+
         #region pdf水印
 
         /// <summary>
@@ -513,7 +545,7 @@ namespace DotNet.Utils
         /// </summary>
         /// <param name="inputPath">pdf路径</param>
         /// <param name="outputPath">pdf输出路径</param>
-        /// <param name="outputPath">字体路径</param>
+        /// <param name="fontPath">字体路径</param>
         /// <returns></returns>
         public bool AddWatermarkForPDF(string inputPath, string outputPath, string fontPath)
         {

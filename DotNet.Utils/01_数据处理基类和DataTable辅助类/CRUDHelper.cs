@@ -87,6 +87,25 @@ namespace DotNet.Utils
         }
 
         /// <summary>
+        /// 根据sql语句进行查询,返回唯一的字符串
+        /// </summary>
+        /// <param name="sql">查询语句</param> 
+        /// <returns></returns>
+        public  string GetOnlyColumnValue(string sql)
+        {
+            DataBaseLayer dbl = new DataBaseLayer();
+            DataTable dt = dbl.ExecuteQuery(sql);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0][0].ToString();
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
         /// 执行多条sql语句,实现事务
         /// </summary>
         /// <param name="aList">sql语句集合</param>
@@ -204,6 +223,23 @@ namespace DotNet.Utils
         #endregion
 
         #region 字典返回sql语句
+
+        /// <summary>
+        /// 根据字典,返回分页需要是sql语句
+        /// </summary>
+        /// <param name="dataSql">返回查询datatable的sql</param>
+        /// <param name="countSql">返回查询数量的sql</param>
+        /// <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+        /// <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+        /// <param name="pageCurrent">当前页</param>
+        /// <param name="pageSize">每页显示的数量</param>
+        /// <param name="tableName">表名</param>
+        /// <param name="columnName">列名,默认为*,查询所有</param> 
+        /// <returns></returns>
+        public void GetSelectPageSql(out string dataSql, out string countSql, Dictionary<string, object> dic, String order, int pageCurrent, int pageSize = 10, string tableName = "", string columnName = "*")
+        {
+             dicBase.GetSelectPageSql(out dataSql,out countSql, dic, order, pageCurrent, pageSize, tableName, columnName);
+        }
 
         /// <summary>
         /// 获取插入语句,根据字典.

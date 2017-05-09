@@ -105,7 +105,7 @@ namespace DoNet.Utils.DemoWeb.Handler
                     classStr.Append(" using DotNet.Utils;\n");
                     classStr.Append(" using System;\n");
                     classStr.Append(" namespace Models\n{\n");
-                    classStr.Append("  /// <summary>\n/// 用户表\n/// </summary>\n");
+                    classStr.Append("  /// <summary>\n/// "+ item + "\n/// </summary>\n");
                     classStr.Append("  public  class " + className + "\n{\n");
 
                     foreach (DataRow dr in data?.Rows)

@@ -202,6 +202,40 @@ namespace DotNet.Utils
         }
 
         /// <summary>
+        /// 根据字典,返回分页需要是sql语句
+        /// </summary>
+        /// <param name="dataSql">返回查询datatable的sql</param>
+        /// <param name="countSql">返回查询数量的sql</param>
+        /// <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+        /// <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+        /// <param name="pageCurrent">当前页</param>
+        /// <param name="pageSize">每页显示的数量</param>
+        /// <param name="tableName">表名</param>
+        /// <param name="columnName">列名,默认为*,查询所有</param> 
+        /// <returns></returns>
+        public void GetSelectPageSql(out string dataSql, out string countSql, Dictionary<string, object> dic, String order, int pageCurrent, int pageSize = 10, string tableName = "", string columnName = "*")
+        {
+            dataSql = string.Empty;
+            countSql = string.Empty;
+            try
+            {
+                string strTable = InternalBase<T>.GetTableName(tableName);
+                string strCondition = InternalBase<T>.GetConditionByDIC(dic);
+                string strOrder = InternalBase<T>.AddOrder(order);//获取排序字段. 
+                int number;
+                InternalBase<T>.GetPageNumber(pageCurrent, pageSize, out number); //获取分页信息
+                string tt, ttt;
+                InternalBase<T>.GetColumnName(columnName, out tt, out ttt);
+                dataSql = "SELECT " + columnName + " FROM (SELECT " + ttt + ", ROWNUM AS rowno FROM (  SELECT " + tt + " FROM " + strTable + " t  " + strCondition + strOrder + ") tt  WHERE ROWNUM <= " + (number + pageSize) + ") table_alias WHERE table_alias.rowno >= " + (number + 1);
+                countSql = "select count (*) from " + strTable + strCondition;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex, dataSql + "\r\n" + countSql); 
+            }
+        }
+
+        /// <summary>
         /// 获取插入语句,根据字典.
         /// </summary>
         /// <param name="columnDic">列数据字典,如果列为日期格式,需要增加后缀__date</param> 
