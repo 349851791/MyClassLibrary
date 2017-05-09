@@ -1,0 +1,41 @@
+
+连接到: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+已导出 ZHS16GBK 字符集和 AL16UTF16 NCHAR 字符集
+
+即将导出指定的用户...
+. 正在导出 pre-schema 过程对象和操作
+. 正在导出用户 DOTNETDEMO 的外部函数库名
+. 导出 PUBLIC 类型同义词
+. 正在导出专用类型同义词
+. 正在导出用户 DOTNETDEMO 的对象类型定义
+即将导出 DOTNETDEMO 的对象...
+. 正在导出数据库链接
+. 正在导出序号
+. 正在导出簇定义
+. 即将导出 DOTNETDEMO 的表通过常规路径...
+. . 正在导出表                         CLASSES导出了          19 行
+. . 正在导出表                DAILYOFFICEMENUS导出了           9 行
+. . 正在导出表                     DEPARTMENTS导出了          21 行
+. . 正在导出表                           MENUS导出了          27 行
+. . 正在导出表                         PEOPLES导出了          11 行
+. . 正在导出表                           USERS导出了         132 行
+. . 正在导出表                    勘查项目登记导出了           0 行
+. . 正在导出表                    有效申请登记导出了        3802 行
+. 正在导出同义词
+. 正在导出视图
+. 正在导出存储过程
+. 正在导出运算符
+. 正在导出引用完整性约束条件
+. 正在导出触发器
+. 正在导出索引类型
+. 正在导出位图, 功能性索引和可扩展索引
+. 正在导出后期表活动
+. 正在导出实体化视图
+. 正在导出快照日志
+. 正在导出作业队列
+. 正在导出刷新组和子组
+. 正在导出维
+. 正在导出 post-schema 过程对象和操作
+. 正在导出统计信息
+成功终止导出, 没有出现警告。
