@@ -1,4 +1,6 @@
-﻿using System;
+﻿//GetConditionByDIC方法 增加条件 in  no  notin   update by 20170513
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -137,7 +139,7 @@ namespace DotNet.Utils
 
 
         /// <summary>
-        /// 根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+        /// 根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like),数据库字段名__no(为不等于),数据库字段名__in(为包含),数据库字段名__notin(为不包含)
         /// </summary>
         /// <param name="dicCondition">条件字典</param> 
         /// <param name="isAnd">是否返回and,默认为false</param>
@@ -165,6 +167,19 @@ namespace DotNet.Utils
                             key = item.Key.Substring(0, item.Key.IndexOf("__"));
                         }
 
+                        ////左括号
+                        //if (item.Key.ToLower().Contains("("))
+                        //{
+                        //    strCondition +="("; 
+                        //}
+
+                        //小于等于
+                        if (item.Value.ToString().ToLower().Contains("isnull"))
+                        {
+                            strCondition += $" {operators} {key} is null";
+                            continue;
+                        }
+
                         //时间段
                         if (item.Key.ToLower().Contains("__q"))
                         {
@@ -190,6 +205,51 @@ namespace DotNet.Utils
                             }
                             continue;
                         }
+                        //判断大于小于
+                        //大于
+                        if (item.Key.ToLower().Contains("__>"))
+                        {
+                            strCondition += $" {operators} {key} > {item.Value}";
+                            continue;
+                        }
+                        //大于等于
+                        if (item.Key.ToLower().Contains("__>="))
+                        {
+                            strCondition += $" {operators} {key} > {item.Value}";
+                            continue;
+                        }
+                        //小于
+                        if (item.Key.ToLower().Contains("__<"))
+                        {
+                            strCondition += $" {operators} {key} > {item.Value}";
+                            continue;
+                        }
+                        //小于等于
+                        if (item.Key.ToLower().Contains("__<="))
+                        {
+                            strCondition += $" {operators} {key} > {item.Value}";
+                            continue;
+                        } 
+
+                        //判断是否是in
+                        if (item.Key.ToLower().Contains("__in"))
+                        {
+                            strCondition += $" {operators} {key} in ({item.Value})";
+                            continue;
+                        }
+                        //判断是否是notin
+                        if (item.Key.ToLower().Contains("__notin"))
+                        {
+                            strCondition += $" {operators} {key} not in ({item.Value})";
+                            continue;
+                        }
+
+                        //判断是否是no
+                        if (item.Key.ToLower().Contains("__no"))
+                        {
+                            strCondition += $" {operators} {key} != '{item.Value}'";
+                            continue;
+                        }
 
                         //判断是否是like
                         if (item.Key.ToLower().Contains("__like"))
@@ -207,7 +267,13 @@ namespace DotNet.Utils
                         else
                         {
                             strCondition += $" {operators} {key} = '{item.Value}'";
-                        } 
+                        }
+
+                        ////右括号
+                        //if (item.Key.ToLower().Contains(")"))
+                        //{
+                        //    strCondition += ")";
+                        //}
                     }
                 }
                 strCondition = IsKeepAndWhere(strCondition, isAnd, isWhere);

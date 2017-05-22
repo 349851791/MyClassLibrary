@@ -557,6 +557,7 @@ namespace DotNet.Utils
                 int pdf_spacing_height = Convert.ToInt32(ConfigurationManager.AppSettings["pdf_spacing_height"]); //垂直间隔
                 int pdf_rotation = Convert.ToInt32(ConfigurationManager.AppSettings["pdf_rotation"]); //逆时针旋转角度
 
+                PdfReader.unethicalreading = true;
                 PdfReader pdfReader = new PdfReader(inputPath);
                 int numberOfPages = pdfReader.NumberOfPages;//获取pdf页数
                 FileStream outputStream = new FileStream(outputPath, FileMode.Create);
