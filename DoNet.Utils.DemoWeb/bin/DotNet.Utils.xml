@@ -61,6 +61,13 @@
             <param name="sql">sql语句</param>
             <returns></returns>
         </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetOnlyColumnValue(System.String)">
+            <summary>
+            根据sql语句进行查询,返回唯一的字符串
+            </summary>
+            <param name="sql">查询语句</param> 
+            <returns></returns>
+        </member>
         <member name="M:DotNet.Utils.CRUDHelper`1.ExecuteSqlTran(System.Collections.ArrayList)">
             <summary>
             执行多条sql语句,实现事务
@@ -138,6 +145,20 @@
             获取delete语句
             </summary>
             <param name="t">实体类型</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.GetSelectPageSql(System.String@,System.String@,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            根据字典,返回分页需要是sql语句
+            </summary>
+            <param name="dataSql">返回查询datatable的sql</param>
+            <param name="countSql">返回查询数量的sql</param>
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
             <returns></returns>
         </member>
         <member name="M:DotNet.Utils.CRUDHelper`1.GetInsertSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
@@ -491,6 +512,20 @@
             <param name="columnName">列名,默认为*,查询所有</param> 
             <returns></returns>
         </member>
+        <member name="M:DotNet.Utils.DicBase`1.GetSelectPageSql(System.String@,System.String@,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            根据字典,返回分页需要是sql语句
+            </summary>
+            <param name="dataSql">返回查询datatable的sql</param>
+            <param name="countSql">返回查询数量的sql</param>
+            <param name="dic">保存条件的字典,key为字段名称,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)</param>
+            <param name="order">排序字段:如果不需要排序可不传入数据,也可以传入null或者"";如果需要排序则写入order by之后的内容</param>          
+            <param name="pageCurrent">当前页</param>
+            <param name="pageSize">每页显示的数量</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名,默认为*,查询所有</param> 
+            <returns></returns>
+        </member>
         <member name="M:DotNet.Utils.DicBase`1.GetInsertSql(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
             <summary>
             获取插入语句,根据字典.
@@ -623,7 +658,7 @@
         </member>
         <member name="M:DotNet.Utils.InternalBase`1.GetConditionByDIC(System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)">
             <summary>
-            根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like)
+            根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like),数据库字段名__no(为不等于),数据库字段名__in(为包含),数据库字段名__notin(为不包含)
             </summary>
             <param name="dicCondition">条件字典</param> 
             <param name="isAnd">是否返回and,默认为false</param>
@@ -2390,7 +2425,7 @@
             </summary>
             <param name="inputPath">pdf路径</param>
             <param name="outputPath">pdf输出路径</param>
-            <param name="outputPath">字体路径</param>
+            <param name="fontPath">字体路径</param>
             <returns></returns>
         </member>
         <member name="T:DotNet.Utils.HanZiToPinYin.EcanConvertToCh">

@@ -398,6 +398,33 @@
     <Content Include="packages.config" />
     <Content Include="Handler\GlobalHandler.ashx" />
     <Content Include="Handler\UsersHandler.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Demo.html" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\11.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\12.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\21.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\22.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\31.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\32.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\progressBG.jpg" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\Uploader.swf" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\_btn.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\_btnOver.png" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.css" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.custom.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.custom.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.fis.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.flashonly.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.html5only.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.html5only.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.noimage.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.noimage.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.nolog.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.nolog.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.withoutimage.js" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.withoutimage.min.js" />
     <Content Include="WebForms\06_ASPDemo\GetIP.aspx" />
     <Content Include="WebForms\06_ASPDemo\LinqDemo.aspx" />
     <Content Include="WebForms\CreateModel\ByORCL.html" />
@@ -442,6 +469,8 @@
     <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\NPOI_DEMO.ashx" />
     <Content Include="WebForms\04_ModuleDemo\NPOI读取excel数据显示\监测表（第一批）.XLS" />
     <Content Include="WebForms\05_UtilsDemo\UtilsDemoHandler.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\README.md" />
+    <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Handler\webuploaderHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Index.css" />
@@ -472,6 +501,9 @@
       <DependentUpon>UsersHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Handler\webuploaderHandler.ashx.cs">
+      <DependentUpon>webuploaderHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\06_ASPDemo\GetIP.aspx.cs">
       <DependentUpon>GetIP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

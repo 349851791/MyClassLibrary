@@ -106,6 +106,16 @@ namespace DotNet.Utils
         }
 
         /// <summary>
+        /// 执行SQL语句，返回影响的记录数 、用于增删改
+        /// </summary>
+        /// <param name="SqlString">SQL语句</param>
+        /// <returns>影响的记录数</returns>
+        public int ExecuteSql(string SqlString)
+        {
+            return dbl.ExecuteSql(SqlString);
+        }
+
+        /// <summary>
         /// 执行多条sql语句,实现事务
         /// </summary>
         /// <param name="aList">sql语句集合</param>

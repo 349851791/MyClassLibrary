@@ -99,6 +99,7 @@
     <Compile Include="011_自定义实体类属性\TableAttribute.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\CRUDHelper.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\MyCodeHelper.cs" />
+    <Compile Include="01_数据处理基类和DataTable辅助类\TLWCodeHelper.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\AssistBase.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\DicBase.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\ObjectBase.cs" />

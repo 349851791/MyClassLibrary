@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <link href="JS/webuploader/webuploader.css" rel="stylesheet" />
+    <link href="../../../JS/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+    <script src="../../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="JS/webuploader/webuploader.js"></script>
+    <style>
+        #div1 {
+            background-image: url(js/webuploader/12.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #div2 {
+            background-image: url(js/webuploader/22.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #div3 {
+            background-image: url(js/webuploader/32.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bg {
+            background-image: url(js/webuploader/32.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+    <span style="font-size: 14px;">
+        <div id="div1" style="width: 700px;">a</div>
+        <br />
+        <div id="div2" style="width: 700px">b</div>
+        <br />
+        <div id="div3" style="width: 700px">c</div>
+        <br />
+        <div id="div1" style="width: 200px;">a</div>
+        <br />
+        <div id="div2" style="width: 200px">b</div>
+        <br />
+        <div id="div3" style="width: 200px">c</div>
+        <br />
+        <div id="uploader-demo">
+            <!--用来存放item-->
+            <!--<div id="thelist" class="uploader-list"></div>-->
+            <div>
+                <div id="filePicker">上传</div>
+                <!--<button id="ctlBtn" class="btn btn-default">开始上传</button>-->
+            </div>
+            <div id="div_p">
+                <div id="p" class="easyui-progressbar" style="width: 180px; height: 20px"></div>
+            </div>
+            <div id="div_result"></div>
+        </div>
+    </span>
+    <span style="font-size: 14px;">
+        <script type="text/javascript">
+            $(function () {
+                initWebuploader();
+            });
+
+            function initWebuploader() {
+                $('#div_p').hide(); 
+                var uploader = WebUploader.create({
+                    // 选完文件后，是否自动上传。
+                    auto: true, 
+                    // swf文件路径
+                    swf: 'js/webuploader/Uploader.swf', 
+                    // 文件接收服务端。
+                    server: 'Handler/webuploaderHandler.ashx', 
+                    // 选择文件的按钮。可选。
+                    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                    pick: '#filePicker',
+
+                    // 只允许选择图片文件。
+                    accept: {
+                        title: 'Images,pdf',
+                        extensions: 'jpg,jpeg,png,pdf',
+                        mimeTypes: 'image/*'
+                    },
+                    method: 'POST',
+                    formData: { aa: 'aa',bb:'bb' }
+                });
+                // 当有文件添加进来的时候
+                uploader.on('fileQueued', function (file) {  // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。
+                });
+                // 文件上传过程中创建进度条实时显示。
+                uploader.on('uploadProgress', function (file, percentage) {
+                    $('#div_p').show();
+                    var value = $('#p').progressbar('getValue');
+                    $(".progressbar-value .progressbar-text").addClass("bg"); 
+                    var temp = Math.floor(percentage * 100);
+                    //$('#p').progressbar({
+                    //    text: file.name + "----" + temp + "%"
+                    //});
+                    $('#p').progressbar('setValue', temp);
+                });
+
+                // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+                uploader.on('uploadSuccess', function (file, response) {
+                    $('#' + file.id).addClass('upload-state-done');
+                    document.getElementById("div_result").innerHTML += file.name;
+                });
+                // 文件上传失败，显示上传出错。
+                uploader.on('uploadError', function (file, reason) {
+                });
+                // 完成上传完了，成功或者失败，先删除进度条。
+                uploader.on('uploadComplete', function (file) {
+                    $('#div_p').hide();
+                    $('#p').progressbar('setValue', 0);
+                });  
+            }
+        </script>
+    </span>
+</body>
+</html>
