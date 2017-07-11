@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>演示：jQuery滑动解锁</title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="assets/less/unlock.css">
+    <style>
+        .wrapper {
+            padding: 1rem 10%;
+            margin: 2rem auto;
+            min-width: 300px;
+            max-width: 1200px;
+            width: 70%;
+        }
+
+        .bar {
+            margin: 20px;
+            height: 40px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html">支持IE8</a> &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="index2.html">不支持ie8</a>
+    <div class="container">
+        <div class="row main">
+            <div class="col-md-12">
+                <h2 class="top_title"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><a>jQuery滑动解锁</a></h2>
+                <div class="row" style="margin-top: 30px">
+                    默认效果:<div class="bar1 bar"></div>
+                    修改宽高:<div class="bar2 bar"></div>
+                    修改滑块内容:<div class="bar3 bar"></div>
+                    修改滑块颜色:<div class="bar4 bar"></div>
+                </div>
+                <script src="js/jquery-1.11.0.min.js"></script>
+                <script src='assets/js/unlock.js'></script>
+                <script type="text/javascript">
+                    $('.bar1').slideToUnlock();
+                    $('.bar2').slideToUnlock({
+                        height: 50,
+                        width: 200,
+                    });
+                    $('.bar3').slideToUnlock({
+                        text: '未解锁的文字',
+                        succText: '解锁成功的文字'
+                    });
+                    $('.bar4').slideToUnlock({
+                        bgColor: '#fce',
+                        progressColor: '#f60',
+                        succColor: '#f00',
+                        textColor: '#fff',
+                        succTextColor: '#fff',
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

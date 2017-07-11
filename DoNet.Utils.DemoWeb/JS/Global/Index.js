@@ -18,7 +18,20 @@ function init() {
 
 //region 左侧目录树方法
 //获取左侧数据
-$(function () {
+$(function () { 
+    var w = document.body.clientWidth;
+    var h = document.body.clientHeight;
+    var left = "0px";
+    var top = "0px";
+    if (w > 400) {
+        left = (w - 400) / 2 + "px";
+    } if (h > 400) {
+        top = (h - 300) / 2 + "px";
+    }
+    $("#loading_img").css("left", left);
+    $("#loading_img").css("top", top);
+
+
     $.post('Handler/GlobalHandler.ashx?action=GetMenuForAccordion', function (result) {
         var jsonResult = JSON.parse(result);//eval('(' + result + ')'); 
         for (var i = 0; i < jsonResult.length; i++) {
@@ -38,6 +51,9 @@ $(function () {
                         }
             });
         }
+        $("#Loading").fadeOut("slow", function () {
+            $(this).remove();
+        });
     });
 })
 

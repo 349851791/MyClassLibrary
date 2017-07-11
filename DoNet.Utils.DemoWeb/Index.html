@@ -15,25 +15,28 @@
 </head>
 
 <body class="easyui-layout">
-    <div id="Loading" class="ZZC">
-        <div>
-            努力加载中······
+    <!--遮罩层-->
+    <div id="Loading" style=" position: absolute;z-index: 1000;top: 0px; left: 0px; width: 100%;height: 100%;background:#262626;overflow: hidden;">
+        <div id="loading_img" style=" position: relative;font-size:30px;color:#ffffff;">
+            <img src="Images/waiting3.gif" style="width:400px" />
         </div>
     </div>
-    <div data-options="region:'north',split:false" style="height:100px;">
-        <div id="topDiv"> <!--shadow(color=#95b8e7);-->
+    <!--头部-->
+    <div data-options="region:'north',split:true" style="height:100px;">
+        <div id="topDiv">
             <div style="margin-left: 20px;FILTER:glow(color=#3C96E6,strength=2) shadow(color=#95b8e7 ,direction=225); ">TLW--ClassLibraries</div>
         </div>
     </div>
+    <!--左边菜单栏-->
     <div id="layoutMenus" data-options="region:'west',title:'菜单',split:true" style="width:200px;padding:1px">
         <div id="accordionMenu" class="easyui-accordion" data-options="fit:true" style="width:100%;">
         </div>
     </div>
+    <!--右侧内容栏-->
     <div id="layoutContnet" data-options="region:'center',title:'欢迎'" style="padding:1px; overflow:visible"> 
         <iframe id="contentRight" scrolling="auto" frameborder="0" style="width:100%;height:100%;"></iframe>
     </div>
-
-
+    <!--弹出窗口-->
     <div id="winTest" class="easyui-window" style="position: relative;" closed="true"
          data-options="iconCls:'icon-edit',modal:true,minimizable:true,maximizable:true"></div>
 </body>
