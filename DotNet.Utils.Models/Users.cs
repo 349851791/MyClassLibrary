@@ -100,4 +100,7 @@ namespace DotNet.Utils.Models
         /// </summary>
         public string ORDERS { get; set; }
     }
+    public class UsersManage : CRUDHelper<Users>
+    {
+    }
 }

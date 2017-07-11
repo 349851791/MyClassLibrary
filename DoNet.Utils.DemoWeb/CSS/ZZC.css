@@ -1,0 +1,16 @@
+﻿/*遮罩层*/
+
+.ZZC {
+    position: absolute;
+    z-index: 1000;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: white;
+    overflow: hidden;
+}
+
+    .ZZC div {
+    top: 40%;left:500px; position: relative;font-size:30px
+    }

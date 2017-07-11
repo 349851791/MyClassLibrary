@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../JS/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../../../JS/EasyUI/themes/icon.css" rel="stylesheet" />
+    <script src="../../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script src="DISTRICT.js"></script>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <input id="sName" name="sName" style="width: 100px" editable="false" panelheight="auto" class="easyui-combobox" data-options="valueField:'TEXT',textField:'TEXT',onSelect:SelectBysName" />
+    <div id="div_qName" style="display: none; margin-right: 4px">
+        <input id="qName" name="qName" style="width: 100px;" editable="false" panelheight="auto" class="easyui-combobox" data-options="valueField:'TEXT',textField:'TEXT',onSelect:SelectByqName" />
+    </div>
+    <div id="div_jName" style="display: none">
+        <input id="jName" name="jName" style="width: 120px;" editable="false" panelheight="auto" panelMaxHeight="300px" class="easyui-combobox" data-options="valueField:'TEXT',textField:'TEXT'" />
+    </div>
+</body>
+</html>

@@ -68,6 +68,13 @@
             <param name="sql">查询语句</param> 
             <returns></returns>
         </member>
+        <member name="M:DotNet.Utils.CRUDHelper`1.ExecuteSql(System.String)">
+            <summary>
+            执行SQL语句，返回影响的记录数 、用于增删改
+            </summary>
+            <param name="SqlString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
         <member name="M:DotNet.Utils.CRUDHelper`1.ExecuteSqlTran(System.Collections.ArrayList)">
             <summary>
             执行多条sql语句,实现事务
@@ -401,6 +408,123 @@
         <member name="P:DotNet.Utils.MYCODE.State">
             <summary>
             节点是否展开.closed:关闭;open:打开
+            </summary>
+        </member>
+        <member name="T:DotNet.Utils.TLWCodeHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetValue(DotNet.Utils.CODES,System.String)">
+            <summary>
+            获取唯一值
+            </summary>
+            <param name="myCode">实体类的条件</param>
+            <param name="columnName">获取唯一值的列名,默认codevalue</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetData(DotNet.Utils.CODES,System.String,System.String)">
+            <summary>
+            根据条件获取数据
+            </summary>
+            <param name="codes">实体类的条件</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param> 
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetData(System.String,System.String,System.String)">
+            <summary>
+            根据条件获取数据
+            </summary>
+            <param name="typeName">类型名称</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param> 
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetDataForList(DotNet.Utils.CODES,System.String,System.String)">
+            <summary>
+            根据条件获取数据
+            </summary>
+            <param name="codes">实体类的条件</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param> 
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetDataForList(System.String,System.String,System.String)">
+            <summary>
+            根据条件获取数据
+            </summary>
+            <param name="typeName">类型名称</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param> 
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetDataForComBox(DotNet.Utils.CODES,System.String,System.String)">
+            <summary>
+             根据条件获取数据,返回针对easyuiComBox使用的字符串
+            </summary>
+            <param name="codes">实体类的条件</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param>
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.TLWCodeHelper.GetDataForComBox(System.String,System.String,System.String)">
+            <summary>
+             根据条件获取数据,返回针对easyuiComBox使用的字符串
+            </summary>
+            <param name="typeName">类型名称</param>
+            <param name="groupName">排序字段:写入order by之后的内容,默认:GROUPID</param>
+            <param name="columnName">列名,默认为*,查询所有</param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNet.Utils.CODES">
+            <summary>
+            CODES
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.TYPENAME">
+            <summary>
+            
+            </summary> 
+        </member>
+        <member name="P:DotNet.Utils.CODES.CODENAME">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.CODEVALUE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.CODEORDER">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.GRADE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.SUPERCODE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.FLAG">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.REMARK">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:DotNet.Utils.CODES.ID">
+            <summary>
+            主键
             </summary>
         </member>
         <member name="M:DotNet.Utils.AssistBase`1.SelectByIdentity(System.String)">
@@ -1976,12 +2100,19 @@
             <param name="dataTable"></param>
             <returns></returns>
         </member>
-        <member name="T:DotNet.Utils.DataTableHelper">
+        <member name="T:DotNet.Utils.DataTableHelper`1">
             <summary>
             DataTable帮助类
             </summary>
         </member>
-        <member name="M:DotNet.Utils.DataTableHelper.GetTableByTable(System.Data.DataTable,System.Int32,System.Int32)">
+        <member name="M:DotNet.Utils.DataTableHelper`1.ConvertToModel(System.Data.DataTable)">
+            <summary>
+            将datatable转换为List对象集合
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataTableHelper`1.GetTableByTable(System.Data.DataTable,System.Int32,System.Int32)">
             <summary>
             将DataTable的行放入另一个DataTable中
             </summary>
@@ -1990,7 +2121,15 @@
             <param name="endIndex">结束行</param>
             <returns></returns>
         </member>
-        <member name="M:DotNet.Utils.DataTableHelper.SortDataTable(System.Data.DataTable,System.String)">
+        <member name="M:DotNet.Utils.DataTableHelper`1.GetTableByTable(System.Data.DataTable,System.String)">
+            <summary>
+            将DataTable的行放入另一个DataTable中
+            </summary>
+            <param name="dt">原来的DataTable</param>
+            <param name="conditionStr">查询条件</param> 
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.DataTableHelper`1.SortDataTable(System.Data.DataTable,System.String)">
             <summary>
             给DataTable排序
             </summary>

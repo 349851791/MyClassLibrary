@@ -50,7 +50,6 @@ D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DoNet.Utils.DemoWeb.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DoNet.Utils.DemoWeb.pdb
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.dll
-D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.DLL.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.Models.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\Ionic.Zip.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\NPOI.dll
@@ -62,7 +61,6 @@ D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\Microsoft.Office.Interop.Word.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\IBatisNet.Common.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\Castle.DynamicProxy.dll
-D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.DLL.pdb
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.Models.pdb
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.pdb
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.xml
@@ -106,3 +104,5 @@ D:\04_同步\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\NPOI.xml
 D:\04_同步\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\obj\Debug\DoNet.Utils.DemoWeb.csprojResolveAssemblyReference.cache
 D:\04_同步\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\obj\Debug\DoNet.Utils.DemoWeb.dll
 D:\04_同步\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\obj\Debug\DoNet.Utils.DemoWeb.pdb
+D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\URLRewriter.dll
+D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DoNet.Utils.DemoWeb\bin\URLRewriter.pdb

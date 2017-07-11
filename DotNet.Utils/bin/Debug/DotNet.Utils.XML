@@ -2121,6 +2121,14 @@
             <param name="endIndex">结束行</param>
             <returns></returns>
         </member>
+        <member name="M:DotNet.Utils.DataTableHelper`1.GetTableByTable(System.Data.DataTable,System.String)">
+            <summary>
+            将DataTable的行放入另一个DataTable中
+            </summary>
+            <param name="dt">原来的DataTable</param>
+            <param name="conditionStr">查询条件</param> 
+            <returns></returns>
+        </member>
         <member name="M:DotNet.Utils.DataTableHelper`1.SortDataTable(System.Data.DataTable,System.String)">
             <summary>
             给DataTable排序

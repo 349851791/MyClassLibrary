@@ -6,7 +6,7 @@ namespace DotNet.Utils.Models
     /// <summary>
     /// 部门表
     /// </summary>
-  public  class Departments
+    public class Departments
     {
         /// <summary>
         /// 标识列
@@ -67,6 +67,10 @@ namespace DotNet.Utils.Models
         /// <summary>
         /// 状态时间
         /// </summary>
-        public DateTime? STATUSTIME { get; set; } 
+        public DateTime? STATUSTIME { get; set; }
+    }
+
+    public class DepartmentsManage : CRUDHelper<Departments>
+    {
     }
 }

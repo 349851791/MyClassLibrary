@@ -73,8 +73,12 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="URLRewriter">
+      <HintPath>..\DotNet.Utils\bin\Debug\URLRewriter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\ZZC.css" />
     <Content Include="Images\e.jpg" />
     <Content Include="Images\inputbg.png" />
     <Content Include="Images\leftTree\1.png" />
@@ -395,9 +399,38 @@
     <Content Include="JS\ObjectHTML\ObjectEdit.js" />
     <Content Include="JS\ObjectHTML\AssistSelect.js" />
     <Content Include="JS\ObjectHTML\ObjectSelect.js" />
+    <Content Include="JS\Global\ZZC.js" />
     <Content Include="packages.config" />
     <Content Include="Handler\GlobalHandler.ashx" />
     <Content Include="Handler\UsersHandler.ashx" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\css\custom.css" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\css\demo.css" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\css\slicebox.css" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\1.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\2.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\3.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\4.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\5.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\6.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\7.jpg" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\fancy_deboss.png" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\nav.png" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\options.png" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\images\shadow.png" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\index.html" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\index2.html" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\index3.html" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\index4.html" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\js\jquery.slicebox.js" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\js\modernizr.custom.46884.js" />
+    <Content Include="WebForms\03_FrontDemo\3D图片轮播\js\jquery.js" />
+    <Content Include="WebForms\03_FrontDemo\图片轮播\index.html" />
+    <Content Include="WebForms\03_FrontDemo\图片轮播\jquery.nivo.slider.js" />
+    <Content Include="WebForms\03_FrontDemo\图片轮播\jquery.nivo.slider.pack.js" />
+    <Content Include="WebForms\03_FrontDemo\图片轮播\license.txt" />
+    <Content Include="WebForms\03_FrontDemo\图片轮播\nivo-slider.css" />
+    <Content Include="WebForms\03_FrontDemo\图片轮播\style.css" />
+    <Content Include="WebForms\03_FrontDemo\时间轴\timeAxis.html" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Demo.html" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\11.png" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\12.png" />
@@ -425,6 +458,8 @@
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.nolog.min.js" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.withoutimage.js" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="WebForms\04_ModuleDemo\三级联动\DISTRICT.html" />
+    <Content Include="WebForms\04_ModuleDemo\三级联动\DISTRICT.js" />
     <Content Include="WebForms\06_ASPDemo\GetIP.aspx" />
     <Content Include="WebForms\06_ASPDemo\LinqDemo.aspx" />
     <Content Include="WebForms\CreateModel\ByORCL.html" />
@@ -471,6 +506,7 @@
     <Content Include="WebForms\05_UtilsDemo\UtilsDemoHandler.ashx" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\README.md" />
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Handler\webuploaderHandler.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\三级联动\DISTRICTHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Index.css" />
@@ -503,6 +539,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Handler\webuploaderHandler.ashx.cs">
       <DependentUpon>webuploaderHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\04_ModuleDemo\三级联动\DISTRICTHandler.ashx.cs">
+      <DependentUpon>DISTRICTHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\06_ASPDemo\GetIP.aspx.cs">
       <DependentUpon>GetIP.aspx</DependentUpon>
@@ -543,12 +582,12 @@
     <Folder Include="JS\EasyUI\src\" />
     <Folder Include="WebForms\03_FrontDemo\云端上\images\" />
     <Folder Include="WebForms\03_FrontDemo\云端上\js\" />
+    <Folder Include="WebForms\03_FrontDemo\图片轮播\images\" />
+    <Folder Include="WebForms\03_FrontDemo\图片轮播\scripts\" />
+    <Folder Include="WebForms\03_FrontDemo\图片轮播\themes\" />
+    <Folder Include="WebForms\03_FrontDemo\时间轴\js\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotNet.Utils.DLL\DotNet.Utils.DLL.csproj">
-      <Project>{19d6ab5b-1f00-4bf7-9a72-d4fabe2cac26}</Project>
-      <Name>DotNet.Utils.DLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DotNet.Utils.Models\DotNet.Utils.Models.csproj">
       <Project>{e3bb2c97-6ef6-4a10-babf-55e0a0132090}</Project>
       <Name>DotNet.Utils.Models</Name>

@@ -84,6 +84,24 @@ namespace DotNet.Utils
         }
 
         /// <summary>
+        /// 将DataTable的行放入另一个DataTable中
+        /// </summary>
+        /// <param name="dt">原来的DataTable</param>
+        /// <param name="conditionStr">查询条件</param> 
+        /// <returns></returns>
+        public static DataTable GetTableByTable(DataTable dt,string conditionStr)
+        { 
+            DataRow[] drArr = dt.Select(conditionStr);//查询
+            DataTable dtNew = dt.Clone();
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+            }
+            return dtNew;
+        }
+
+
+        /// <summary>
         /// 给DataTable排序
         /// </summary>
         /// <param name="dt">需要排序的DataTable</param>

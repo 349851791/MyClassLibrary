@@ -173,7 +173,7 @@ namespace DotNet.Utils
                         //    strCondition +="("; 
                         //}
 
-                        //小于等于
+                        //是空
                         if (item.Value.ToString().ToLower().Contains("isnull"))
                         {
                             strCondition += $" {operators} {key} is null";
@@ -206,30 +206,31 @@ namespace DotNet.Utils
                             continue;
                         }
                         //判断大于小于
+                        //大于等于
+                        if (item.Key.ToLower().Contains("__>="))
+                        {
+                            strCondition += $" {operators} {key} >= {item.Value}";
+                            continue;
+                        }
                         //大于
                         if (item.Key.ToLower().Contains("__>"))
                         {
                             strCondition += $" {operators} {key} > {item.Value}";
                             continue;
                         }
-                        //大于等于
-                        if (item.Key.ToLower().Contains("__>="))
+
+                        //小于等于
+                        if (item.Key.ToLower().Contains("__<="))
                         {
-                            strCondition += $" {operators} {key} > {item.Value}";
+                            strCondition += $" {operators} {key} <= {item.Value}";
                             continue;
                         }
                         //小于
                         if (item.Key.ToLower().Contains("__<"))
                         {
-                            strCondition += $" {operators} {key} > {item.Value}";
+                            strCondition += $" {operators} {key} < {item.Value}";
                             continue;
                         }
-                        //小于等于
-                        if (item.Key.ToLower().Contains("__<="))
-                        {
-                            strCondition += $" {operators} {key} > {item.Value}";
-                            continue;
-                        } 
 
                         //判断是否是in
                         if (item.Key.ToLower().Contains("__in"))
@@ -248,6 +249,13 @@ namespace DotNet.Utils
                         if (item.Key.ToLower().Contains("__no"))
                         {
                             strCondition += $" {operators} {key} != '{item.Value}'";
+                            continue;
+                        }
+
+                        //判断是否执行oracle方法
+                        if (item.Key.ToLower().Equals("__function"))
+                        {
+                            strCondition += $" {operators} {item.Value}";
                             continue;
                         }
 

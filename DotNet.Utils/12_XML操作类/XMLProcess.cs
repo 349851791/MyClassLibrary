@@ -192,7 +192,7 @@ namespace DotNet.Utils
                 string filename = AppDomain.CurrentDomain.BaseDirectory.ToString() + XMLFile;
                 DataSet ds = new DataSet();
                 ds.ReadXml(filename);
-                DataView dv = new DataView(ds.Tables[0]); //创建DataView来完成排序或筛选操作	
+                DataView dv = new DataView(ds.Tables["book"]); //创建DataView来完成排序或筛选操作	
                 if (strSort != null)
                 {
                     dv.Sort = strSort; //对DataView中的记录进行排序
@@ -203,7 +203,7 @@ namespace DotNet.Utils
                 }
                 return dv;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
