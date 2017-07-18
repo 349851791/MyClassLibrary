@@ -14,14 +14,11 @@ With the Partitioning, OLAP, Data Mining and Real Application Testing options
 . 正在导出序号
 . 正在导出簇定义
 . 即将导出 DOTNETDEMO 的表通过常规路径...
-. . 正在导出表                         CLASSES导出了          19 行
-. . 正在导出表                DAILYOFFICEMENUS导出了           9 行
 . . 正在导出表                     DEPARTMENTS导出了          21 行
-. . 正在导出表                           MENUS导出了          27 行
-. . 正在导出表                         PEOPLES导出了          11 行
+. . 正在导出表                        DISTRICT导出了        1745 行
+. . 正在导出表                   EVENTTIMEAXIS导出了           7 行
+. . 正在导出表                           MENUS导出了          38 行
 . . 正在导出表                           USERS导出了         132 行
-. . 正在导出表                    勘查项目登记导出了           0 行
-. . 正在导出表                    有效申请登记导出了        3802 行
 . 正在导出同义词
 . 正在导出视图
 . 正在导出存储过程
