@@ -507,6 +507,8 @@
     <Content Include="WebForms\03_FrontDemo\图片轮播\license.txt" />
     <Content Include="WebForms\03_FrontDemo\图片轮播\nivo-slider.css" />
     <Content Include="WebForms\03_FrontDemo\图片轮播\style.css" />
+    <Content Include="WebForms\03_FrontDemo\时间轴\js\jquery.min.js" />
+    <Content Include="WebForms\03_FrontDemo\时间轴\js\jquery.waypoints.min.js" />
     <Content Include="WebForms\03_FrontDemo\时间轴\timeAxis.html" />
     <Content Include="WebForms\03_FrontDemo\滑动解锁\css\drag.css" />
     <Content Include="WebForms\03_FrontDemo\滑动解锁\index.html" />
@@ -608,6 +610,7 @@
     <Content Include="WebForms\03_FrontDemo\滑动解锁\不支持IE8的滑块解锁\fonts\icomoon.svg" />
     <Content Include="WebForms\03_FrontDemo\滑动解锁\不支持IE8的滑块解锁\fonts\icomoon.ttf" />
     <Content Include="WebForms\03_FrontDemo\滑动解锁\不支持IE8的滑块解锁\fonts\icomoon.woff" />
+    <Content Include="WebForms\03_FrontDemo\时间轴\timeAxisHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Index.css" />
@@ -638,6 +641,9 @@
       <DependentUpon>UsersHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\03_FrontDemo\时间轴\timeAxisHandler.ashx.cs">
+      <DependentUpon>timeAxisHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\Handler\webuploaderHandler.ashx.cs">
       <DependentUpon>webuploaderHandler.ashx</DependentUpon>
     </Compile>
@@ -690,7 +696,6 @@
     <Folder Include="WebForms\03_FrontDemo\图片轮播\images\" />
     <Folder Include="WebForms\03_FrontDemo\图片轮播\scripts\" />
     <Folder Include="WebForms\03_FrontDemo\图片轮播\themes\" />
-    <Folder Include="WebForms\03_FrontDemo\时间轴\js\" />
     <Folder Include="WebForms\03_FrontDemo\边栏过渡\css\" />
     <Folder Include="WebForms\03_FrontDemo\边栏过渡\js\" />
   </ItemGroup>

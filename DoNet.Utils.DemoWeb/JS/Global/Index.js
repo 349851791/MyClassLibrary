@@ -62,5 +62,4 @@ function showContent(url,name)
 {
     document.getElementById("contentRight").src = url;
     $('#layoutContnet').panel({ title: name }); 
-}
-//endregion
+} 
