@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DotNet.Utils.Models
@@ -6,43 +7,43 @@ namespace DotNet.Utils.Models
     /// <summary>
     /// 行政区划
     /// </summary>
-    public class DISTRICT
+    public class DISTRICT: DISTRICT_CONTRAST
     {
         /// <summary>
         /// 标识列
         /// </summary>
-        [Column(Identity = true)]
-        public int? ID { get; set; }
+        //[Column(Identity = true)]
+        //public int? ID { get; set; }
 
-        /// <summary>
-        /// 行政区代码
-        /// </summary>
-        public string CODE { get; set; }
+        ///// <summary>
+        ///// 行政区代码
+        ///// </summary>
+        //public string CODE { get; set; }
 
-        /// <summary>
-        /// 行政区名称
-        /// </summary>
-        public string NAME { get; set; }
+        ///// <summary>
+        ///// 行政区名称
+        ///// </summary>
+        //public string NAME { get; set; }
 
-        /// <summary>
-        /// 上级区域
-        /// </summary>
-        public string SUPERNAME { get; set; }
+        ///// <summary>
+        ///// 上级区域
+        ///// </summary>
+        //public string SUPERNAME { get; set; }
 
-        /// <summary>
-        /// 上级ID
-        /// </summary>
-        public int? SUPERID { get; set; }
+        ///// <summary>
+        ///// 上级ID
+        ///// </summary>
+        //public int? SUPERID { get; set; }
 
-        /// <summary>
-        /// 顺序号
-        /// </summary>
-        public int? ORDERNO { get; set; }
+        ///// <summary>
+        ///// 顺序号
+        ///// </summary>
+        //public int? ORDERNO { get; set; }
 
-        /// <summary>
-        /// 级别
-        /// </summary>
-        public string GRADE { get; set; }
+        ///// <summary>
+        ///// 级别
+        ///// </summary>
+        //public string GRADE { get; set; }
 
         /// <summary>
         /// 类别
@@ -109,6 +110,7 @@ namespace DotNet.Utils.Models
         /// </summary>
         public string TJGRADE { get; set; }
 
+        public new List<DISTRICT> children { get; set; }
     }
     public class DISTRICTManage : CRUDHelper<DISTRICT>
     {
@@ -164,6 +166,39 @@ namespace DotNet.Utils.Models
             return JSONHelper.ObjectToJson(this.SelectBySQL(sql)).Replace("NAME", "TEXT");
         }
 
+        public string GetDistrictData()
+        {
+            return JSONHelper.ObjectToJson(GetTreeData(0));
+        }
+
+        private List<DISTRICT> GetTreeData(int id)
+        {
+            List<DISTRICT> list = new List<DISTRICT>();
+            string str = "select * from DISTRICT where SUPERID=" + id + " order by ORDERNO";
+            try
+            {
+                DataTable dt = this.SelectBySQL(str);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    DISTRICT district = new DISTRICT();
+                    district.ID = Convert.ToInt32(dr["ID"]);
+                    district.SUPERID = Convert.ToInt32(dr["SUPERID"]);
+                    district.NAME = dr["NAME"].ToString();
+                    //district.state = "closed";
+                    //district.state = dr["state"].ToString();
+
+                    district.ORDERNO = dr["ORDERNO"] == DBNull.Value ? 1 : Convert.ToInt32(dr["ORDERNO"]);
+                    district.children = GetTreeData(Convert.ToInt32(dr["ID"]));
+                    list.Add(district);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex);
+            }
+
+            return list;
+        } 
     }
 }
 

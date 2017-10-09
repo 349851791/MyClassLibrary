@@ -27,7 +27,7 @@ namespace DoNet.Utils.DemoWeb.WebForms.ModuleDemo.上传
         }
 
         private string Upload(HttpContext context)
-        {
+        { 
             int i=  context.Request.Files.Count;
             return "";
         }

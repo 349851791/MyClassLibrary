@@ -78,7 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\ZZC.css" />
+    <Content Include="JS\EasyUI\themes\icons\remove.png" />
     <Content Include="WebForms\03_FrontDemo\div切换效果\css\animations.css" />
     <Content Include="WebForms\03_FrontDemo\div切换效果\css\component.css" />
     <Content Include="WebForms\03_FrontDemo\div切换效果\css\default.css" />
@@ -550,6 +550,10 @@
     <Content Include="WebForms\04_ModuleDemo\WebUploader异步上传控件\JS\webuploader\webuploader.withoutimage.min.js" />
     <Content Include="WebForms\04_ModuleDemo\三级联动\DISTRICT.html" />
     <Content Include="WebForms\04_ModuleDemo\三级联动\DISTRICT.js" />
+    <Content Include="WebForms\04_ModuleDemo\选择创建新区\DISTRICT_CONTRAST.js" />
+    <Content Include="WebForms\04_ModuleDemo\选择创建新区\edit.html" />
+    <Content Include="WebForms\04_ModuleDemo\选择创建新区\index.html" />
+    <Content Include="WebForms\05_UtilsDemo\ZipDemo.html" />
     <Content Include="WebForms\06_ASPDemo\GetIP.aspx" />
     <Content Include="WebForms\06_ASPDemo\LinqDemo.aspx" />
     <Content Include="WebForms\CreateModel\ByORCL.html" />
@@ -611,6 +615,7 @@
     <Content Include="WebForms\03_FrontDemo\滑动解锁\不支持IE8的滑块解锁\fonts\icomoon.ttf" />
     <Content Include="WebForms\03_FrontDemo\滑动解锁\不支持IE8的滑块解锁\fonts\icomoon.woff" />
     <Content Include="WebForms\03_FrontDemo\时间轴\timeAxisHandler.ashx" />
+    <Content Include="WebForms\04_ModuleDemo\选择创建新区\DISTRICT_CONTRASTHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Index.css" />
@@ -623,7 +628,9 @@
     <Content Include="JS\Global\Index.js" />
     <Content Include="JS\Global\json2.js" />
     <Content Include="Trees.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebForms\01_ObjectHTML\ObjectEdit.html" />
     <Content Include="WebForms\01_ObjectHTML\ObjectSelect.html" />
   </ItemGroup>
@@ -649,6 +656,9 @@
     </Compile>
     <Compile Include="WebForms\04_ModuleDemo\三级联动\DISTRICTHandler.ashx.cs">
       <DependentUpon>DISTRICTHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\04_ModuleDemo\选择创建新区\DISTRICT_CONTRASTHandler.ashx.cs">
+      <DependentUpon>DISTRICT_CONTRASTHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\06_ASPDemo\GetIP.aspx.cs">
       <DependentUpon>GetIP.aspx</DependentUpon>
@@ -708,6 +718,9 @@
       <Project>{72912cc0-f3c4-4535-a421-f397e908b1a2}</Project>
       <Name>DotNet.Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

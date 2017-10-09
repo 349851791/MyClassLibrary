@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../JS/EasyUI/themes/default/easyui.css" />
+    <link rel="stylesheet" href="../../../JS/EasyUI/themes/icon.css" />
+    <script src="../../../JS/EasyUI/jquery.min.js"></script>
+    <script src="../../../JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="../../../JS/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script src="../../../JS/Global/json2.js"></script>
+    <script src="DISTRICT_CONTRAST.js"></script>
+</head>
+<body>
+    <div id="div_tool">
+        <table id="table_tool">
+            <tr>
+                <td>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="Insert_open()">增加</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="Update_open()">修改</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="Delete()">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--fitColumns="true"-->
+    <table id="dg" class="easyui-treegrid" style="width: 700px; height: 700px" toolbar="#div_tool"
+        data-options="
+				url: 'DISTRICT_CONTRASTHandler.ashx?action=GetAll', 
+                animate:true,
+				rownumbers: true,
+				idField: 'ID',
+				treeField: 'NAME' 
+			">
+        <thead>
+            <tr>
+                <th data-options="field:'NAME'">新区名称</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="win_edit" class="easyui-dialog" style="position: relative" closed="true"
+        data-options="iconCls:'icon-edit',modal:true,minimizable:false,maximizable:false">
+    </div>
+</body>
+</html>

@@ -69,3 +69,11 @@ D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\obj\Debug\DotNet.Utils.dll
 D:\工作项目\99_张贺\微云同步盘\349851791\01_工作同步\03_我的类库\MyClassLibraryNew_4\DotNet.Utils\obj\Debug\DotNet.Utils.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\DotNet.Utils.XML
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\DotNet.Utils.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\DotNet.Utils.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.csprojFakesResolveAssemblyReference.cache
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.csprojResolveAssemblyReference.cache

@@ -38,22 +38,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Castle.DynamicProxy.dll</HintPath>
     </Reference>
-    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\IBatisNet.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="IBatisNet.Common.Logging.Log4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\IBatisNet.Common.Logging.Log4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="IBatisNet.DataAccess, Version=1.9.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\IBatisNet.DataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\IBatisNet.DataMapper.dll</HintPath>
-    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -104,10 +88,9 @@
     <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\DicBase.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\ObjectBase.cs" />
     <Compile Include="01_数据处理基类和DataTable辅助类\基类方法\InternalBase.cs" />
-    <Compile Include="02_Batis基类\BatisBaseHpler.cs" />
-    <Compile Include="02_Batis基类\MyBatisAssist.cs" />
-    <Compile Include="02_Batis基类\MyBatisBase.cs" />
     <Compile Include="05_Request与Response操作\UrlHelper.cs" />
+    <Compile Include="06_压缩解压缩\ZipClass.cs" />
+    <Compile Include="06_压缩解压缩\ZipHelperNew.cs" />
     <Compile Include="09_Enum枚举\EnumHelper.cs" />
     <Compile Include="05_Request与Response操作\JsHelper.cs" />
     <Compile Include="03_Log日志\LogHelper.cs" />

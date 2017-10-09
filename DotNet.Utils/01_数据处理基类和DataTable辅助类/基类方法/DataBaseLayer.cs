@@ -19,7 +19,7 @@ namespace DotNet.Utils
     /// <summary>
     /// 数据访问基础类
     /// </summary>
-    internal class DataBaseLayer
+    public class DataBaseLayer
     {
         #region 类的基本属性字段及函数
         public static string SqlStr = string.Empty;

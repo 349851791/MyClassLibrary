@@ -15,7 +15,7 @@ namespace DoNet.Utils.DemoWeb.WebForms.UtilsDemo
     {
         UsersManage um = new UsersManage();
         public void ProcessRequest(HttpContext context)
-        { 
+        {
             string action = context.Request.QueryString["action"];
             string resultStr = string.Empty;
             switch (action)
@@ -25,6 +25,9 @@ namespace DoNet.Utils.DemoWeb.WebForms.UtilsDemo
                     break;
                 case "EnumDemo":
                     resultStr = EnumDemo(context);
+                    break;
+                case "ZipDemo":
+                    resultStr = ZipDemo(context);
                     break;
                 default:
                     break;
@@ -51,6 +54,10 @@ namespace DoNet.Utils.DemoWeb.WebForms.UtilsDemo
             //JSON转集合
             string str4 = "[{'Id':9999,'USERNAME':'测试人员1','DUTY': '科长','SEX':'男'},{'Id':8888,'USERNAME':'测试人员2','DUTY': '副科长','SEX':'女'}]";
             List<Users> list4 = JSONHelper.JsonToObject<List<Users>>(str4);
+            //JSON转复杂对象
+            string str5 = "{'count':2,'result':[{'Id':9999,'USERNAME':'测试人员1','DUTY': '科长','SEX':'男'},{'Id':8888,'USERNAME':'测试人员2','DUTY': '副科长','SEX':'女'}]}";
+            MyData list5 = JSONHelper.JsonToObject<MyData>(str5);
+
             //DataTable转JSON
             DataTable dt5 = um.Select(new Users() { SEX = "男", DUTY = "科长" });
             string result5 = JSONHelper.ObjectToJson(dt5);
@@ -89,13 +96,22 @@ namespace DoNet.Utils.DemoWeb.WebForms.UtilsDemo
             return "";
         }
 
+
+        private string ZipDemo(HttpContext context)
+        {
+            string err = "";
+             
+            return ZipHelperNew.Zip(@"D:\aaa\e.txt", "", out err).ToString();
+        }
+
+
         public bool IsReusable
         {
             get
             {
                 return false;
             }
-        } 
+        }
 
         enum Week
         {
@@ -107,10 +123,16 @@ namespace DoNet.Utils.DemoWeb.WebForms.UtilsDemo
 
 
         enum NewWeek
-        { 
+        {
             星期一 = 1,
             星期二 = 2
         }
+    }
+
+    public class MyData
+    {
+        public int count { get; set; }
+        public List<Users> result { get; set; }
     }
 }
 

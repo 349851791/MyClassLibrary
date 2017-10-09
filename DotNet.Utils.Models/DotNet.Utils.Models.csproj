@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Departments.cs" />
+    <Compile Include="DISTRICT_OLD.cs" />
+    <Compile Include="DISTRICT_CONTRAST.cs" />
     <Compile Include="DISTRICT.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -985,6 +985,61 @@
              </summary>
              <returns></returns>
         </member>
+        <member name="T:DotNet.Utils.ZipHelperNew">
+            <summary>
+            压缩包帮助类
+            </summary>
+            <summary>   
+            适用与ZIP压缩   
+            </summary>   
+        </member>
+        <member name="M:DotNet.Utils.ZipHelperNew.Zip(System.String,System.String,System.String@,System.String,System.Boolean)">
+            <summary>
+            压缩文件或文件夹
+            </summary>
+            <param name="fileToZip">要压缩的路径</param>   
+            <param name="zipedFile">压缩后的文件名</param>   
+            <param name="err">错误信息</param>
+            <param name="password">密码</param>
+            <param name="isMD5">是否启用MD5加密</param>
+            <returns>压缩结果</returns>
+        </member>
+        <member name="M:DotNet.Utils.ZipHelperNew.ZipDirectory(System.String,System.String,System.String@,System.String,System.Boolean)">
+            <summary>   
+            压缩文件夹    
+            </summary>   
+            <param name="folderToZip">要压缩的文件夹路径</param>   
+            <param name="zipedFile">压缩文件完整路径</param>   
+            <param name="password">密码</param>   
+            <returns>是否压缩成功</returns>   
+        </member>
+        <member name="M:DotNet.Utils.ZipHelperNew.ZipFile(System.String,System.String,System.String@,System.String,System.Boolean)">
+            <summary>   
+            压缩文件   
+            </summary>   
+            <param name="fileToZip">要压缩的文件全名</param>   
+            <param name="zipedFile">压缩后的文件名</param>   
+            <param name="password">密码</param>   
+            <returns>压缩结果</returns>   
+        </member>
+        <member name="M:DotNet.Utils.ZipHelperNew.ZipDirectory(System.String,ICSharpCode.SharpZipLib.Zip.ZipOutputStream,System.String)">
+            <summary>   
+            递归压缩文件夹的内部方法   
+            </summary>   
+            <param name="folderToZip">要压缩的文件夹路径</param>   
+            <param name="zipStream">压缩输出流</param>   
+            <param name="parentFolderName">此文件夹的上级文件夹</param>   
+            <returns></returns>   
+        </member>
+        <member name="M:DotNet.Utils.ZipHelperNew.UnZip(System.String,System.String,System.String)">
+            <summary>   
+            解压功能(解压压缩文件到指定目录)   
+            </summary>   
+            <param name="fileToUnZip">待解压的文件</param>   
+            <param name="zipedFolder">指定解压目标目录</param>   
+            <param name="password">密码</param>   
+            <returns>解压结果</returns>   
+        </member>
         <member name="M:DotNet.Utils.EnumHelper.GetEnumValue``1(``0)">
             <summary>
             获取枚举值,推荐用此方法

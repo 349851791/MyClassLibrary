@@ -23,8 +23,7 @@ namespace DotNet.Utils
     {
         private static JsonSerializerSettings _jsonSettings;
         /// <summary>
-        /// 默认转换时间格式为yyyy-MM-dd HH:mm:ss,
-        /// 也可把时间格式当做参数传入
+        /// 默认转换时间格式为yyyy-MM-dd HH:mm:ss
         /// </summary> 
         static JSONHelper()
         {
@@ -54,6 +53,34 @@ namespace DotNet.Utils
                 else
                 {
                     string temp = JsonConvert.SerializeObject(obj, Formatting.None, _jsonSettings);
+                    return temp;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 类(实体类、数组、DataTable等)转json,属性为空值时,值返回字段名称
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ObjectToJson_OnlyColumn(object obj)
+        {
+            try
+            {
+                if (null == obj)
+                {
+                    return null;
+                }
+                else
+                {
+
+                    _jsonSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Include;
+                    string temp = JsonConvert.SerializeObject(obj, Formatting.None, _jsonSettings).Replace("null","''");
                     return temp;
                 }
             }

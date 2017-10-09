@@ -99,3 +99,16 @@ D:\04_同步\MyClassLibraryNew_4\DotNet.Utils.Models\bin\Debug\DotNet.Utils.xml
 D:\04_同步\MyClassLibraryNew_4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.csprojResolveAssemblyReference.cache
 D:\04_同步\MyClassLibraryNew_4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.dll
 D:\04_同步\MyClassLibraryNew_4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\DotNet.Utils.Models.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\DotNet.Utils.Models.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\DotNet.Utils.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\Newtonsoft.Json.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\ThoughtWorks.QRCode.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\itextsharp.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\Microsoft.Office.Interop.Word.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\DotNet.Utils.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\DotNet.Utils.xml
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.csprojResolveAssemblyReference.cache
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.pdb

@@ -223,4 +223,9 @@
     background: url('../../../Images/leftTree/linq.png') no-repeat center center;
     background-size:16px 16px;
 }
- 
+
+
+/*Êý¾Ý¿â*/
+.icon-delete {
+    background: url('icons/delete.png') no-repeat center center;
+}
