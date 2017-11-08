@@ -44,7 +44,7 @@ namespace DotNet.Utils
                         break;
                     }
                 }
-                string sql = $"select * from {strTable} where {strCondition}";
+                string sql = string.Format("select * from {0} where {1}", strTable, strCondition); 
                 return dbl.ExecuteQuery(sql);
 
             }
@@ -68,7 +68,7 @@ namespace DotNet.Utils
             try
             {
                 strCondition = ColumnName + "='" + ColumnValue + "'";
-                string sql = $"select * from {strTable} where {strCondition}";
+                string sql = string.Format("select * from {0} where {1}", strTable, strCondition); //$"select * from {strTable} where {strCondition}";
                 return dbl.ExecuteQuery(sql);
 
             }

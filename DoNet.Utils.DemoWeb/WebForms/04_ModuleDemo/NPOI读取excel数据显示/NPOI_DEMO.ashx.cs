@@ -20,6 +20,10 @@ namespace Test_Oracle_Web.NPOI处理excel
         {
             string resultStr = string.Empty;
             string filePath = context.Request.Params["filePath"];
+            if (filePath.Split(',').Length > 1)
+            {
+                filePath = filePath.Split(',')[0];
+            }
             //var data = new { rows = ImportExcelFile(filePath), total = 32 };
             resultStr = JSONHelper.ObjectToJson(ImportExcelFile(filePath));
             context.Response.Write(resultStr);

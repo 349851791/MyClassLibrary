@@ -3,15 +3,16 @@
 /// 类 说 明： ado数据访问
 /// 编 码 人： 张贺
 /// 创建日期： 2015-10-13
-/// 更新日期： 
-/// 更新内容:
+/// 更新日期： 2017-11-07
+/// 更新内容:  1.DbType增加默认值,默认为Oracle,如果是oracle数据库可以不加入DbType节点
+///            2.结合特力惠平台数据库连接字符串,节点名称兼容ConnString,但是StrSql优先.
 /// </summary> 
 using System;
 using System.Collections.Generic;
-using System.Collections; 
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.OleDb; 
+using System.Data.OleDb;
 using System.Configuration;
 
 namespace DotNet.Utils
@@ -43,7 +44,7 @@ namespace DotNet.Utils
             {
                 if (dbType == string.Empty || dbType == null)
                 {
-                    return "Access";
+                    return "Oracle";
                 }
                 else
                 {
@@ -62,7 +63,7 @@ namespace DotNet.Utils
                 }
                 if (dbType == string.Empty || dbType == null)
                 {
-                    dbType = "Access";
+                    dbType = "Oracle";
                 }
             }
         }
@@ -75,9 +76,11 @@ namespace DotNet.Utils
 
         public DataBaseLayer()
         {
-            this.connectionString = ConfigurationSettings.AppSettings["StrSql"];
+            this.connectionString = ConfigurationSettings.AppSettings["StrSql"] == null ?
+                                    ConfigurationSettings.AppSettings["ConnString"] :
+                                    ConfigurationSettings.AppSettings["StrSql"];
             SqlStr = connectionString;
-            this.dbType = ConfigurationSettings.AppSettings["DbType"];
+            this.dbType = ConfigurationSettings.AppSettings["DbType"] == null ? "Oracle" : ConfigurationSettings.AppSettings["DbType"];
         }
         #endregion
 
@@ -295,7 +298,7 @@ namespace DotNet.Utils
 
         #region  执行简单SQL语句
 
-       
+
         /// <summary>
         /// 执行SQL语句，返回影响的记录数 、用于增删改
         /// </summary>
@@ -316,7 +319,7 @@ namespace DotNet.Utils
                     }
                     catch (System.Exception ex)
                     {
-                        LogHelper.WriteLog(ex,SqlString);
+                        LogHelper.WriteLog(ex, SqlString);
                         return -1;
                     }
                     finally
@@ -364,7 +367,7 @@ namespace DotNet.Utils
                         {
                             iDbTran.Rollback();
                             i = -1;
-                            LogHelper.WriteLog(ex); 
+                            LogHelper.WriteLog(ex);
                             return i;
                         }
                         finally

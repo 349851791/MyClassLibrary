@@ -176,7 +176,7 @@ namespace DotNet.Utils
                         //是空
                         if (item.Value.ToString().ToLower().Contains("isnull"))
                         {
-                            strCondition += $" {operators} {key} is null";
+                            strCondition += string.Format(" {0} {1} is null", operators, key);
                             continue;
                         }
 
@@ -209,72 +209,72 @@ namespace DotNet.Utils
                         //大于等于
                         if (item.Key.ToLower().Contains("__>="))
                         {
-                            strCondition += $" {operators} {key} >= {item.Value}";
+                            strCondition += string.Format(" {0} {1} >= {2}", operators, key, item.Value);
                             continue;
                         }
                         //大于
                         if (item.Key.ToLower().Contains("__>"))
                         {
-                            strCondition += $" {operators} {key} > {item.Value}";
+                            strCondition += string.Format(" {0} {1} > {2}", operators, key, item.Value); //$" {operators} {key} > {item.Value}";
                             continue;
                         }
 
                         //小于等于
                         if (item.Key.ToLower().Contains("__<="))
                         {
-                            strCondition += $" {operators} {key} <= {item.Value}";
+                            strCondition += string.Format(" {0} {1} <= {2}", operators, key, item.Value);// $" {operators} {key} <= {item.Value}";
                             continue;
                         }
                         //小于
                         if (item.Key.ToLower().Contains("__<"))
                         {
-                            strCondition += $" {operators} {key} < {item.Value}";
+                            strCondition += string.Format(" {0} {1} < {2}", operators, key, item.Value);// $" {operators} {key} < {item.Value}";
                             continue;
                         }
 
                         //判断是否是in
                         if (item.Key.ToLower().Contains("__in"))
                         {
-                            strCondition += $" {operators} {key} in ({item.Value})";
+                            strCondition += string.Format(" {0} {1} in {2}", operators, key, item.Value); //$" {operators} {key} in ({item.Value})";
                             continue;
                         }
                         //判断是否是notin
                         if (item.Key.ToLower().Contains("__notin"))
                         {
-                            strCondition += $" {operators} {key} not in ({item.Value})";
+                            strCondition += string.Format(" {0} {1} not in {2}", operators, key, item.Value);// $" {operators} {key} not in ({item.Value})";
                             continue;
                         }
 
                         //判断是否是no
                         if (item.Key.ToLower().Contains("__no"))
                         {
-                            strCondition += $" {operators} {key} != '{item.Value}'";
+                            strCondition += string.Format(" {0} {1} != '{2}'", operators, key, item.Value);// $" {operators} {key} != '{item.Value}'";
                             continue;
                         }
 
                         //判断是否执行oracle方法
                         if (item.Key.ToLower().Equals("__function"))
                         {
-                            strCondition += $" {operators} {item.Value}";
+                            strCondition += operators + " " + item.Value;// $" {operators} {item.Value}";
                             continue;
                         }
 
                         //判断是否是like
                         if (item.Key.ToLower().Contains("__like"))
                         {
-                            strCondition += $" {operators} {key} like '%{item.Value}%'";
+                            strCondition += string.Format(" {0} {1} like '%{2}%'", operators, key, item.Value);// $" {operators} {key} like '%{item.Value}%'";
                         }
                         else if (item.Key.ToLower().Contains("__startlike"))
                         {
-                            strCondition += $" {operators} {key} like '%{item.Value}'";
+                            strCondition += string.Format(" {0} {1} like '%{2}'", operators, key, item.Value);// $" {operators} {key} like '%{item.Value}'";
                         }
                         else if (item.Key.ToLower().Contains("__endlike"))
                         {
-                            strCondition += $" {operators} {key} like '{item.Value}%'";
+                            strCondition += string.Format(" {0} {1} like '{2}%'", operators, key, item.Value);// $" {operators} {key} like '{item.Value}%'";
                         }
                         else
                         {
-                            strCondition += $" {operators} {key} = '{item.Value}'";
+                            strCondition += string.Format(" {0} {1} = '{2}'", operators, key, item.Value); //$" {operators} {key} = '{item.Value}'";
                         }
 
                         ////右括号
