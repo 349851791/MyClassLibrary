@@ -125,14 +125,11 @@ E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Util
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.Models.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\Ionic.Zip.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\NPOI.dll
-E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\IBatisNet.DataMapper.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\Newtonsoft.Json.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\ThoughtWorks.QRCode.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\ICSharpCode.SharpZipLib.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\itextsharp.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\Microsoft.Office.Interop.Word.dll
-E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\IBatisNet.Common.dll
-E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\Castle.DynamicProxy.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.Models.pdb
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.pdb
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.xml
@@ -140,3 +137,12 @@ E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\NPOI.xml
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\obj\Debug\DoNet.Utils.DemoWeb.csprojResolveAssemblyReference.cache
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\obj\Debug\DoNet.Utils.DemoWeb.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\obj\Debug\DoNet.Utils.DemoWeb.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.EFModels.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\EntityFramework.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\office.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\Microsoft.Vbe.Interop.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\stdole.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\DotNet.Utils.EFModels.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\EntityFramework.xml
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\office.xml
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DoNet.Utils.DemoWeb\bin\zh-Hans\EntityFramework.resources.dll

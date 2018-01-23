@@ -782,7 +782,7 @@
         </member>
         <member name="M:DotNet.Utils.InternalBase`1.GetConditionByDIC(System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)">
             <summary>
-            根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like),数据库字段名__no(为不等于),数据库字段名__in(为包含),数据库字段名__notin(为不包含)
+            根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like),数据库字段名__no(为不等于),数据库字段名__in(为包含,value中需要包含"()"),数据库字段名__notin(为不包含)
             </summary>
             <param name="dicCondition">条件字典</param> 
             <param name="isAnd">是否返回and,默认为false</param>
@@ -812,146 +812,6 @@
             <param name="columnName"></param>
             <param name="tt"></param>
             <param name="ttt"></param>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.Insert(System.String,`0)">
-            <summary>
-            增加
-            </summary>
-            <typeparam name="T">实体类</typeparam>
-            <param name="statementName">声明名称</param>
-            <param name="t">实体对象</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.Delete(System.String,System.Int32)">
-            <summary>
-            删除
-            </summary>
-            <param name="statementName">声明名称</param>
-            <param name="primaryKeyId">主键ID</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.Update(System.String,`0)">
-             <summary>
-            修改 
-             </summary>
-             <typeparam name="T">实体类</typeparam>
-             <param name="statementName">声明名称</param>
-             <param name="t"></param>
-             <returns>实体对象</returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.Get(System.String,System.Int32)">
-            <summary>
-            返回实体对象个体
-            </summary>
-            <typeparam name="T">实体类</typeparam>
-            <param name="statementName">声明名称</param>
-            <param name="primaryKeyId">主键ID</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.QueryForList(System.String,System.Object)">
-            <summary>
-            返回实体对象集合
-            </summary>
-            <typeparam name="T">实体类</typeparam>
-            <param name="statementName">声明名称</param>
-            <param name="parameterObject">参数</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.GetSql(System.String,System.Object)">
-            <summary>
-            获取动态生成的sql语句
-            </summary>
-            <param name="stateMentName">声明名称</param>
-            <param name="paramObject">参数</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.GetDataTable(System.String,System.Object,System.String,System.Int32)">
-            <summary>
-            返回DataTable
-            </summary>
-            <param name="sqlMapper">ISqlMapper</param>
-            <param name="statementName">statement的id</param>
-            <param name="paramObject">sql语句的参数</param>
-            <returns>DataTable</returns>
-        </member>
-        <member name="M:DotNet.Utils.BatisBaseHpler`1.GetDbCommand(IBatisNet.DataMapper.ISqlMapper,System.String,System.Object)">
-            <summary>
-            获取DbCommand
-            </summary>
-            <param name="sqlMapper">ISqlMapper</param>
-            <param name="statementName">statement的id</param>
-            <param name="paramObject">sql语句的参数</param>
-            <returns>DbCommand</returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisAssist.GetSql(System.String,System.Object)">
-            <summary>
-            获取动态生成的sql语句
-            </summary>
-            <param name="stateMentName">声明名称</param>
-            <param name="paramObject">参数</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisAssist.QueryForDataDataTable(System.String,System.Object,System.String,System.Int32)">
-            <summary>
-            返回DataTable
-            </summary>
-            <param name="sqlMapper">ISqlMapper</param>
-            <param name="statementName">statement的id</param>
-            <param name="paramObject">sql语句的参数</param>
-            <returns>DataTable</returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisAssist.GetDbCommand(IBatisNet.DataMapper.ISqlMapper,System.String,System.Object)">
-            <summary>
-            获取DbCommand
-            </summary>
-            <param name="sqlMapper">ISqlMapper</param>
-            <param name="statementName">statement的id</param>
-            <param name="paramObject">sql语句的参数</param>
-            <returns>DbCommand</returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisBase.Insert``1(System.String,``0)">
-            <summary>
-            增加
-            </summary>
-            <typeparam name="T">实体类</typeparam>
-            <param name="statementName">声明名称</param>
-            <param name="t">实体对象</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisBase.Delete(System.String,System.Int32)">
-            <summary>
-            删除
-            </summary>
-            <param name="statementName">声明名称</param>
-            <param name="primaryKeyId">主键ID</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisBase.Update``1(System.String,``0)">
-             <summary>
-            修改 
-             </summary>
-             <typeparam name="T">实体类</typeparam>
-             <param name="statementName">声明名称</param>
-             <param name="t"></param>
-             <returns>实体对象</returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisBase.Get``1(System.String,System.Int32)">
-            <summary>
-            返回实体对象个体
-            </summary>
-            <typeparam name="T">实体类</typeparam>
-            <param name="statementName">声明名称</param>
-            <param name="primaryKeyId">主键ID</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNet.Utils.MyBatisBase.QueryForList``1(System.String,System.Object)">
-            <summary>
-            返回实体对象集合
-            </summary>
-            <typeparam name="T">实体类</typeparam>
-            <param name="statementName">声明名称</param>
-            <param name="parameterObject">参数</param>
-            <returns></returns>
         </member>
         <!-- Badly formed XML comment ignored for member "T:DotNet.Utils.UrlHelper" -->
         <!-- Badly formed XML comment ignored for member "M:DotNet.Utils.UrlHelper.GetAllUrl" -->
@@ -985,6 +845,66 @@
              </summary>
              <returns></returns>
         </member>
+        <member name="T:DotNet.Utils.ZipClass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DotNet.Utils.ZipClass.avg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.ZipClass.ZipNo(System.String,System.String)">
+            <summary>
+            压缩文件和文件夹不压缩顶级目录
+            </summary>
+            <param name="FolderToZip">待压缩的文件夹，全路径格式</param>
+            <param name="ZipedFile">压缩后生成的压缩文件名，全路径格式</param>
+            <returns>压缩是否成功</returns>
+        </member>
+        <member name="M:DotNet.Utils.ZipClass.Zip(System.String,System.String,System.String)">
+            <summary>
+            压缩文件或文件夹
+            </summary>
+            <param name="FileToZip">待压缩的文件或文件夹，全路径格式</param>
+            <param name="ZipedFile">压缩后生成的压缩文件名，全路径格式</param>
+            <param name="Password">压缩密码</param>
+            <returns>压缩是否成功</returns>
+        </member>
+        <member name="M:DotNet.Utils.ZipClass.UnZip(System.String,System.String)">
+            <summary>   
+            功能：解压zip格式的文件。   
+            </summary>   
+            <param name="zipFilePath">压缩文件路径，全路径格式</param>   
+            <param name="unZipDir">解压文件存放路径,全路径格式，为空时默认与压缩文件同一级目录下，跟压缩文件同名的文件夹</param>   
+            <param name="err">出错信息</param>   
+            <returns>解压是否成功</returns>
+        </member>
+        <member name="M:DotNet.Utils.ZipClass.ZipFileDictory(System.String,System.String,System.String)">
+            <summary> 
+            压缩目录 
+            </summary> 
+            <param name="FolderToZip">待压缩的文件夹，全路径格式</param> 
+            <param name="ZipedFile">压缩后的文件名，全路径格式，如果为空则文件名为待压缩的文件名加上.rar</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:DotNet.Utils.ZipClass.ZipFile(System.String,System.String,System.String)">
+            <summary> 
+            压缩文件 
+            </summary> 
+            <param name="FileToZip">要进行压缩的文件名</param> 
+            <param name="ZipedFile">压缩后生成的压缩文件名，如果为空则文件名为待压缩的文件名加上.rar</param> 
+            <returns>压缩是否成功</returns> 
+        </member>
+        <member name="M:DotNet.Utils.ZipClass.ZipFileDictory(System.String,ICSharpCode.SharpZipLib.Zip.ZipOutputStream,System.String)">
+            <summary> 
+            递归压缩文件夹方法 
+            </summary> 
+            <param name="FolderToZip"></param> 
+            <param name="s"></param> 
+            <param name="ParentFolderName"></param> 
+        </member>
         <member name="T:DotNet.Utils.ZipHelperNew">
             <summary>
             压缩包帮助类
@@ -1005,22 +925,15 @@
             <returns>压缩结果</returns>
         </member>
         <member name="M:DotNet.Utils.ZipHelperNew.ZipDirectory(System.String,System.String,System.String@,System.String,System.Boolean)">
-            <summary>   
-            压缩文件夹    
-            </summary>   
-            <param name="folderToZip">要压缩的文件夹路径</param>   
-            <param name="zipedFile">压缩文件完整路径</param>   
-            <param name="password">密码</param>   
-            <returns>是否压缩成功</returns>   
-        </member>
-        <member name="M:DotNet.Utils.ZipHelperNew.ZipFile(System.String,System.String,System.String@,System.String,System.Boolean)">
-            <summary>   
-            压缩文件   
-            </summary>   
-            <param name="fileToZip">要压缩的文件全名</param>   
+            <summary>
+            压缩文件或文件夹
+            </summary>
+            <param name="folderToZip">要压缩的路径</param>   
             <param name="zipedFile">压缩后的文件名</param>   
-            <param name="password">密码</param>   
-            <returns>压缩结果</returns>   
+            <param name="err">错误信息</param>
+            <param name="password">密码</param>
+            <param name="isMD5">是否启用MD5加密</param>
+            <returns>压缩结果</returns>
         </member>
         <member name="M:DotNet.Utils.ZipHelperNew.ZipDirectory(System.String,ICSharpCode.SharpZipLib.Zip.ZipOutputStream,System.String)">
             <summary>   
@@ -1031,7 +944,18 @@
             <param name="parentFolderName">此文件夹的上级文件夹</param>   
             <returns></returns>   
         </member>
-        <member name="M:DotNet.Utils.ZipHelperNew.UnZip(System.String,System.String,System.String)">
+        <member name="M:DotNet.Utils.ZipHelperNew.ZipFile(System.String,System.String,System.String@,System.String,System.Boolean)">
+            <summary>
+            压缩文件或文件夹
+            </summary>
+            <param name="fileToZip">要压缩的路径</param>   
+            <param name="zipedFile">压缩后的文件路径</param>   
+            <param name="err">错误信息</param>
+            <param name="password">密码</param>
+            <param name="isMD5">是否启用MD5加密</param>
+            <returns>压缩结果</returns> 
+        </member>
+        <member name="M:DotNet.Utils.ZipHelperNew.UnZip(System.String,System.String,System.String@,System.String,System.Boolean)">
             <summary>   
             解压功能(解压压缩文件到指定目录)   
             </summary>   
@@ -1174,13 +1098,19 @@
         </member>
         <member name="M:DotNet.Utils.JSONHelper.#cctor">
             <summary>
-            默认转换时间格式为yyyy-MM-dd HH:mm:ss,
-            也可把时间格式当做参数传入
+            默认转换时间格式为yyyy-MM-dd HH:mm:ss
             </summary> 
         </member>
         <member name="M:DotNet.Utils.JSONHelper.ObjectToJson(System.Object)">
             <summary>
             类(实体类、数组、DataTable等)转json
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.JSONHelper.ObjectToJson_OnlyColumn(System.Object)">
+            <summary>
+            类(实体类、数组、DataTable等)转json,属性为空值时,值返回字段名称
             </summary>
             <param name="obj"></param>
             <returns></returns>
@@ -2621,6 +2551,18 @@
             <param name="outputPath">pdf输出路径</param>
             <param name="fontPath">字体路径</param>
             <returns></returns>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.ReviseGray(System.Drawing.Bitmap,System.String)">
+            <summary>
+            灰度转换,逐点方式
+            </summary>
+        </member>
+        <member name="M:DotNet.Utils.WatermarkHelper.GetGrayNumColor(System.Drawing.Color)">
+            <summary>
+            根据RGB，计算灰度值
+            </summary>
+            <param name="posClr">Color值</param>
+            <returns>灰度值，整型</returns>
         </member>
         <member name="T:DotNet.Utils.HanZiToPinYin.EcanConvertToCh">
             <summary>
