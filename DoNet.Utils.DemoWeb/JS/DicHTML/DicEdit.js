@@ -8,7 +8,7 @@ $(function () {
         height: 160,
         left: 150,
         top: 30,
-        href: '../../WebForms/DicHTML/Edit.html'
+        href: '../../WebForms/02_DicHTML/Edit.html'
     });
 });
 

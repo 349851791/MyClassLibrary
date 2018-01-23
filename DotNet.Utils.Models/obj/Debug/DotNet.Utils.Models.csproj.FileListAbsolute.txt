@@ -112,3 +112,7 @@ E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\DotNe
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.csprojResolveAssemblyReference.cache
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\obj\Debug\DotNet.Utils.Models.pdb
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\office.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\Microsoft.Vbe.Interop.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\stdole.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils.Models\bin\Debug\office.xml

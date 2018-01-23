@@ -1,0 +1,27 @@
+1.nuget 引用EntityFramework  Oracle.ManagedDataAccess.EntityFramework
+2.安装ODTforVS2015_122010.exe
+3.如果没有ado.net实体数据模型 在C:\ProgramData\Package Cache 搜索EFTool.msi
+先卸载再安装
+4.C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+  <system.data>
+    <DbProviderFactories>
+      <add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342"/>
+    <add name="Microsoft SQL Server Compact Data Provider 4.0" invariant="System.Data.SqlServerCe.4.0" description=".NET Framework Data Provider for Microsoft SQL Server Compact" type="System.Data.SqlServerCe.SqlCeProviderFactory, System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"/></DbProviderFactories>
+  </system.data>
+将文件内的invariant的值,修改的与web.config中的provider名称一样
+  <connectionStrings>
+    <add name="DOTNETDEMOEntities" connectionString="metadata=res://*/DOTNETDEMOModel.csdl|res://*/DOTNETDEMOModel.ssdl|res://*/DOTNETDEMOModel.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=localhost:1521/orcl;PASSWORD=DOTNETDEMO;USER ID=DOTNETDEMO&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+
+所以正确的为:
+  <system.data>
+    <DbProviderFactories>
+      <add name="Oracle Data Provider for .NET" invariant="=Oracle.ManagedDataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342"/>
+    <add name="Microsoft SQL Server Compact Data Provider 4.0" invariant="System.Data.SqlServerCe.4.0" description=".NET Framework Data Provider for Microsoft SQL Server Compact" type="System.Data.SqlServerCe.SqlCeProviderFactory, System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"/></DbProviderFactories>
+  </system.data>
+
+(5)web使用时,需要将模型层的app.config中的下面这句话,复制到web应用里的web.config中
+  <connectionStrings>
+    <add name="DOTNETDEMOEntities" connectionString="metadata=res://*/DOTNETDEMOModel.csdl|res://*/DOTNETDEMOModel.ssdl|res://*/DOTNETDEMOModel.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=localhost:1521/orcl;PASSWORD=DOTNETDEMO;PERSIST SECURITY INFO=True;USER ID=DOTNETDEMO&quot;" providerName="System.Data.EntityClient"/>
+  </connectionStrings>
+5.完成

@@ -5,16 +5,16 @@ $(function () {
     $("#win_user").window({
         title: '增加用户',
         width: 540,
-        height: 200,
+        height: 170,
         left: 150,
         top: 30,
-        href: '../../WebForms/ObjectHTML/UserEdit.html'
+        href: 'Edit.html'
     });
 });
 
 //设置增加功能url,并打开窗口
 function Insert_open() {
-    url = '../../Handler/UsersHandler.ashx?action=Insert';
+    url = '../../Handler/MenusHandler.ashx?action=Insert';
     $("#win_user").window({
         title: '增加用户',
         onLoad: function () {
@@ -28,22 +28,7 @@ function Insert_open() {
                         $(this).addClass("myInputMouseOut").removeClass("myInputMouseOver");
                     }).addClass("myInput");
                 }
-            });
-            //$("input[type='text']", $("#table_user")).addClass("myInput");
-            //$("input[type='text']", $("#table_user")).each(function () {
-            //    $(this).mouseover(function () {
-            //        //判断是否是easyui的控件,如果不是则添加事件以及样式
-            //        if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
-            //            //$(this).css({ height: "18px",  border: "1px solid #95b8e7" })
-            //            $(this).addClass("myInputMouseOver").removeClass("myInputMouseOut")
-            //        }
-            //    }).mouseout(function () {
-            //        if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
-            //            //$(this).css({ height: "20px", border: "0px" })
-            //            $(this).addClass("myInputMouseOut").removeClass("myInputMouseOver");
-            //        }
-            //    });
-            //});
+            }); 
         }
     });
     $('#win_user').window('open');
@@ -51,11 +36,12 @@ function Insert_open() {
 
 //设置编辑功能url,并打开窗口
 function Update_open() {
-    url = '../../Handler/UsersHandler.ashx?action=Update';
+    url = '../../Handler/MenusHandler.ashx?action=Update';
     var row = $('#dg').datagrid('getSelected');
     $("#win_user").window({
         title: '修改用户',
         onLoad: function () {
+            document.getElementById("tr1").style.display = "none";
             //加载时,给所有input增加样式.并增加鼠标事件,在事件中修改样式 
             $("input[type='text']", $("#table_user")).each(function () {
                 if (this.className.indexOf('text') == -1 && this.className.indexOf('easyui') == -1) {
@@ -67,6 +53,8 @@ function Update_open() {
                 }
             });  
             $('#myForm').form('load', row);//获取窗口数据 
+            document.getElementById("URLS").value = row.URL;
+            //$("#URLS").attr("value", row.URL);
         }
     });
     if (row) {
@@ -105,7 +93,7 @@ function Delete() {
     else {
         $.messager.confirm('提示', '您确认想要删除记录吗?', function (r) {
             if (r) {
-                $.post('../../Handler/UsersHandler.ashx?action=Delete', { ID: row.ID }, function (result) {
+                $.post('../../Handler/MenusHandler.ashx?action=Delete', { ID: row.ID }, function (result) {
                     if (result == '1') {
                         $('#dg').datagrid('reload');
                     } else {

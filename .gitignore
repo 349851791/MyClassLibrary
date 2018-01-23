@@ -8,3 +8,7 @@
 /DotNet.Utils/obj/Debug
 /DoNet.Utils.DemoWeb/bin
 /DoNet.Utils.DemoWeb/Log
+/DoNet.Utils.WebTest/bin
+/packages
+/DotNet.Utils.EFModels/bin/Debug
+/DotNet.Utils.EFModels/obj/Debug

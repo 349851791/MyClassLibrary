@@ -76,4 +76,8 @@ E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\Microsoft.Qu
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.csprojFakesResolveAssemblyReference.cache
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.dll
 E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.pdb
-E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\obj\Debug\DotNet.Utils.csprojResolveAssemblyReference.cache
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\office.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\Microsoft.Vbe.Interop.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\stdole.dll
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\office.xml
+E:\04_GitHub\01_我的类库\MyClassLibrary4\DotNet.Utils\bin\Debug\Newtonsoft.Json.Fakes.fakesconfig

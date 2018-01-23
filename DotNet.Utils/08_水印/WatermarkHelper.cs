@@ -368,13 +368,14 @@ namespace DotNet.Utils
         /// <returns></returns>
         public bool AddWatermarkForImg(string sourcePath, string targetImage)
         {
+            string grayPath = ReviseGray(new Bitmap(sourcePath), sourcePath);
             string waterWords = ConfigurationManager.AppSettings["WatermarkWord"];//水印文字
             double alpha = Convert.ToDouble(ConfigurationManager.AppSettings["Alpha"]);//透明度
             float img_spacing_width = float.Parse(ConfigurationManager.AppSettings["img_spacing_width"]);//水平间隔
             float img_spacing_height = float.Parse(ConfigurationManager.AppSettings["img_spacing_height"]); //垂直间隔
             int img_rotation = Convert.ToInt32(ConfigurationManager.AppSettings["img_rotation"]); //逆时针旋转角度
 
-            string sourcePicture = sourcePath;
+            string sourcePicture = grayPath;
             if (!System.IO.File.Exists(sourcePicture))
             {
                 _ErrMsg = "文件不存在！";
@@ -480,41 +481,14 @@ namespace DotNet.Utils
                         grPhoto.DrawString(waterWords, crFont, semiTransBrush, xpos, ypos);
                     }
                 }
-                //for (int i = 2; i > 1; i++)
-                //{
-
-                //    grPhoto.DrawString(waterWords, crFont, semiTransBrush2, new PointF(xPosOfWm + 1, yPosOfWm + 1), StrFormat);
-                //    grPhoto.DrawString(waterWords, crFont, semiTransBrush, new PointF(xPosOfWm, yPosOfWm), StrFormat);
-                //    if (yPosOfWm > phHeight-150)
-                //    {
-                //        yPosOfWm = yuanY;
-                //        xPosOfWm = xPosOfWm + img_spacing_width;
-                //    }
-                //    else
-                //    {
-                //        yPosOfWm = yPosOfWm + img_spacing_height;
-                //    }
-                //    if (xPosOfWm > phWidth-150)
-                //    {
-                //        break;
-                //    }
-
-                //    //if (tempHeight > height - 150)
-                //    //{
-                //    //    tempHeight = 50;
-                //    //    tempWidth = tempWidth + pdf_spacing_width;
-                //    //}
-                //    //else
-                //    //{
-                //    //    tempHeight = tempHeight + pdf_spacing_height;
-                //    //}
-                //    //if (tempWidth > width - 150)
-                //    //{
-                //    //    break;
-                //    //}
-                //}
                 imgPhoto = bmPhoto;
-                // 目标图片名称及全路径 
+                 
+                // 目标图片名称及全路径
+                string[] tempArray = targetImage.Split('.');
+                tempArray[0] = tempArray[0] + "_original";
+                string temp = tempArray[0] + "." + tempArray[1];
+                File.Move(targetImage, temp);
+
                 imgPhoto.Save(targetImage);
                 return true;
             }
@@ -561,6 +535,7 @@ namespace DotNet.Utils
                 PdfReader pdfReader = new PdfReader(inputPath);
                 int numberOfPages = pdfReader.NumberOfPages;//获取pdf页数
                 FileStream outputStream = new FileStream(outputPath, FileMode.Create);
+                //FileStream outputStream = new FileStream(outputPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
                 PdfStamper pdfStamper = new PdfStamper(pdfReader, outputStream);
                 PdfContentByte over;
                 BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);//设置字体
@@ -609,5 +584,37 @@ namespace DotNet.Utils
             }
         }
         #endregion
+
+
+        /// <summary>
+        /// 灰度转换,逐点方式
+        /// </summary>
+        public  string  ReviseGray(Bitmap bmpobj,string path)
+        {
+            for (int i = 0; i < bmpobj.Height; i++)
+            {
+                for (int j = 0; j < bmpobj.Width; j++)
+                {
+                    int tmpValue = GetGrayNumColor(bmpobj.GetPixel(j, i));
+                    bmpobj.SetPixel(j, i, Color.FromArgb(tmpValue, tmpValue, tmpValue));
+                }
+            }
+            string[] tempArray = path.Split('.');
+            tempArray[0] = tempArray[0] + "_Gray";
+            string temp = tempArray[0] + "." + tempArray[1];
+            bmpobj.Save(temp, ImageFormat.Jpeg);
+            bmpobj.Dispose();
+            return temp;
+        }
+
+        /// <summary>
+        /// 根据RGB，计算灰度值
+        /// </summary>
+        /// <param name="posClr">Color值</param>
+        /// <returns>灰度值，整型</returns>
+        private  int GetGrayNumColor(System.Drawing.Color posClr)
+        {
+            return (posClr.R * 19595 + posClr.G * 38469 + posClr.B * 7472) >> 16;
+        }
     }
 }

@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="JS\EasyUI\themes\icons\remove.png" />
+    <Content Include="remotedata.html" />
     <Content Include="WebForms\03_FrontDemo\div切换效果\css\animations.css" />
     <Content Include="WebForms\03_FrontDemo\div切换效果\css\component.css" />
     <Content Include="WebForms\03_FrontDemo\div切换效果\css\default.css" />
@@ -406,7 +407,7 @@
     <Content Include="JS\EasyUI\themes\mobile.css" />
     <Content Include="JS\Global\Example.js" />
     <Content Include="JS\Global\Public.js" />
-    <Content Include="JS\ObjectHTML\ObjectEdit.js" />
+    <Content Include="WebForms\07_EFDemo\MenuSelect.js" />
     <Content Include="JS\ObjectHTML\AssistSelect.js" />
     <Content Include="JS\ObjectHTML\ObjectSelect.js" />
     <Content Include="packages.config" />
@@ -442,6 +443,8 @@
     <Content Include="WebForms\03_FrontDemo\8种等待圆圈滚动条\css\load7.css" />
     <Content Include="WebForms\03_FrontDemo\8种等待圆圈滚动条\css\load8.css" />
     <Content Include="WebForms\03_FrontDemo\8种等待圆圈滚动条\css\main.css" />
+    <Content Include="Handler\MenusHandler.ashx" />
+    <Content Include="combobox_data1.json" />
     <None Include="WebForms\03_FrontDemo\8种等待圆圈滚动条\images\css-loaders-screenshot111jpg" />
     <Content Include="WebForms\03_FrontDemo\8种等待圆圈滚动条\images\me.jpeg" />
     <Content Include="WebForms\03_FrontDemo\8种等待圆圈滚动条\index.html" />
@@ -556,6 +559,8 @@
     <Content Include="WebForms\05_UtilsDemo\ZipDemo.html" />
     <Content Include="WebForms\06_ASPDemo\GetIP.aspx" />
     <Content Include="WebForms\06_ASPDemo\LinqDemo.aspx" />
+    <Content Include="WebForms\07_EFDemo\MenuSelect.html" />
+    <Content Include="WebForms\07_EFDemo\edit.html" />
     <Content Include="WebForms\CreateModel\ByORCL.html" />
     <Content Include="WebForms\02_DicHTML\DicEdit.html" />
     <Content Include="WebForms\02_DicHTML\DicSelect.html" />
@@ -644,6 +649,9 @@
     <Compile Include="Handler\GlobalHandler.ashx.cs">
       <DependentUpon>GlobalHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\MenusHandler.ashx.cs">
+      <DependentUpon>MenusHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\UsersHandler.ashx.cs">
       <DependentUpon>UsersHandler.ashx</DependentUpon>
     </Compile>
@@ -710,6 +718,10 @@
     <Folder Include="WebForms\03_FrontDemo\边栏过渡\js\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DotNet.Utils.EFModels\DotNet.Utils.EFModels.csproj">
+      <Project>{79d9f39c-c0b3-4579-acc1-529581401c31}</Project>
+      <Name>DotNet.Utils.EFModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotNet.Utils.Models\DotNet.Utils.Models.csproj">
       <Project>{e3bb2c97-6ef6-4a10-babf-55e0a0132090}</Project>
       <Name>DotNet.Utils.Models</Name>

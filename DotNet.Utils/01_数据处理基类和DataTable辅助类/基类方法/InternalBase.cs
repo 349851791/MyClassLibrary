@@ -139,7 +139,7 @@ namespace DotNet.Utils
 
 
         /// <summary>
-        /// 根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like),数据库字段名__no(为不等于),数据库字段名__in(为包含),数据库字段名__notin(为不包含)
+        /// 根据条件字典返回查询语句,关键字:数据库字段名__q(时间起),数据库字段名__z(时间止),数据库字段名__or(条件为or),数据库字段名__like(查询为like),数据库字段名__no(为不等于),数据库字段名__in(为包含,value中需要包含"()"),数据库字段名__notin(为不包含)
         /// </summary>
         /// <param name="dicCondition">条件字典</param> 
         /// <param name="isAnd">是否返回and,默认为false</param>
